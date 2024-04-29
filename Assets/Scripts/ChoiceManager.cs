@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
-    private bool notOnChoiceCooldown = false;
+    private bool notOnChoiceCooldown = true;
+    private bool oldRaySystemOn = false;
     public enum ChoiceEnum
     {
         Breeding,
@@ -20,7 +21,7 @@ public class ChoiceManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && notOnChoiceCooldown)
+        if (Input.GetMouseButtonDown(0) && oldRaySystemOn)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -32,7 +33,7 @@ public class ChoiceManager : MonoBehaviour
                     Choice = ChoiceEnum.Breeding;
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.popu);
                     GameManager.Instance.PushChoice(Choice);
-                    StartCoroutine(ChoiceCoolDown() );
+                    StartCoroutine(ChoiceCoolDown());
                 }
                 if (hit.collider.CompareTag("MuseumButton"))
                 {
@@ -83,45 +84,45 @@ public class ChoiceManager : MonoBehaviour
         if (notOnChoiceCooldown)
         {
 
-        switch (ID)
-        {
-            case 0:
-                Choice = ChoiceEnum.Breeding;
-                FavourManager.instance.UpdateFavour(FavourManager.FavourType.popu);
-                GameManager.Instance.PushChoice(Choice);
-                StartCoroutine(ChoiceCoolDown());
-                break;
-            case 1:
-                Choice = ChoiceEnum.Museum;
-                FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
-                GameManager.Instance.PushChoice(Choice);
-                StartCoroutine(ChoiceCoolDown());
-                break;
-            case 2:
-                Choice = ChoiceEnum.Experiments;
-                FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
-                GameManager.Instance.PushChoice(Choice);
-                StartCoroutine(ChoiceCoolDown());
-                break;
-            case 3:
-                Choice = ChoiceEnum.Pet;
-                FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente);
-                GameManager.Instance.PushChoice(Choice);
-                StartCoroutine(ChoiceCoolDown());
-                break;
-            case 4:
-                Choice = ChoiceEnum.MakeFood;
-                FavourManager.instance.UpdateFavour(FavourManager.FavourType.food);
-                GameManager.Instance.PushChoice(Choice);
-                StartCoroutine(ChoiceCoolDown());
-                break;
-            case 5:
-                Choice = ChoiceEnum.Skip;
-                FavourManager.instance.DecreaseFavour();
-                GameManager.Instance.PushChoice(Choice);
-                StartCoroutine(ChoiceCoolDown());
-                break;
-        }
+            switch (ID)
+            {
+                case 0:
+                    Choice = ChoiceEnum.Breeding;
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.popu);
+                    GameManager.Instance.PushChoice(Choice);
+                    StartCoroutine(ChoiceCoolDown());
+                    break;
+                case 1:
+                    Choice = ChoiceEnum.Museum;
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
+                    GameManager.Instance.PushChoice(Choice);
+                    StartCoroutine(ChoiceCoolDown());
+                    break;
+                case 2:
+                    Choice = ChoiceEnum.Experiments;
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
+                    GameManager.Instance.PushChoice(Choice);
+                    StartCoroutine(ChoiceCoolDown());
+                    break;
+                case 3:
+                    Choice = ChoiceEnum.Pet;
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente);
+                    GameManager.Instance.PushChoice(Choice);
+                    StartCoroutine(ChoiceCoolDown());
+                    break;
+                case 4:
+                    Choice = ChoiceEnum.MakeFood;
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.food);
+                    GameManager.Instance.PushChoice(Choice);
+                    StartCoroutine(ChoiceCoolDown());
+                    break;
+                case 5:
+                    Choice = ChoiceEnum.Skip;
+                    FavourManager.instance.DecreaseFavour();
+                    GameManager.Instance.PushChoice(Choice);
+                    StartCoroutine(ChoiceCoolDown());
+                    break;
+            }
         }
     }
 
