@@ -10,7 +10,6 @@ public class MonitorText : MonoBehaviour
     [SerializeField] private int sizePersonData = 80;
     [SerializeField] private int sizeBiography = 92;
 
-
     private Text textObject;
 
     private void Start()

@@ -34,7 +34,7 @@ public class CharacterManager : MonoBehaviour
     // location to instantiate, etc?
     public GameObject InstantiateRandomCharacter(Character randomCharacterInfo)
     {
-        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.characterObject);
+        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj);
 
         return randomCharacterObj;
     }
