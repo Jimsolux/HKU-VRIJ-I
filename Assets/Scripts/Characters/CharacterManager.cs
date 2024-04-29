@@ -4,27 +4,42 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    [SerializeField] LogbookManager logbookManager;
+    [SerializeField] LogbookManager lm;
+    [SerializeField] MonitorText mt;
 
     [SerializeField] private List<Character> characters = new List<Character>();
-    [HideInInspector] public List<Character> charactersLeft;
+    [SerializeField] private List<Character> charactersLeft;
 
-    public GameObject currentCharacterObj;
-    public Character currentCharacterInfo;
+    private GameObject currentCharacterObj;
+    private Character currentCharacterInfo;
 
+    [SerializeField] private Transform characterTransform;
+ 
     private void Start()
     {
         InitializeCharacterManager();
+
+        FirstCharacter();
+
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextCharacter();
+        }
     }
 
     private void InitializeCharacterManager()
     {
-        charactersLeft = characters;
+        charactersLeft = new List<Character>(characters);
     }
 
     public Character GetRandomCharacterIndex(List<Character> charactersLeft)
     {
-        int randomIndex = Mathf.RoundToInt(Random.Range(0, charactersLeft.Count + 1));
+        int randomIndex = Mathf.RoundToInt(Random.Range(0, charactersLeft.Count));
         Character characterInfo = charactersLeft[randomIndex];
         charactersLeft.RemoveAt(randomIndex);
 
@@ -34,20 +49,24 @@ public class CharacterManager : MonoBehaviour
     // location to instantiate, etc?
     public GameObject InstantiateRandomCharacter(Character randomCharacterInfo)
     {
-        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj);
+        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj, characterTransform.position, Quaternion.identity);
 
         return randomCharacterObj;
     }
 
     public void NextCharacter()
     {
-        // previous character play animation, play sfx, finishing up with the previous character
-        // placing info in logbook
-
+        Debug.Log("Input!");
+        //lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
         currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
+        mt.SetText(mt.BioToString(currentCharacterInfo));
+    }
 
-        // next character play animation
-        // monitor text next character 
+    public void FirstCharacter()
+    {
+        currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
+        currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
+        mt.SetText(mt.BioToString(currentCharacterInfo));
     }
 }

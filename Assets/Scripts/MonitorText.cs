@@ -37,6 +37,17 @@ public class MonitorText : MonoBehaviour
         textObject.text = monitorText;
     }
 
+    public string BioToString(Character characterInfo)
+    {
+        string str = "Name: "        + characterInfo.nam + "/n"
+              + "Age: "         + characterInfo.age + "/n"
+              + "Gender: "      + characterInfo.gender + "/n"
+              + "Nationality: " + characterInfo.nationality + "/n/n"
+              + "Description: " + characterInfo.description + "/n/n";
+
+        return str;
+    }
+
     private IEnumerator WriteText(string text)
     {
         textObject.fontSize = sizePersonData;

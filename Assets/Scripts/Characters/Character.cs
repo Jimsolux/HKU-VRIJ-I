@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Character")]
 public class Character : ScriptableObject
@@ -12,6 +13,9 @@ public class Character : ScriptableObject
     public string gender = "Enter Gender (either M or W)";
     public string nationality = "Enter Nationality";
     public string description = "Enter Description";
+
+    public string choice = "Enter Choice";
+    public Image image;
 
     public GameObject obj;
 

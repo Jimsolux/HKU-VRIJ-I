@@ -15,7 +15,9 @@ MonoBehaviour:
   nam: Maria
   age: 6
   gender: Female
-  nationality: Enter Nationality
+  nationality: Dutch
   description: Maria really loves ponies. She loves holding the hand of her mom.
+  choice: Enter Choice
+  image: {fileID: 0}
   obj: {fileID: 4748777716839083572, guid: 77b2388136333244ea6928b7999352f8, type: 3}
   animator: {fileID: 0}
