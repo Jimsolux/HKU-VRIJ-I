@@ -7,11 +7,13 @@ public class Character : ScriptableObject
 {
     // This script will have - 
 
-    public GameObject characterObject;
+    public string nam = "Enter Name";
     public int age;
-    public string characterName = "New Character";
-    public string description = "New Description";
-    public string gender = "New Sex"; 
+    public string gender = "Enter Gender (either M or W)";
+    public string nationality = "Enter Nationality";
+    public string description = "Enter Description";
+
+    public GameObject obj;
 
     //Animatie stuff
     public Animator animator;
