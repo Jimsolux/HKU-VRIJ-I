@@ -30,15 +30,17 @@ public class FavourManager : MonoBehaviour
     {
         DecreaseFavour();
         IncreaseFavour(type);
+        Debug.Log("Increased Value of " + type);
     }
     public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop
     {
         DecreaseFavour();
         IncreaseFavour(type);
         IncreaseFavour(type2);
+        Debug.Log("Increased Value of " + type + "And of " + type2);
     }
 
-    private void DecreaseFavour() // Decreases all amounts by decreaseAmount
+    public void DecreaseFavour() // Decreases all amounts by decreaseAmount
     {
         foodFavour -= decreaseAmount;
         populationFavour -= decreaseAmount;

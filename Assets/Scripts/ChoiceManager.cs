@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
-    private bool notOnChoiceCooldown;
+    private bool notOnChoiceCooldown = false;
     public enum ChoiceEnum
     {
         Breeding,
@@ -76,6 +76,55 @@ public class ChoiceManager : MonoBehaviour
             }
         }
     }
+
+
+    public void OnClick(int ID)
+    {
+        if (notOnChoiceCooldown)
+        {
+
+        switch (ID)
+        {
+            case 0:
+                Choice = ChoiceEnum.Breeding;
+                FavourManager.instance.UpdateFavour(FavourManager.FavourType.popu);
+                GameManager.Instance.PushChoice(Choice);
+                StartCoroutine(ChoiceCoolDown());
+                break;
+            case 1:
+                Choice = ChoiceEnum.Museum;
+                FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
+                GameManager.Instance.PushChoice(Choice);
+                StartCoroutine(ChoiceCoolDown());
+                break;
+            case 2:
+                Choice = ChoiceEnum.Experiments;
+                FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
+                GameManager.Instance.PushChoice(Choice);
+                StartCoroutine(ChoiceCoolDown());
+                break;
+            case 3:
+                Choice = ChoiceEnum.Pet;
+                FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente);
+                GameManager.Instance.PushChoice(Choice);
+                StartCoroutine(ChoiceCoolDown());
+                break;
+            case 4:
+                Choice = ChoiceEnum.MakeFood;
+                FavourManager.instance.UpdateFavour(FavourManager.FavourType.food);
+                GameManager.Instance.PushChoice(Choice);
+                StartCoroutine(ChoiceCoolDown());
+                break;
+            case 5:
+                Choice = ChoiceEnum.Skip;
+                FavourManager.instance.DecreaseFavour();
+                GameManager.Instance.PushChoice(Choice);
+                StartCoroutine(ChoiceCoolDown());
+                break;
+        }
+        }
+    }
+
 
     private IEnumerator ChoiceCoolDown()
     {

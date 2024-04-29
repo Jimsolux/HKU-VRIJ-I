@@ -135,8 +135,10 @@ GameObject:
   m_Component:
   - component: {fileID: 106782400}
   - component: {fileID: 106782399}
+  - component: {fileID: 106782402}
+  - component: {fileID: 106782401}
   m_Layer: 0
-  m_Name: CharacterManager
+  m_Name: GameManagerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,6 +176,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &106782401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106782398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd740f1c14cd96441971880993f1ee6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodFavour: 1
+  populationFavour: 1
+  anthropologyFavour: 1
+  entertainmentFavour: 1
+  increaseAmount: 0.3
+  decreaseAmount: 0.1
+--- !u!114 &106782402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106782398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f3e335492a8054c855f66d155e997a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &177178792
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +456,7 @@ GameObject:
   - component: {fileID: 188223755}
   - component: {fileID: 188223754}
   - component: {fileID: 188223753}
+  - component: {fileID: 188223756}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -522,6 +555,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &188223756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188223751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5a98f86a3694b48a54223b290ede35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Choice: 0
 --- !u!1 &189723307
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +649,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 189723310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188223756}
+        m_TargetAssemblyTypeName: ChoiceManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &189723310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +781,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 249779891}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188223756}
+        m_TargetAssemblyTypeName: ChoiceManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &249779891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,7 +1646,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 968070711}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &968070711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,7 +2002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1306067190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188223756}
+        m_TargetAssemblyTypeName: ChoiceManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1306067190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2639,7 +2733,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1724676007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188223756}
+        m_TargetAssemblyTypeName: ChoiceManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1724676007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2759,7 +2865,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1753099597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188223756}
+        m_TargetAssemblyTypeName: ChoiceManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1753099597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3339,7 +3457,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1925462508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188223756}
+        m_TargetAssemblyTypeName: ChoiceManager, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1925462508
 MonoBehaviour:
   m_ObjectHideFlags: 0
