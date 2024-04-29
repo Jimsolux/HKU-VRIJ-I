@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c21ed70c9007764a9d9f7bdcd145311, type: 3}
+  m_Name: Character 2
+  m_EditorClassIdentifier: 
+  characterObject: {fileID: 4748777716839083572, guid: 89db7afa0cf0919409d0f795a6428905,
+    type: 3}
+  age: 27
+  characterName: Marlie
+  description: Marlie is a caregiver to dogs, and earns a living as an electrineer.
+    She is really into breaking bad.
+  gender: Non Binary
+  animator: {fileID: 0}
