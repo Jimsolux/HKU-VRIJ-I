@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class FavourSystem : MonoBehaviour
+public class FavourManager : MonoBehaviour
 {
-    public float foodFavour;
-    public float populationFavour;
-    public float anthropologyFavour;
-    public float entertainmentFavour;
+    public static FavourManager instance;
+    [SerializeField] private float foodFavour = 1;
+    [SerializeField] private float populationFavour = 1;
+    [SerializeField] private float anthropologyFavour = 1;
+    [SerializeField] private float entertainmentFavour = 1;
     [SerializeField] private float increaseAmount;
     [SerializeField] private float decreaseAmount;
 
@@ -19,15 +21,9 @@ public class FavourSystem : MonoBehaviour
         ente,
         none
     }
-
-    private void Start()
+    public void Awake()
     {
-        //Set all the favour to 1.
-        foodFavour = 1;
-        populationFavour = 1;
-        anthropologyFavour = 1;
-        entertainmentFavour = 1;
-
+        instance = this;
     }
 
     public void UpdateFavour(FavourType type)// Called after choice loop
@@ -35,8 +31,14 @@ public class FavourSystem : MonoBehaviour
         DecreaseFavour();
         IncreaseFavour(type);
     }
+    public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop
+    {
+        DecreaseFavour();
+        IncreaseFavour(type);
+        IncreaseFavour(type2);
+    }
 
-    public void DecreaseFavour() // Decreases all amounts by decreaseAmount
+    private void DecreaseFavour() // Decreases all amounts by decreaseAmount
     {
         foodFavour -= decreaseAmount;
         populationFavour -= decreaseAmount;
@@ -89,5 +91,9 @@ public class FavourSystem : MonoBehaviour
     }
 
 
+    public void GetFavour()
+    {
+
+    }
 
 }
