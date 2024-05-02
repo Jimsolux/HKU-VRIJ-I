@@ -91,6 +91,7 @@ public class MonitorText : MonoBehaviour
                 {
                     rush = false;
                 }
+
             }
             catch { } // if the index trying to be found is outside list of array
 
