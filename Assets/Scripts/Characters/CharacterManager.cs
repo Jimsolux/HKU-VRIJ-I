@@ -19,7 +19,7 @@ public class CharacterManager : MonoBehaviour
     {
         InitializeCharacterManager();
 
-        FirstCharacter();
+        //FirstCharacter();
     }
 
     private void Update()
@@ -54,7 +54,6 @@ public class CharacterManager : MonoBehaviour
 
     public void NextCharacter()
     {
-        Debug.Log("Input!");
         //lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
         currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
