@@ -23,16 +23,12 @@ public class Character : ScriptableObject
     public Animator animator;
     //whatever hierkomt.
 
-    //public enum ChoiceEnum
-    //{
-    //    Breeding,
-    //    Museum,
-    //    Experiments,
-    //    Pet,
-    //    MakeFood,
-    //    Skip
-    //}
     public ChoiceManager.ChoiceEnum activeChoice;
 
+
+    public void SetCharacterChoice(ChoiceManager.ChoiceEnum givenChoice)
+    {
+        choice = givenChoice.ToString();
+    }
 
 }
