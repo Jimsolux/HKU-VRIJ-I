@@ -20,6 +20,6 @@ MonoBehaviour:
     love.
   choice: Enter Choice
   image: {fileID: 0}
-  obj: {fileID: 4748777716839083572, guid: ad83a6efabe307d44b5fbd7452a03862, type: 3}
+  obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0

@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
   m_Name: Character 2
   m_EditorClassIdentifier: 
-  nam: Enter Name
-  age: 0
-  gender: Enter Gender (either M or W)
-  nationality: Enter Nationality
-  description: Enter Description
+  nam: Jim Dekker
+  age: 24
+  gender: M
+  nationality: Netherlands
+  description: Jim is really into video games. He has a loving girlfriend but he
+    isn't talented.
+  choice: MakeFood
+  image: {fileID: 0}
   obj: {fileID: 4748777716839083572, guid: 89db7afa0cf0919409d0f795a6428905, type: 3}
   animator: {fileID: 0}
+  activeChoice: 4
