@@ -7,19 +7,24 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] LogbookManager lm;
     [SerializeField] MonitorText mt;
 
+
     [SerializeField] private List<Character> characters = new List<Character>();
     [SerializeField] private List<Character> charactersLeft;
 
     private GameObject currentCharacterObj;
-    public Character currentCharacterInfo;
+    private Character currentCharacterInfo;
 
     [SerializeField] private Transform characterTransform;
- 
+
+    //Animaties
+    // !!! choiceManager.SetCanChoose(); <-- Deze functie bepaalt of je kunt kiezen. Aanroepen vanuit ANIMATOR als een character in de buis is aangekomen, of er uit weggaat.
+
+
     private void Start()
     {
         InitializeCharacterManager();
 
-        FirstCharacter();
+        //FirstCharacter();
     }
 
     private void Update()
@@ -28,6 +33,7 @@ public class CharacterManager : MonoBehaviour
         {
             NextCharacter();
         }
+
     }
 
     private void InitializeCharacterManager()
@@ -63,7 +69,7 @@ public class CharacterManager : MonoBehaviour
 
         if (potentialNextCharacterInfo != null)
         {
-            lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
+            //lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
             currentCharacterInfo = potentialNextCharacterInfo;
             currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
             mt.SetText(mt.BioToString(currentCharacterInfo));
@@ -82,4 +88,5 @@ public class CharacterManager : MonoBehaviour
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
     }
+
 }

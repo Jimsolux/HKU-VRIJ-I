@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
+  m_Name: Character 4
+  m_EditorClassIdentifier: 
+  nam: Elia
+  age: 21
+  gender: Non-Binary
+  nationality: Germany
+  description: Elia loves her two young kittens and takes care of them with great
+    love.
+  choice: Enter Choice
+  image: {fileID: 0}
+  obj: {fileID: 4748777716839083572, guid: ad83a6efabe307d44b5fbd7452a03862, type: 3}
+  animator: {fileID: 0}
+  activeChoice: 0

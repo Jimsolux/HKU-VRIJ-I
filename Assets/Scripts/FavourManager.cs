@@ -51,29 +51,6 @@ public class FavourManager : MonoBehaviour
         populationFavour -= decreaseAmount;
         anthropologyFavour -= decreaseAmount;
         entertainmentFavour -= decreaseAmount;
-        //switch (type)
-        //{
-        //    case FavourType.food:
-        //        populationFavour -= decreaseAmount;
-        //        anthropologyFavour -= decreaseAmount;
-        //        entertainmentFavour -= decreaseAmount;
-        //        break;
-        //    case FavourType.popu:
-        //        foodFavour -= decreaseAmount;
-        //        anthropologyFavour -= decreaseAmount;
-        //        entertainmentFavour -= decreaseAmount;
-        //        break;
-        //    case FavourType.ente:
-        //        foodFavour -= decreaseAmount;
-        //        populationFavour -= decreaseAmount;
-        //        anthropologyFavour -= decreaseAmount;
-        //        break;
-        //    case FavourType.anth:
-        //        foodFavour -= decreaseAmount;
-        //        populationFavour -= decreaseAmount;
-        //        entertainmentFavour -= decreaseAmount;
-        //        break;
-        //}
     }
 
     public void IncreaseFavour(FavourType type)
@@ -96,13 +73,6 @@ public class FavourManager : MonoBehaviour
                 break;
         }
     }
-
-
-    public void GetFavour()
-    {
-
-    }
-
 
     public void CheckFavourLevels()
     {

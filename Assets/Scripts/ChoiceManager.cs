@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
+    public bool canChoose;
     private bool notOnChoiceCooldown = true;
     private bool oldRaySystemOn = false;
     [SerializeField] public CharacterManager characterManager;
+    [SerializeField] AudioSource buttonPanelAudio;
+
     public enum ChoiceEnum
     {
         Breeding,
@@ -37,11 +40,28 @@ public class ChoiceManager : MonoBehaviour
         }
     }
 
+    #region CheckIfCanChoose
+    public void SetCanChoose(bool canItChoose)
+    {
+        canChoose = canItChoose;
+    }
+
+    
+
+
+    private IEnumerator ChoiceCoolDown()
+    {
+        notOnChoiceCooldown = false;
+        yield return new WaitForSeconds(1);
+        notOnChoiceCooldown = true;
+    }
+    #endregion
 
     public void OnClick(int ID)
     {
-        if (notOnChoiceCooldown)
+        if (notOnChoiceCooldown && canChoose)
         {
+            buttonPanelAudio.Play();
             switch (ID)
             {
                 case 0:
@@ -49,6 +69,7 @@ public class ChoiceManager : MonoBehaviour
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.popu);
                     characterManager.SetCharacterChoice(Choice);
                     Debug.Log("Choice made for character with button is " + Choice.ToString());
+                    
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 1:
@@ -56,7 +77,7 @@ public class ChoiceManager : MonoBehaviour
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
                     characterManager.SetCharacterChoice(Choice);
                     Debug.Log("Choice made for character with button is " + Choice.ToString());
-
+                    
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 2:
@@ -88,21 +109,17 @@ public class ChoiceManager : MonoBehaviour
                     FavourManager.instance.DecreaseFavour();
                     characterManager.SetCharacterChoice(Choice);
                     Debug.Log("Choice made for character with button is " + Choice.ToString());
-
                     StartCoroutine(ChoiceCoolDown());
                     break;
             }
         }
         //else Debug.Log("OnCooldown RN");
-    }
+    }//Button Click 
 
 
-    private IEnumerator ChoiceCoolDown()
+    public void PlayButtonSound()
     {
-        notOnChoiceCooldown = false;
-        yield return new WaitForSeconds(1);
-        notOnChoiceCooldown = true;
+        buttonPanelAudio.Play();
     }
-
 
 }
