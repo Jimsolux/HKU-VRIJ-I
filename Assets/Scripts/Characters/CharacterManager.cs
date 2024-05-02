@@ -11,7 +11,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private List<Character> charactersLeft;
 
     private GameObject currentCharacterObj;
-    private Character currentCharacterInfo;
+    public Character currentCharacterInfo;
 
     [SerializeField] private Transform characterTransform;
  
@@ -20,8 +20,6 @@ public class CharacterManager : MonoBehaviour
         InitializeCharacterManager();
 
         FirstCharacter();
-
-
     }
 
     private void Update()
@@ -68,5 +66,11 @@ public class CharacterManager : MonoBehaviour
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
         currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
         mt.SetText(mt.BioToString(currentCharacterInfo));
+    }
+
+    public void SetCharacterChoice(ChoiceManager.ChoiceEnum choice)
+    {
+        currentCharacterInfo.choice = choice.ToString();
+        currentCharacterInfo.activeChoice = choice;
     }
 }
