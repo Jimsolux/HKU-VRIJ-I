@@ -19,7 +19,7 @@ public class CharacterManager : MonoBehaviour
     {
         InitializeCharacterManager();
 
-        //FirstCharacter();
+        FirstCharacter();
     }
 
     private void Update()
@@ -37,11 +37,16 @@ public class CharacterManager : MonoBehaviour
 
     public Character GetRandomCharacterIndex(List<Character> charactersLeft)
     {
-        int randomIndex = Mathf.RoundToInt(Random.Range(0, charactersLeft.Count));
-        Character characterInfo = charactersLeft[randomIndex];
-        charactersLeft.RemoveAt(randomIndex);
+        if (charactersLeft.Count > 0)
+        {
+            int randomIndex = Mathf.RoundToInt(Random.Range(0, charactersLeft.Count));
+            Character characterInfo = charactersLeft[randomIndex];
+            charactersLeft.RemoveAt(randomIndex);
 
-        return characterInfo;
+            return characterInfo;
+        }
+
+        return null;
     }
 
     // location to instantiate, etc?
@@ -54,10 +59,15 @@ public class CharacterManager : MonoBehaviour
 
     public void NextCharacter()
     {
-        //lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
-        currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
-        currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
-        mt.SetText(mt.BioToString(currentCharacterInfo));
+        Character potentialNextCharacterInfo = GetRandomCharacterIndex(charactersLeft);
+
+        if (potentialNextCharacterInfo != null)
+        {
+            lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
+            currentCharacterInfo = potentialNextCharacterInfo;
+            currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
+            mt.SetText(mt.BioToString(currentCharacterInfo));
+        }
     }
 
     public void FirstCharacter()
