@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static FavourManager;
 
 public class FavourManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class FavourManager : MonoBehaviour
     [SerializeField] private float populationFavour = 1;
     [SerializeField] private float anthropologyFavour = 1;
     [SerializeField] private float entertainmentFavour = 1;
+    [SerializeField] private float warningAmount;
     [SerializeField] private float increaseAmount;
     [SerializeField] private float decreaseAmount;
 
@@ -31,6 +33,8 @@ public class FavourManager : MonoBehaviour
         DecreaseFavour();
         IncreaseFavour(type);
         Debug.Log("Increased Value of " + type);
+        CheckFavourLevels();
+
     }
     public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop
     {
@@ -38,6 +42,7 @@ public class FavourManager : MonoBehaviour
         IncreaseFavour(type);
         IncreaseFavour(type2);
         Debug.Log("Increased Value of " + type + "And of " + type2);
+        CheckFavourLevels();
     }
 
     public void DecreaseFavour() // Decreases all amounts by decreaseAmount
@@ -98,4 +103,18 @@ public class FavourManager : MonoBehaviour
 
     }
 
+
+    public void CheckFavourLevels()
+    {
+        if (foodFavour < warningAmount) WarnPlayer(FavourType.food);
+        if (populationFavour < warningAmount) WarnPlayer(FavourType.popu);
+        if (anthropologyFavour < warningAmount) WarnPlayer(FavourType.anth);
+        if (entertainmentFavour < warningAmount) WarnPlayer(FavourType.ente);
+    }
+
+
+    public void WarnPlayer(FavourType favourType)
+    {
+        Debug.Log("WARN PLAYER THEIR " + favourType.ToString() + " Is very low! BECOME ANGRY ALIEN!");
+    }
 }

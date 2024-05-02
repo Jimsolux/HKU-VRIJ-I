@@ -4,12 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BreedingButton
-  - MuseumButton
-  - ExperimentsButton
-  - PetButton
-  - MakeFoodButton
-  - SkipButton
   - Logbook
   layers:
   - Default
