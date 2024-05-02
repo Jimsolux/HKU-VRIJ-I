@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public void PushChoice(ChoiceManager.ChoiceEnum choice)
+    public void PushChoiceToCharacter(ChoiceManager.ChoiceEnum choice)
     {
         characterManager.SetCharacterChoice(choice);
         characterManager.currentCharacterInfo.choice = choice.ToString();   //Sent value as string to scriptableObject
