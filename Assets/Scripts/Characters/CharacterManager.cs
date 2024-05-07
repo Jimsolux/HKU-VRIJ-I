@@ -39,6 +39,7 @@ public class CharacterManager : MonoBehaviour
     private void InitializeCharacterManager()
     {
         charactersLeft = new List<Character>(characters);
+        FirstCharacter();
     }
 
     public Character GetRandomCharacterIndex(List<Character> charactersLeft)
@@ -87,6 +88,7 @@ public class CharacterManager : MonoBehaviour
     {
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
+        NextCharacter();
     }
 
 }
