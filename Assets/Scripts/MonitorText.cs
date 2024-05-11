@@ -4,6 +4,13 @@ using UnityEngine.UI;
 
 public class MonitorText : MonoBehaviour
 {
+    public static MonitorText instance;
+
+    private void Awake()
+    {
+        instance = this; 
+    }
+
     [SerializeField][TextArea] private string monitorText;
     [SerializeField] private float writeSpeed = .1f;
 
@@ -11,6 +18,9 @@ public class MonitorText : MonoBehaviour
     [SerializeField] private int sizeBiography = 92;
 
     private Text textObject;
+
+    [Header("Start dialogue")]
+    [SerializeField][TextArea] private string[] startText;
 
     private void Start()
     {
@@ -46,6 +56,20 @@ public class MonitorText : MonoBehaviour
               + "Description: " + characterInfo.description + "\n\n";
 
         return str;
+    }
+
+    public IEnumerator StartSequence()
+    {
+        CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
+
+        camMovement.SetLock(true);
+        for(int i = 0; i < startText.Length; i++)
+        {
+            StartCoroutine(WriteText(startText[i]));
+            yield return new WaitForSeconds(4);
+        }
+        camMovement.SetLock(false);
+        StartCoroutine(WriteText(""));
     }
 
     private IEnumerator WriteText(string text)
