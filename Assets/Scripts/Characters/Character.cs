@@ -6,8 +6,6 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Character")]
 public class Character : ScriptableObject
 {
-    // This script will have - 
-
     public string nam = "Enter Name";
     public int age;
     public string gender = "Enter Gender (either M or W)";
@@ -21,7 +19,6 @@ public class Character : ScriptableObject
 
     //Animatie stuff
     public Animator animator;
-    //whatever hierkomt.
 
     public ChoiceManager.ChoiceEnum activeChoice;
 
