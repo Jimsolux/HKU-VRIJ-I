@@ -19,12 +19,10 @@ public class CharacterManager : MonoBehaviour
     //Animaties
     // !!! choiceManager.SetCanChoose(); <-- Deze functie bepaalt of je kunt kiezen. Aanroepen vanuit ANIMATOR als een character in de buis is aangekomen, of er uit weggaat.
 
-
     private void Start()
     {
         InitializeCharacterManager();
-
-        //FirstCharacter();
+        FirstCharacter();
     }
 
     private void Update()
@@ -33,7 +31,6 @@ public class CharacterManager : MonoBehaviour
         {
             NextCharacter();
         }
-
     }
 
     private void InitializeCharacterManager()
@@ -69,7 +66,7 @@ public class CharacterManager : MonoBehaviour
 
         if (potentialNextCharacterInfo != null)
         {
-            //lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
+            lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
             currentCharacterInfo = potentialNextCharacterInfo;
             currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
             mt.SetText(mt.BioToString(currentCharacterInfo));

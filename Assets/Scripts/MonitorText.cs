@@ -12,9 +12,13 @@ public class MonitorText : MonoBehaviour
 
     private Text textObject;
 
-    private void Start()
+    private void Awake()
     {
         textObject = GetComponent<Text>();
+    }
+
+    private void Start()
+    {
         StartCoroutine(WriteText(monitorText));
     }
 
@@ -40,10 +44,10 @@ public class MonitorText : MonoBehaviour
     public string BioToString(Character characterInfo)
     {
         string str = "Name: "        + characterInfo.nam + "\n"
-              + "Age: "         + characterInfo.age + "\n"
-              + "Gender: "      + characterInfo.gender + "\n"
-              + "Nationality: " + characterInfo.nationality + "\n\n"
-              + "Description: " + characterInfo.description + "\n\n";
+                   + "Age: "         + characterInfo.age + "\n"
+                   + "Gender: "      + characterInfo.gender + "\n"
+                   + "Nationality: " + characterInfo.nationality + "\n\n"
+                   + "Description: " + characterInfo.description + "\n\n";
 
         return str;
     }
