@@ -18,6 +18,7 @@ public class MonitorText : MonoBehaviour
     [SerializeField] private int sizeBiography = 92;
 
     private Text textObject;
+    private Text bottomTextObject;
 
     [Header("Start dialogue")]
     [SerializeField][TextArea] private string[] startText;

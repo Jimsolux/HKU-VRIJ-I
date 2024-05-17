@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     //Timer
     private float fourMinuteTimer = 240;
-    private bool timerHasRunOut = false;
+    private bool mainTimerIsOff = true;
+    private bool charTimerIsOff = true;
     //CharacterTimer
     [SerializeField] private float characterTimerLength;
     private float characterTimer;
@@ -24,24 +25,21 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        SetCanChoice(true);
+        //SetCanChoice(true);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!timerHasRunOut) GameTimer();
+        if (!mainTimerIsOff) GameTimer();   // Telt de gameTimer af
+        if (!charTimerIsOff) CharacterChoiceTimer(); // Telt de Chartimer af
     }
 
-    public void SetCanChoice(bool theBool)
-    {
-        choiceManager.SetCanChoose(theBool);
-    }
 
     #region Timers
     private void GameTimer()
     {
         fourMinuteTimer -= Time.deltaTime;
-        if (fourMinuteTimer <= 0) timerHasRunOut = true;
+        if (fourMinuteTimer <= 0) mainTimerIsOff = true;
     }
 
     
@@ -50,19 +48,45 @@ public class GameManager : MonoBehaviour
         characterTimer = characterTimerLength;
     }
 
-    private void TimerCountDown()
+    private void CharacterChoiceTimer()
     {
         if (choiceManager.canChoose)
         {
             characterTimer -= Time.deltaTime;
-            if (characterTimer < 0)
+            if (characterTimer <= 0)
             {
                 //INVOKE NEXT CHARACTER
                 characterManager.SetCharacterChoice(ChoiceManager.ChoiceEnum.Skip);
                 characterManager.NextCharacter();
+                charTimerIsOff = true;
                 ResetCharacterTimerLength();
             }
         }
     }
     #endregion
+
+    #region Call From Animator
+    public void SetCanChoice(bool theBool)
+    {
+        choiceManager.SetCanChoose(theBool);
+    }
+
+    public void PrepareNextCharacter() // Call from animator
+    {
+        characterManager.NextCharacter();
+        charTimerIsOff = false; // Turn on Character Timer.
+    }
+
+    public void StartMainTimer()
+    {
+        mainTimerIsOff = false;
+    }
+
+    public void StartCharTimer()
+    {
+        charTimerIsOff = false;
+    }
+
+    #endregion
 }
+

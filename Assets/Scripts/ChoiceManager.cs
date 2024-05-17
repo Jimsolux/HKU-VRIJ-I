@@ -54,7 +54,11 @@ public class ChoiceManager : MonoBehaviour
         notOnChoiceCooldown = true;
     }
     #endregion
+    private IEnumerator WaitBeforeAnimation()
+    {
+        yield return new WaitForSeconds(1);
 
+    }
     public void OnClick(int ID)
     {
         if (notOnChoiceCooldown && canChoose)
@@ -110,10 +114,15 @@ public class ChoiceManager : MonoBehaviour
                     StartCoroutine(ChoiceCoolDown());
                     break;
             }
+            StartCoroutine(WaitBeforeAnimation());
         }
         //else Debug.Log("OnCooldown RN");
     }//Button Click 
 
+    private void StartTubeAnimation()
+    {
+
+    }
 
     #region audio
     public void PlayButtonSound()

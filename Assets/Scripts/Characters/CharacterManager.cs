@@ -16,6 +16,8 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] private Transform characterTransform;
 
+    [SerializeField] private GameObject tubePrefab;
+
     //Animaties
     // !!! choiceManager.SetCanChoose(); <-- Deze functie bepaalt of je kunt kiezen. Aanroepen vanuit ANIMATOR als een character in de buis is aangekomen, of er uit weggaat.
 
@@ -69,7 +71,6 @@ public class CharacterManager : MonoBehaviour
 
         if (potentialNextCharacterInfo != null)
         {
-            //lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
             currentCharacterInfo = potentialNextCharacterInfo;
             currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
             mt.SetText(mt.BioToString(currentCharacterInfo));
@@ -87,6 +88,12 @@ public class CharacterManager : MonoBehaviour
     {
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
+    }
+
+    public void LogCharacter()
+    {
+        lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
+        // Verander naar info uit characterinfo, in plaats van monitortext.
     }
 
 }
