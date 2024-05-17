@@ -40,8 +40,13 @@ public class GameManager : MonoBehaviour
     {
         fourMinuteTimer -= Time.deltaTime;
         if (fourMinuteTimer <= 0) mainTimerIsOff = true;
+        ForceLogBook();
     }
 
+    private void ForceLogBook()
+    {
+
+    }
     
     private void ResetCharacterTimerLength()
     {
@@ -85,6 +90,12 @@ public class GameManager : MonoBehaviour
     public void StartCharTimer()
     {
         charTimerIsOff = false;
+    }
+
+    public void StopCharTimer()
+    {
+        charTimerIsOff = true;
+        ResetCharacterTimerLength();
     }
 
     #endregion
