@@ -6,10 +6,11 @@ public class ChoiceManager : MonoBehaviour
 {
     public bool canChoose;  // Decides if a choice can be made at this moment.
     private bool notOnChoiceCooldown = true;
-    private bool oldRaySystemOn = false;
+    private bool oldRaySystemOn = true;
     [SerializeField] public CharacterManager characterManager;
     [SerializeField] AudioSource buttonPanelAudio;
 
+    [SerializeField] GameObject logBookCanvas;
     public enum ChoiceEnum
     {
         Breeding,
@@ -35,6 +36,8 @@ public class ChoiceManager : MonoBehaviour
                 if (hit.collider.CompareTag("Logbook"))
                 {
                     // Open Logbook!!
+                    logBookCanvas.SetActive(true);
+                    Debug.Log("Tried to open logbookCanvas");
                 }
             }
         }

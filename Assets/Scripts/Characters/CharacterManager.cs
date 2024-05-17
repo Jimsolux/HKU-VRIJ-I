@@ -39,6 +39,11 @@ public class CharacterManager : MonoBehaviour
             NextCharacter();
             LogCharacter();
         }
+        if (Input.GetKeyDown(KeyCode.A))
+            lm.PreviousPage();
+
+        if (Input.GetKeyDown(KeyCode.D))
+            lm.NextPage();
     }
 
     private void InitializeCharacterManager()
