@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
 
     //Animaties 
 
-
     private void Awake()
     {
         Instance = this;
         //SetCanChoice(true);
+        ResetCharacterTimerLength();
     }
 
     private void FixedUpdate()
@@ -55,9 +55,8 @@ public class GameManager : MonoBehaviour
             characterTimer -= Time.deltaTime;
             if (characterTimer <= 0)
             {
-                //INVOKE NEXT CHARACTER
                 characterManager.SetCharacterChoice(ChoiceManager.ChoiceEnum.Skip);
-                characterManager.NextCharacter();
+                //characterManager.NextCharacter();
                 charTimerIsOff = true;
                 ResetCharacterTimerLength();
             }
@@ -69,12 +68,13 @@ public class GameManager : MonoBehaviour
     public void SetCanChoice(bool theBool)
     {
         choiceManager.SetCanChoose(theBool);
+
     }
 
     public void PrepareNextCharacter() // Call from animator
     {
         characterManager.NextCharacter();
-        charTimerIsOff = false; // Turn on Character Timer.
+        //charTimerIsOff = false; // Turn on Character Timer.
     }
 
     public void StartMainTimer()
