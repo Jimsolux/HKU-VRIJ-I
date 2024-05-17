@@ -1,54 +1,9 @@
 fileFormatVersion: 2
-guid: de22406757d7d154aa49307e63d266ee
+guid: 40cd736b0df13904ba9f80daae9cc22a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: DeskOpening
-    second: {fileID: 2100000, guid: 8f7a5c58023141a469fdd87c0bf140a8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Desk_Baked
-    second: {fileID: 2100000, guid: c3c76a41c6476eb4e9291d125cf40a2a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Flask_Rim
-    second: {fileID: 2100000, guid: c6198ff4cd82cb84b919cd13fc259162, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: f83921888c53ffc42a4f85c581fa2b3c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass.001
-    second: {fileID: 2100000, guid: 29cd019fdfaeef74689d2f5a88a82020, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Goo
-    second: {fileID: 2100000, guid: 73d1f26aad9a53a4293e346461d4546e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pencil holder
-    second: {fileID: 2100000, guid: 3506b42949b60f04ebf17972974b753a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rings
-    second: {fileID: 2100000, guid: 8f7a5c58023141a469fdd87c0bf140a8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Touchpad
-    second: {fileID: 2100000, guid: 747d5db02537ef248996398b55cd2858, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -78,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Alien_Idle
-      takeName: Alien|Alien_Idle
-      internalID: -5670647567424867332
+      name: FloatyIdle4
+      takeName: HumanArmature|FloatyIdle4
+      internalID: 6441914854571078891
       firstFrame: 0
-      lastFrame: 97
+      lastFrame: 77
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -165,15 +120,16 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Hips
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 3687c2a5270d9ff43b2bc454579ccc79,
+    type: 2}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
