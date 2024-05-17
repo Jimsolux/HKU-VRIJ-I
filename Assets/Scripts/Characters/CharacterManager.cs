@@ -7,7 +7,6 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] LogbookManager lm;
     [SerializeField] MonitorText mt;
 
-
     [SerializeField] private List<Character> characters = new List<Character>();
     [SerializeField] private List<Character> charactersLeft;
 
@@ -34,8 +33,14 @@ public class CharacterManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             NextCharacter();
+            LogCharacter();
         }
 
+        if (Input.GetKeyDown(KeyCode.A))
+            lm.PreviousPage();
+
+        if (Input.GetKeyDown(KeyCode.D))
+            lm.NextPage();
     }
 
     private void InitializeCharacterManager()
@@ -92,8 +97,7 @@ public class CharacterManager : MonoBehaviour
 
     public void LogCharacter()
     {
-        lm.LogCharacter(currentCharacterInfo, mt.GetText()); // log previous character
-        // Verander naar info uit characterinfo, in plaats van monitortext.
+        lm.LogCharacter(currentCharacterInfo); // log previous character
     }
 
 }

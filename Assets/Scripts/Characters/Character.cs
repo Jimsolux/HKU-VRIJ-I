@@ -13,6 +13,7 @@ public class Character : ScriptableObject
     public string description = "Enter Description";
 
     public string choice = "Enter Choice";
+    public float timeElapsed = 0.0f;
     public Image image;
 
     public GameObject obj;
