@@ -12,11 +12,15 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private List<Character> charactersLeft;
 
     private GameObject currentCharacterObj;
+    private GameObject currentTubeObj;
     private Character currentCharacterInfo;
 
     [SerializeField] private Transform characterTransform;
 
     [SerializeField] private GameObject tubePrefab;
+    [SerializeField] private Transform tubeTransform;
+
+    public Animator buisAnimator;
 
     //Animaties
     // !!! choiceManager.SetCanChoose(); <-- Deze functie bepaalt of je kunt kiezen. Aanroepen vanuit ANIMATOR als een character in de buis is aangekomen, of er uit weggaat.
@@ -35,7 +39,6 @@ public class CharacterManager : MonoBehaviour
         {
             NextCharacter();
         }
-
     }
 
     private void InitializeCharacterManager()
@@ -60,8 +63,11 @@ public class CharacterManager : MonoBehaviour
     // location to instantiate, etc?
     public GameObject InstantiateRandomCharacter(Character randomCharacterInfo)
     {
-        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj, characterTransform.position, Quaternion.identity);
-
+        GameObject newTube = Instantiate<GameObject>(tubePrefab, tubeTransform.position, tubeTransform.rotation);
+        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj, characterTransform.position, Quaternion.identity, newTube.transform);
+        randomCharacterObj.transform.localScale = new Vector3(0.002f, 0.002f, 0.002f);
+        currentCharacterObj = randomCharacterInfo.obj;
+        currentTubeObj = newTube;
         return randomCharacterObj;
     }
 
@@ -74,6 +80,8 @@ public class CharacterManager : MonoBehaviour
             currentCharacterInfo = potentialNextCharacterInfo;
             currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
             mt.SetText(mt.BioToString(currentCharacterInfo));
+            //Reset the animator.
+            buisAnimator = currentTubeObj.GetComponent<Animator>();
         }
     }
 
@@ -96,4 +104,8 @@ public class CharacterManager : MonoBehaviour
         // Verander naar info uit characterinfo, in plaats van monitortext.
     }
 
+    public void AnimatorSendBackwards()
+    {
+        buisAnimator.SetTrigger("BuisAchter");
+    }
 }
