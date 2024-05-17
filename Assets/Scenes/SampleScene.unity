@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f3e335492a8054c855f66d155e997a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterManager: {fileID: 106782399}
+  characterManager: {fileID: 0}
   choiceManager: {fileID: 106782403}
   characterTimerLength: 30
 --- !u!114 &106782403
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canChoose: 0
-  characterManager: {fileID: 106782399}
+  characterManager: {fileID: 0}
   buttonPanelAudio: {fileID: 2052659787}
   Choice: 0
 --- !u!1 &177178792
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -394.19684, y: -145.12665, z: -422.59717, w: -191.17557}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2864,7 +2864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1747192634
 MonoBehaviour:
   m_ObjectHideFlags: 0
