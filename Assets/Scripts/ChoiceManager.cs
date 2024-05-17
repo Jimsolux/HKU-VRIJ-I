@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
-    public bool canChoose;
+    public bool canChoose;  // Decides if a choice can be made at this moment.
     private bool notOnChoiceCooldown = true;
     private bool oldRaySystemOn = false;
     [SerializeField] public CharacterManager characterManager;
@@ -25,7 +25,7 @@ public class ChoiceManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && oldRaySystemOn)
+        if (Input.GetMouseButtonDown(0) && oldRaySystemOn)  // Old method to check for buttonclicks, can still be used to open logbook.
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -47,8 +47,6 @@ public class ChoiceManager : MonoBehaviour
     }
 
     
-
-
     private IEnumerator ChoiceCoolDown()
     {
         notOnChoiceCooldown = false;
@@ -61,7 +59,7 @@ public class ChoiceManager : MonoBehaviour
     {
         if (notOnChoiceCooldown && canChoose)
         {
-            buttonPanelAudio.Play();
+            PlayButtonSound();
             switch (ID)
             {
                 case 0:
@@ -117,9 +115,11 @@ public class ChoiceManager : MonoBehaviour
     }//Button Click 
 
 
+    #region audio
     public void PlayButtonSound()
     {
         buttonPanelAudio.Play();
     }
+    #endregion
 
 }

@@ -4,6 +4,13 @@ using UnityEngine.UI;
 
 public class MonitorText : MonoBehaviour
 {
+    public static MonitorText instance;
+
+    private void Awake()
+    {
+        instance = this; 
+    }
+
     [SerializeField][TextArea] private string monitorText;
     [SerializeField] private float writeSpeed = .1f;
 
@@ -12,13 +19,12 @@ public class MonitorText : MonoBehaviour
 
     private Text textObject;
 
-    private void Awake()
-    {
-        textObject = GetComponent<Text>();
-    }
+    [Header("Start dialogue")]
+    [SerializeField][TextArea] private string[] startText;
 
     private void Start()
     {
+        textObject = GetComponent<Text>();
         StartCoroutine(WriteText(monitorText));
     }
 
@@ -44,12 +50,26 @@ public class MonitorText : MonoBehaviour
     public string BioToString(Character characterInfo)
     {
         string str = "Name: "        + characterInfo.nam + "\n"
-                   + "Age: "         + characterInfo.age + "\n"
-                   + "Gender: "      + characterInfo.gender + "\n"
-                   + "Nationality: " + characterInfo.nationality + "\n\n"
-                   + "Description: " + characterInfo.description + "\n\n";
+              + "Age: "         + characterInfo.age + "\n"
+              + "Gender: "      + characterInfo.gender + "\n"
+              + "Nationality: " + characterInfo.nationality + "\n\n"
+              + "Description: " + characterInfo.description + "\n\n";
 
         return str;
+    }
+
+    public IEnumerator StartSequence()
+    {
+        CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
+
+        camMovement.SetLock(true);
+        for(int i = 0; i < startText.Length; i++)
+        {
+            StartCoroutine(WriteText(startText[i]));
+            yield return new WaitForSeconds(4);
+        }
+        camMovement.SetLock(false);
+        StartCoroutine(WriteText(""));
     }
 
     private IEnumerator WriteText(string text)

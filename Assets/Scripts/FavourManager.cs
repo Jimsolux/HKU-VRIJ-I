@@ -23,6 +23,7 @@ public class FavourManager : MonoBehaviour
         ente,
         none
     }
+
     public void Awake()
     {
         instance = this;
@@ -34,9 +35,9 @@ public class FavourManager : MonoBehaviour
         IncreaseFavour(type);
         Debug.Log("Increased Value of " + type);
         CheckFavourLevels();
-
     }
-    public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop
+
+    public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop, 2 inputs
     {
         DecreaseFavour();
         IncreaseFavour(type);
