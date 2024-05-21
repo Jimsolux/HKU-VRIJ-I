@@ -6,11 +6,20 @@ using TMPro;
 
 public class LogbookManager : MonoBehaviour
 {
+    private bool opened = false;
     private int page = 0; // current page number
     private List<string[]> logs = new();
     private List<Sprite[]> images = new();
 
-    // new logbook
+    // buttons:
+    [SerializeField] private GameObject buttons;
+
+    // page objects:
+    [SerializeField] private GameObject leftSide;
+    [SerializeField] private GameObject leftPage;
+    [SerializeField] private GameObject rightPage;
+
+    // information fields:
     [SerializeField] private TextMeshProUGUI caseNumber;
     [SerializeField] private TextMeshProUGUI personalInformation;
     [SerializeField] private TextMeshProUGUI subjectBiography;
@@ -19,6 +28,41 @@ public class LogbookManager : MonoBehaviour
 
     [SerializeField] private Image imageBefore;
     [SerializeField] private Image imageAfter;
+
+    // transformations:
+    [SerializeField] private Vector3 positionOpened; 
+    [SerializeField] private Vector3 positionClosed; 
+    [SerializeField] private Vector3 rotationOpened; 
+    [SerializeField] private Vector3 rotationClosed;
+
+    private void Start()
+    {
+        CloseLogbook();
+    }
+
+    private void Update()
+    {
+        if (!opened)
+        {
+            if (Input.GetMouseButtonDown(0))  
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.CompareTag("Logbook"))
+                    {
+                        OpenLogbook();
+                    }
+                }
+            }
+        } 
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            CloseLogbook();
+        }
+    }
 
     public void LogCharacter(Character characterInfo)
     {
@@ -40,9 +84,9 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
-    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage(); Debug.Log(page); }
+    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage(); }
 
-    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); Debug.Log(page); }
+    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
 
     public void LastPage() { page = logs.Count - 1; UpdatePage(); }
 
@@ -61,4 +105,32 @@ public class LogbookManager : MonoBehaviour
     public void SetPage(int page) { this.page = page; }
 
     public int GetPage() { return page; }
+
+    public void OpenLogbook()
+    {
+        opened = true;
+
+        leftPage.SetActive(true); 
+        rightPage.SetActive(true);
+        buttons.SetActive(true);
+
+        transform.localPosition = positionOpened;
+        transform.localRotation = Quaternion.Euler(rotationOpened.x, rotationOpened.y, rotationOpened.z);
+        leftSide.transform.localRotation = Quaternion.Euler(0, 180, 90);
+
+        LastPage();
+    }
+
+    public void CloseLogbook()
+    {
+        opened = false;
+
+        leftPage.SetActive(false);
+        rightPage.SetActive(false);
+        buttons.SetActive(false);
+
+        transform.localPosition = positionClosed;
+        transform.localRotation = Quaternion.Euler(rotationClosed.x, rotationClosed.y, rotationClosed.z);
+        leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
+    }
 }

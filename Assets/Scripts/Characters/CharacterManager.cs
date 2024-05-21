@@ -29,7 +29,7 @@ public class CharacterManager : MonoBehaviour
     {
         InitializeCharacterManager();
 
-        //FirstCharacter();
+        FirstCharacter();
     }
 
     private void Update()
@@ -37,7 +37,6 @@ public class CharacterManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             NextCharacter();
-            LogCharacter();
         }
         if (Input.GetKeyDown(KeyCode.A))
             lm.PreviousPage();
@@ -82,6 +81,7 @@ public class CharacterManager : MonoBehaviour
 
         if (potentialNextCharacterInfo != null)
         {
+            lm.LogCharacter(currentCharacterInfo);
             currentCharacterInfo = potentialNextCharacterInfo;
             currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
             mt.SetText(mt.BioToString(currentCharacterInfo));
@@ -95,6 +95,7 @@ public class CharacterManager : MonoBehaviour
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
         currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
         mt.SetText(mt.BioToString(currentCharacterInfo));
+        buisAnimator = currentTubeObj.GetComponent<Animator>();
     }
 
     public void SetCharacterChoice(ChoiceManager.ChoiceEnum choice)

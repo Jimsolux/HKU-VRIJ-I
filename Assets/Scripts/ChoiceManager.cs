@@ -10,7 +10,6 @@ public class ChoiceManager : MonoBehaviour
     [SerializeField] public CharacterManager characterManager;
     [SerializeField] AudioSource buttonPanelAudio;
 
-    [SerializeField] GameObject logBookCanvas;
     public enum ChoiceEnum
     {
         Breeding,
@@ -23,32 +22,11 @@ public class ChoiceManager : MonoBehaviour
 
     public ChoiceEnum Choice;
 
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && oldRaySystemOn)  // Old method to check for buttonclicks, can still be used to open logbook.
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.CompareTag("Logbook"))
-                {
-                    // Open Logbook!!
-                    logBookCanvas.SetActive(true);
-                    Debug.Log("Tried to open logbookCanvas");
-                }
-            }
-        }
-    }
-
     #region CheckIfCanChoose
     public void SetCanChoose(bool canItChoose)
     {
         canChoose = canItChoose;
     }
-
     
     private IEnumerator ChoiceCoolDown()
     {
