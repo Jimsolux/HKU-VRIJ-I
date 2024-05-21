@@ -18,7 +18,7 @@ public class MonitorText : MonoBehaviour
     [SerializeField] private int sizeBiography = 92;
 
     private Text textObject;
-    private Text bottomTextObject;
+    [SerializeField] private Text bottomTextObject;
 
     [Header("Start dialogue")]
     [SerializeField][TextArea] private string[] startText;
@@ -39,6 +39,11 @@ public class MonitorText : MonoBehaviour
     {
         StartCoroutine(WriteText(text));
         Debug.Log("started with; " + text);
+    }
+
+    public void SetBottomText(string choice)
+    {
+        bottomTextObject.text = "Last person was tasked to: " + choice + "\n Find more in the logbook!";
     }
 
     public string GetText() { return monitorText; }

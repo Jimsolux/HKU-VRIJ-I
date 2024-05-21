@@ -10,6 +10,8 @@ public class ChoiceManager : MonoBehaviour
     [SerializeField] public CharacterManager characterManager;
     [SerializeField] AudioSource buttonPanelAudio;
 
+    [SerializeField] private MonitorText mt; 
+
     public enum ChoiceEnum
     {
         Breeding,
@@ -84,7 +86,7 @@ public class ChoiceManager : MonoBehaviour
                     StartCoroutine(ChoiceCoolDown());
                     break;
             }
-            Debug.Log("Choice made for character with button is " + Choice.ToString());
+            mt.SetBottomText(Choice.ToString());
             //StartCoroutine(WaitBeforeAnimation());
             StartTubeAnimation();
         }
