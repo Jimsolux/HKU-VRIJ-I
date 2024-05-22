@@ -152,7 +152,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 93efa36fad007114daefc5d15c20daa5, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   writeSpeed: 0.0125
   sizePersonData: 130
   sizeBiography: 155
+  bottomTextObject: {fileID: 0}
   startText:
   - "Welcome to your new existance, sorting unit 69. \n\nBefore you, you see a tube
     with a member of the Homo sapiens. It is your job to sort this specimen appropriately."
@@ -401,7 +402,7 @@ MonoBehaviour:
   canChoose: 0
   characterManager: {fileID: 106782399}
   buttonPanelAudio: {fileID: 2052659787}
-  logBookCanvas: {fileID: 0}
+  mt: {fileID: 0}
   Choice: 0
 --- !u!1 &177178792
 GameObject:
@@ -2621,6 +2622,7 @@ MonoBehaviour:
   writeSpeed: 0.0125
   sizePersonData: 130
   sizeBiography: 155
+  bottomTextObject: {fileID: 0}
   startText:
   - "Welcome to your new existance, sorting unit 69. \n\nBefore you, you see a tube
     with a member of the Homo sapiens. It is your job to sort this specimen appropriately."
@@ -4921,9 +4923,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e09ac5879fd4e47983546840656f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: {fileID: 0}
+  leftSide: {fileID: 0}
+  leftPage: {fileID: 0}
+  rightPage: {fileID: 0}
   caseNumber: {fileID: 0}
   personalInformation: {fileID: 0}
   subjectBiography: {fileID: 0}
+  caseResults: {fileID: 0}
+  documentResults: {fileID: 0}
+  imageBefore: {fileID: 0}
+  imageAfter: {fileID: 0}
+  positionOpened: {x: 0, y: 0, z: 0}
+  positionClosed: {x: 0, y: 0, z: 0}
+  rotationOpened: {x: 0, y: 0, z: 0}
+  rotationClosed: {x: 0, y: 0, z: 0}
 --- !u!1 &1659512998
 GameObject:
   m_ObjectHideFlags: 0

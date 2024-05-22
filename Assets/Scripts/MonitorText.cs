@@ -43,7 +43,7 @@ public class MonitorText : MonoBehaviour
 
     public void SetBottomText(string choice)
     {
-        bottomTextObject.text = "Last person was tasked to: " + choice + "\n Find more in the logbook!";
+        bottomTextObject.text = "Last person was tasked to: <b>" + choice + "\n <\b>Find more in the logbook!";
     }
 
     public string GetText() { return monitorText; }

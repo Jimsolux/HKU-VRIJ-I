@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.UI;
+using TMPro;
 using static FavourManager;
 
 public class FavourManager : MonoBehaviour
@@ -14,6 +17,9 @@ public class FavourManager : MonoBehaviour
     [SerializeField] private float warningAmount;
     [SerializeField] private float increaseAmount;
     [SerializeField] private float decreaseAmount;
+
+    [SerializeField] private PlayableDirector hcTimeline;
+    [SerializeField] private TextMeshProUGUI warningText;
 
     public enum FavourType
     {
@@ -42,7 +48,7 @@ public class FavourManager : MonoBehaviour
         DecreaseFavour();
         IncreaseFavour(type);
         IncreaseFavour(type2);
-        Debug.Log("Increased Value of " + type + "And of " + type2);
+        Debug.Log("Increased Value of " + type + " and of " + type2);
         CheckFavourLevels();
     }
 
@@ -86,6 +92,14 @@ public class FavourManager : MonoBehaviour
 
     public void WarnPlayer(FavourType favourType)
     {
-        Debug.Log("WARN PLAYER THEIR " + favourType.ToString() + " Is very low! BECOME ANGRY ALIEN!");
+        if (hcTimeline.state != PlayState.Playing)
+        {
+            hcTimeline.Stop();
+            hcTimeline.time = 0;
+            hcTimeline.Evaluate();
+        }
+
+        warningText.text = "WE NEED MORE " + favourType.ToString().ToUpper() + "!";
+        hcTimeline.Play();
     }
 }

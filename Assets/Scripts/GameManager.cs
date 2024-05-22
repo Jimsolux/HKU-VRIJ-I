@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour 
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] CharacterManager characterManager;
     [SerializeField] ChoiceManager choiceManager;
-
+    [SerializeField] private PlayableDirector hcTimeline;
 
     //Timer
     private float fourMinuteTimer = 240;
@@ -19,8 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float characterTimerLength;
     private float characterTimer;
 
-    //Animaties 
-
+    //Animaties
     private void Awake()
     {
         Instance = this;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!mainTimerIsOff) GameTimer();   // Telt de gameTimer af
-        if (!charTimerIsOff) CharacterChoiceTimer(); // Telt de Chartimer af
+        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing) CharacterChoiceTimer(); // Telt de Chartimer af
     }
 
 
