@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class CameraMovement : MonoBehaviour
     private CameraDirection currentCameraDirection;
     [SerializeField] private float cooldown = 0.5f;
     private bool lockMotion; // cutscene stuff
+    private bool onCooldown;
 
     [Header("Angle")]
     [SerializeField] private Vector3 angleLeft, angleRight;
@@ -39,7 +41,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if (!lockMotion)
+        if (!lockMotion && !onCooldown)
         {
             currentCameraDirection = GetDirection();
         }
@@ -50,13 +52,40 @@ public class CameraMovement : MonoBehaviour
         SetCameraFOV();
     }
 
+    private IEnumerator CameraMoveCooldown()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
+    }
+
     private CameraDirection GetDirection()
     {
+        StartCoroutine(CameraMoveCooldown());
+
         Vector2 mousePixels = Input.mousePosition;
 
-        if (mousePixels.x <= camSwapPixels) return CameraDirection.Left;
-        else if (mousePixels.x >= screenResolution.x - camSwapPixels) return CameraDirection.Right;
-        return CameraDirection.Center;
+        CameraDirection cameraDirLeft = currentCameraDirection;
+        CameraDirection cameraDirRight = currentCameraDirection;
+
+        if (currentCameraDirection == CameraDirection.Left)
+        {
+            cameraDirRight = CameraDirection.Center; 
+        }
+        else if (currentCameraDirection == CameraDirection.Center)
+        {
+            cameraDirLeft = CameraDirection.Left;
+            cameraDirRight = CameraDirection.Right;
+        }
+        else if (currentCameraDirection == CameraDirection.Right)
+        {
+            cameraDirLeft = CameraDirection.Center;
+        }
+
+
+            if (mousePixels.x <= camSwapPixels) return cameraDirLeft;
+            else if (mousePixels.x >= screenResolution.x - camSwapPixels) return cameraDirRight;
+        return currentCameraDirection;
 
     }
 

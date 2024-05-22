@@ -5606,7 +5606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bb58e5210fbfc498112350d4b522fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentageCamSwap: 0.42
+  percentageCamSwap: 0.47
   cameraSpeed: 2
   cooldown: 0.5
   angleLeft: {x: 20, y: -50, z: 0}
