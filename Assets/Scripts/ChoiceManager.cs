@@ -51,25 +51,25 @@ public class ChoiceManager : MonoBehaviour
             {
                 case 0:
                     Choice = ChoiceEnum.Breeding;
-                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.popu);
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.population);
                     characterManager.SetCharacterChoice(Choice);                    
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 1:
                     Choice = ChoiceEnum.Museum;
-                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.entertainment, FavourManager.FavourType.anthropology);
                     characterManager.SetCharacterChoice(Choice);                    
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 2:
                     Choice = ChoiceEnum.Experiments;
-                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente, FavourManager.FavourType.anth);
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.entertainment, FavourManager.FavourType.anthropology);
                     characterManager.SetCharacterChoice(Choice);
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 3:
                     Choice = ChoiceEnum.Pet;
-                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.ente);
+                    FavourManager.instance.UpdateFavour(FavourManager.FavourType.entertainment);
                     characterManager.SetCharacterChoice(Choice);
                     StartCoroutine(ChoiceCoolDown());
                     break;

@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
   m_Name: Character 2
   m_EditorClassIdentifier: 
-  nam: Jim Dekker
-  age: 24
+  nam: Manuel
+  age: 54
   gender: M
-  nationality: Netherlands
-  description: Jim is really into video games. He has a loving girlfriend but he
-    isn't talented.
-  choice: Skip
+  nationality: Mexico
+  description: Manuel works tirelessly on a small farm, cultivating crops despite
+    severe droughts. His calloused hands and sunburned skin tell a story of resilience.
+    He dreams of sending his youngest daughter to college, a goal he strives for
+    daily despite the hardships.
+  choice: MakeFood
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: bb045686e20373347a217951ba917ce2, type: 3}
+  imageBefore: {fileID: 21300000, guid: e5199c6e2118ca346aa85543a45d7d32, type: 3}
   imageAfter: {fileID: 21300000, guid: 7c3e35724d414504ca5e5714d14ddcbd, type: 3}
   obj: {fileID: 4748777716839083572, guid: 89db7afa0cf0919409d0f795a6428905, type: 3}
   animator: {fileID: 0}
-  activeChoice: 5
+  activeChoice: 4

@@ -68,7 +68,7 @@ public class CharacterManager : MonoBehaviour
     public GameObject InstantiateRandomCharacter(Character randomCharacterInfo)
     {
         GameObject newTube = Instantiate<GameObject>(tubePrefab, tubeTransform.position, tubeTransform.rotation);
-        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj, characterTransform.position, Quaternion.identity, newTube.transform);
+        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj, characterTransform.position + new Vector3(100, 100, 100), Quaternion.identity, newTube.transform);
         randomCharacterObj.transform.localScale = new Vector3(0.002f, 0.002f, 0.002f);
         currentCharacterObj = randomCharacterInfo.obj;
         currentTubeObj = newTube;

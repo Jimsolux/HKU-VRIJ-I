@@ -24,9 +24,9 @@ public class FavourManager : MonoBehaviour
     public enum FavourType
     {
         food,
-        popu,
-        anth,
-        ente,
+        population,
+        anthropology,
+        entertainment,
         none
     }
 
@@ -67,13 +67,13 @@ public class FavourManager : MonoBehaviour
             case FavourType.food:
                 foodFavour += increaseAmount;
                 break;
-            case FavourType.popu:
+            case FavourType.population:
                 populationFavour += increaseAmount;
                 break;
-            case FavourType.anth:
+            case FavourType.anthropology:
                 anthropologyFavour += increaseAmount;
                 break;
-            case FavourType.ente:
+            case FavourType.entertainment:
                 entertainmentFavour += increaseAmount;
                 break;
             case FavourType.none:
@@ -84,9 +84,9 @@ public class FavourManager : MonoBehaviour
     public void CheckFavourLevels()
     {
         if (foodFavour < warningAmount) WarnPlayer(FavourType.food);
-        if (populationFavour < warningAmount) WarnPlayer(FavourType.popu);
-        if (anthropologyFavour < warningAmount) WarnPlayer(FavourType.anth);
-        if (entertainmentFavour < warningAmount) WarnPlayer(FavourType.ente);
+        if (populationFavour < warningAmount) WarnPlayer(FavourType.population);
+        if (anthropologyFavour < warningAmount) WarnPlayer(FavourType.anthropology);
+        if (entertainmentFavour < warningAmount) WarnPlayer(FavourType.entertainment);
     }
 
 
@@ -99,7 +99,7 @@ public class FavourManager : MonoBehaviour
             hcTimeline.Evaluate();
         }
 
-        warningText.text = "WE NEED MORE " + favourType.ToString().ToUpper() + "!";
+        warningText.text = "WE NEED MORE " + favourType.ToString().ToUpper() + "";
         hcTimeline.Play();
     }
 }

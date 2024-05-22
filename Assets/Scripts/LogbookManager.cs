@@ -30,10 +30,8 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private Image imageAfter;
 
     // transformations:
-    [SerializeField] private Vector3 positionOpened; 
-    [SerializeField] private Vector3 positionClosed; 
-    [SerializeField] private Vector3 rotationOpened; 
-    [SerializeField] private Vector3 rotationClosed;
+    [SerializeField] private Transform transformOpened;
+    [SerializeField] private Transform transformClosed;
 
     private void Start()
     {
@@ -106,6 +104,20 @@ public class LogbookManager : MonoBehaviour
 
     public int GetPage() { return page; }
 
+    private void SetOpenPosition()
+    {
+        transform.localPosition = transformOpened.localPosition;
+        transform.localRotation = transformOpened.localRotation;
+        leftSide.transform.localRotation = Quaternion.Euler(0, 180, 90);
+    }
+
+    private void SetClosedPosition()
+    {
+        transform.localPosition = transformClosed.localPosition;
+        transform.localRotation = transformClosed.localRotation;
+        leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
+    }
+
     public void OpenLogbook()
     {
         opened = true;
@@ -114,9 +126,7 @@ public class LogbookManager : MonoBehaviour
         rightPage.SetActive(true);
         buttons.SetActive(true);
 
-        transform.localPosition = positionOpened;
-        transform.localRotation = Quaternion.Euler(rotationOpened.x, rotationOpened.y, rotationOpened.z);
-        leftSide.transform.localRotation = Quaternion.Euler(0, 180, 90);
+        SetOpenPosition();
 
         LastPage();
     }
@@ -129,8 +139,6 @@ public class LogbookManager : MonoBehaviour
         rightPage.SetActive(false);
         buttons.SetActive(false);
 
-        transform.localPosition = positionClosed;
-        transform.localRotation = Quaternion.Euler(rotationClosed.x, rotationClosed.y, rotationClosed.z);
-        leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
+        SetClosedPosition();
     }
 }

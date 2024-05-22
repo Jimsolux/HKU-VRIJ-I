@@ -7,8 +7,8 @@ public class CameraMovement : MonoBehaviour
     private Camera cam;
 
     [Header("Camera")]
-    [Range(0, 0.4f)][SerializeField] private float percentageCamSwap;
-    [SerializeField] private float cameraSpeed = 1;
+    [Range(0, 0.5f)][SerializeField] private float percentageCamSwap;
+    [SerializeField] private float cameraSpeed = 2;
     private int camSwapPixels;
     private CameraDirection currentCameraDirection;
     [SerializeField] private float cooldown = 0.5f;
