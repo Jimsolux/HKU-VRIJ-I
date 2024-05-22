@@ -148,11 +148,12 @@ public class CameraMovement : MonoBehaviour
                 targetFOV = fovButtons;
                 break;
         }
-        if (Mathf.Abs(cam.fieldOfView - targetFOV) > 0.1f)
+        if (Mathf.Abs(cam.fieldOfView - targetFOV) > 1f)
         {
             if (cam.fieldOfView > targetFOV) cam.fieldOfView -= Time.deltaTime * fovChangeSpeed;
             else if (cam.fieldOfView < targetFOV) cam.fieldOfView += Time.deltaTime * fovChangeSpeed;
         }
+        else { cam.fieldOfView = targetFOV; }
     }
 
     private void HandleUI()
@@ -168,8 +169,11 @@ public class CameraMovement : MonoBehaviour
 
     public void ButtonZoomIn()
     {
-        currentCameraDirection = CameraDirection.Buttons;
-        zoomInButton.SetActive(false);
+        if (!lockMotion)
+        {
+            currentCameraDirection = CameraDirection.Buttons;
+            zoomInButton.SetActive(false);
+        }
     }
     public void ButtonZoomOut()
     {
