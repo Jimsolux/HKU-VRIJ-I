@@ -104,7 +104,7 @@ public class MonitorText : MonoBehaviour
         camMovement.SetLock(true);
         try
         {
-            StartCoroutine(WriteText(startText[startDialogueCurrent], writeSpeed * 2));
+            StartCoroutine(WriteText(startText[startDialogueCurrent], writeSpeed * 4));
         }
         catch 
         { 
