@@ -17,17 +17,18 @@ public class CameraMovement : MonoBehaviour
     private bool onCooldown;
 
     [Header("Angle")]
-    [SerializeField] private Vector3 angleLeft, angleRight;
-    [SerializeField] private int fovLeft, fovCenter, fovRight;
+    [SerializeField] private Vector3 angleLeft, angleCenter, angleRight, angleButtons;
+    [SerializeField] private int fovLeft, fovCenter, fovRight, fovButtons;
     [SerializeField] private float fovChangeSpeed = 30;
 
     [Header("UI")]
     [SerializeField] private GameObject leftUI, rightUI;
     private bool triggeredLeft, triggeredRight;
+    [SerializeField] private GameObject zoomInButton;
 
     private enum CameraDirection
     {
-        Left, Center, Right
+        Left, Center, Right, Buttons
     }
 
     private void Start()
@@ -70,7 +71,7 @@ public class CameraMovement : MonoBehaviour
 
         if (currentCameraDirection == CameraDirection.Left)
         {
-            cameraDirRight = CameraDirection.Center; 
+            cameraDirRight = CameraDirection.Center;
         }
         else if (currentCameraDirection == CameraDirection.Center)
         {
@@ -83,8 +84,17 @@ public class CameraMovement : MonoBehaviour
         }
 
 
-            if (mousePixels.x <= camSwapPixels) return cameraDirLeft;
-            else if (mousePixels.x >= screenResolution.x - camSwapPixels) return cameraDirRight;
+        if (currentCameraDirection == CameraDirection.Buttons)
+        {
+            if (mousePixels.y < screenResolution.y / 6)
+            {
+                ButtonZoomOut();
+                return CameraDirection.Center;
+            }
+        }
+
+        if (mousePixels.x <= camSwapPixels) return cameraDirLeft;
+        else if (mousePixels.x >= screenResolution.x - camSwapPixels) return cameraDirRight;
         return currentCameraDirection;
 
     }
@@ -101,7 +111,8 @@ public class CameraMovement : MonoBehaviour
                 }
                 return angleLeft;
 
-            case CameraDirection.Center: return new() { x = 15, y = 0, z = 0 };
+            case CameraDirection.Center: return angleCenter;
+            case CameraDirection.Buttons: return angleButtons;
 
             case CameraDirection.Right:
                 if (!triggeredRight)
@@ -113,7 +124,7 @@ public class CameraMovement : MonoBehaviour
 
                 return angleRight;
         }
-        return new() { x = 15, y = 0, z = 0 };
+        return angleCenter;
     }
 
     private void SetCameraFOV()
@@ -132,6 +143,10 @@ public class CameraMovement : MonoBehaviour
             case CameraDirection.Right:
                 targetFOV = fovRight;
                 break;
+
+            case CameraDirection.Buttons:
+                targetFOV = fovButtons;
+                break;
         }
         if (Mathf.Abs(cam.fieldOfView - targetFOV) > 0.1f)
         {
@@ -149,5 +164,16 @@ public class CameraMovement : MonoBehaviour
     public void SetLock(bool value)
     {
         lockMotion = value;
+    }
+
+    public void ButtonZoomIn()
+    {
+        currentCameraDirection = CameraDirection.Buttons;
+        zoomInButton.SetActive(false);
+    }
+    public void ButtonZoomOut()
+    {
+        currentCameraDirection = CameraDirection.Center;
+        zoomInButton.SetActive(true);
     }
 }
