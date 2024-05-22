@@ -107,7 +107,7 @@ public class CameraMovement : MonoBehaviour
                 if (!triggeredRight)
                 {
                     triggeredRight = true;
-                    MonitorText.instance.StartCoroutine(MonitorText.instance.StartSequence());
+                    MonitorText.instance.StartDialogue();
                     HandleUI();
                 }
 

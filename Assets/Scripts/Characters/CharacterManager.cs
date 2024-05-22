@@ -94,7 +94,7 @@ public class CharacterManager : MonoBehaviour
     {
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
         currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
-        mt.SetText(mt.BioToString(currentCharacterInfo));
+        mt.StoreText(mt.BioToString(currentCharacterInfo));
         buisAnimator = currentTubeObj.GetComponent<Animator>();
     }
 

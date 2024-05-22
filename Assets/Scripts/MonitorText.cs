@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,20 +20,28 @@ public class MonitorText : MonoBehaviour
 
     private Text textObject;
     [SerializeField] private Text bottomTextObject;
+    [SerializeField] private GameObject continueButton;
 
     [Header("Start dialogue")]
     [SerializeField][TextArea] private string[] startText;
+    private bool inStart = true;
+    private string storedDialogue;
 
     private void Start()
     {
         textObject = GetComponent<Text>();
-        StartCoroutine(WriteText(monitorText));
+        //StartDialogue();
     }
 
     public void ClearText()
     {
         monitorText = "";
         HandleUI();
+    }
+
+    public void StoreText(string text)
+    {
+        storedDialogue = text;
     }
 
     public void SetText(string text)
@@ -51,6 +60,15 @@ public class MonitorText : MonoBehaviour
     public void HandleUI()
     {
         textObject.text = monitorText;
+
+        if(inStart && !writing)
+        {
+            continueButton.SetActive(true);
+        }
+        else
+        {
+            continueButton.SetActive(false);
+        }
     }
 
     public string BioToString(Character characterInfo)
@@ -63,7 +81,7 @@ public class MonitorText : MonoBehaviour
 
         return str;
     }
-
+    /*
     public IEnumerator StartSequence()
     {
         CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
@@ -71,14 +89,53 @@ public class MonitorText : MonoBehaviour
         camMovement.SetLock(true);
         for(int i = 0; i < startText.Length; i++)
         {
-            StartCoroutine(WriteText(startText[i]));
             yield return new WaitForSeconds(4);
         }
         camMovement.SetLock(false);
         StartCoroutine(WriteText(""));
+    }*/
+
+    private int startDialogueCurrent = 0;
+    public void StartDialogue()
+    {
+        inStart = true;
+        CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
+
+        camMovement.SetLock(true);
+        try
+        {
+            StartCoroutine(WriteText(startText[startDialogueCurrent], writeSpeed * 2));
+        }
+        catch 
+        { 
+            EndStartDialogue();
+        }
+    }
+
+    private void EndStartDialogue()
+    {
+        inStart = false;
+
+        CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
+
+        camMovement.SetLock(false);
+        StartCoroutine(WriteText(storedDialogue));
+    }
+
+    public void ContinueStartDialogue()
+    {
+        startDialogueCurrent++;
+        StartDialogue();
     }
 
     private IEnumerator WriteText(string text)
+    {
+        yield return new WaitForEndOfFrame();
+        StartCoroutine(WriteText(text, writeSpeed));
+    }
+
+    private bool writing = false;
+    private IEnumerator WriteText(string text, float writeSpeed)
     {
         textObject.fontSize = sizePersonData;
 
@@ -93,7 +150,7 @@ public class MonitorText : MonoBehaviour
 
         ClearText();
 
-
+        writing = true;
         for (int i = 0; i < characters.Length; i++)
         {
             if (insideSize && characters[i].ToString() == "x") activeText += sizeBiography; // makes it easier to change the text of the biography in code
@@ -135,5 +192,7 @@ public class MonitorText : MonoBehaviour
             HandleUI();
         }
 
+        writing = false;
+        HandleUI();
     }
 }
