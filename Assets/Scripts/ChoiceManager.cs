@@ -89,6 +89,7 @@ public class ChoiceManager : MonoBehaviour
             mt.SetBottomText(Choice.ToString());
             //StartCoroutine(WaitBeforeAnimation());
             StartTubeAnimation();
+            DeskLamp.TurnOn();
         }
     }//Button Click 
 

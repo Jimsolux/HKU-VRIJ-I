@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Logbook
+  - DeskLights
   layers:
   - Default
   - TransparentFX

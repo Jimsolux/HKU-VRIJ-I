@@ -129,6 +129,8 @@ public class LogbookManager : MonoBehaviour
         SetOpenPosition();
 
         LastPage();
+
+        DeskLamp.TurnOff();
     }
 
     public void CloseLogbook()
