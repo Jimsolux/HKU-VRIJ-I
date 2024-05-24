@@ -130,7 +130,7 @@ public class LogbookManager : MonoBehaviour
 
         LastPage();
 
-        DeskLamp.TurnOff();
+        DeskLamp.TurnOff(); 
     }
 
     public void CloseLogbook()

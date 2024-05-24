@@ -2,6 +2,9 @@ using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine.Jobs;
 
 public class MonitorText : MonoBehaviour
 {
@@ -26,6 +29,10 @@ public class MonitorText : MonoBehaviour
     [SerializeField][TextArea] private string[] startText;
     private bool inStart = true;
     private string storedDialogue;
+
+    [SerializeField] private TextMeshProUGUI[] textObjects = new TextMeshProUGUI[3];
+
+    private int tab;
 
     private void Start()
     {
@@ -195,4 +202,16 @@ public class MonitorText : MonoBehaviour
         writing = false;
         HandleUI();
     }
+
+    public void SwitchTab(int i)
+    {
+        if (i >= 0 && i < textObjects.Length)
+        {
+            textObjects[i].enabled = false;
+            tab = i;
+            textObjects[i].enabled = true;
+        }
+    }
+
+    public int GetTab() { return tab; }
 }
