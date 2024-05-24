@@ -1,10 +1,7 @@
 using System.Collections;
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine.Jobs;
 
 public class MonitorText : MonoBehaviour
 {
@@ -12,7 +9,7 @@ public class MonitorText : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; 
+        instance = this;
     }
 
     [SerializeField][TextArea] private string monitorText;
@@ -26,9 +23,10 @@ public class MonitorText : MonoBehaviour
     [SerializeField] private GameObject continueButton;
 
     [Header("Start dialogue")]
+    [SerializeField] private bool hasStart;
     [SerializeField][TextArea] private string[] startText;
     private bool inStart = true;
-    private string storedDialogue;
+    [SerializeField] private GameObject popupBox;
 
     [SerializeField] private TextMeshProUGUI[] textObjects = new TextMeshProUGUI[3];
 
@@ -44,11 +42,6 @@ public class MonitorText : MonoBehaviour
     {
         monitorText = "";
         HandleUI();
-    }
-
-    public void StoreText(string text)
-    {
-        storedDialogue = text;
     }
 
     public void SetText(string text)
@@ -68,21 +61,24 @@ public class MonitorText : MonoBehaviour
     {
         textObject.text = monitorText;
 
-        if(inStart && !writing)
+        if (hasStart)
         {
-            continueButton.SetActive(true);
-        }
-        else
-        {
-            continueButton.SetActive(false);
+            if (inStart && !writing)
+            {
+                continueButton.SetActive(true);
+            }
+            else
+            {
+                continueButton.SetActive(false);
+            }
         }
     }
 
     public string BioToString(Character characterInfo)
     {
-        string str = "Name: "        + characterInfo.nam + "\n"
-              + "Age: "         + characterInfo.age + "\n"
-              + "Gender: "      + characterInfo.gender + "\n"
+        string str = "Name: " + characterInfo.nam + "\n"
+              + "Age: " + characterInfo.age + "\n"
+              + "Gender: " + characterInfo.gender + "\n"
               + "Nationality: " + characterInfo.nationality + "\n\n"
               + "Description: " + characterInfo.description + "\n\n";
 
@@ -105,17 +101,20 @@ public class MonitorText : MonoBehaviour
     private int startDialogueCurrent = 0;
     public void StartDialogue()
     {
-        inStart = true;
-        CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
-
-        camMovement.SetLock(true);
-        try
+        if (hasStart)
         {
-            StartCoroutine(WriteText(startText[startDialogueCurrent], writeSpeed * 4));
-        }
-        catch 
-        { 
-            EndStartDialogue();
+            inStart = true;
+            CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
+
+            camMovement.SetLock(true);
+            try
+            {
+                StartCoroutine(WriteText(startText[startDialogueCurrent], writeSpeed * 4));
+            }
+            catch
+            {
+                EndStartDialogue();
+            }
         }
     }
 
@@ -126,7 +125,12 @@ public class MonitorText : MonoBehaviour
         CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
 
         camMovement.SetLock(false);
-        StartCoroutine(WriteText(storedDialogue));
+        try
+        {
+            popupBox.SetActive(false);
+            MonitorUI.instance?.Unlock();
+        }
+        catch { }
     }
 
     public void ContinueStartDialogue()
@@ -135,7 +139,7 @@ public class MonitorText : MonoBehaviour
         StartDialogue();
     }
 
-    private IEnumerator WriteText(string text)
+    public IEnumerator WriteText(string text)
     {
         yield return new WaitForEndOfFrame();
         StartCoroutine(WriteText(text, writeSpeed));
@@ -145,6 +149,8 @@ public class MonitorText : MonoBehaviour
     private IEnumerator WriteText(string text, float writeSpeed)
     {
         textObject.fontSize = sizePersonData;
+
+        if (text == null) text = string.Empty;
 
         char[] characters = text.ToCharArray();
 
@@ -200,6 +206,7 @@ public class MonitorText : MonoBehaviour
         }
 
         writing = false;
+
         HandleUI();
     }
 
