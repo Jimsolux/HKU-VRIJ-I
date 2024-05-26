@@ -99,6 +99,7 @@ public class CameraMovement : MonoBehaviour
 
     }
 
+    bool restartedTyping = false;
     private Vector3 GetCameraAngle()
     {
         switch (currentCameraDirection)
@@ -109,10 +110,11 @@ public class CameraMovement : MonoBehaviour
                     triggeredLeft = true;
                     HandleUI();
                 }
+                restartedTyping = false;
                 return angleLeft;
 
-            case CameraDirection.Center: return angleCenter;
-            case CameraDirection.Buttons: return angleButtons;
+            case CameraDirection.Center: restartedTyping = false; return angleCenter;
+            case CameraDirection.Buttons: restartedTyping = false; return angleButtons;
 
             case CameraDirection.Right:
                 if (!triggeredRight)
@@ -121,7 +123,11 @@ public class CameraMovement : MonoBehaviour
                     MonitorText.instance.StartDialogue();
                     HandleUI();
                 }
-
+                if (!restartedTyping)
+                {
+                    MonitorUI.instance?.ReturnToMonitor();
+                    restartedTyping = true;
+                }
                 return angleRight;
         }
         return angleCenter;

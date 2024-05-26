@@ -6,6 +6,7 @@ public class CharacterManager : MonoBehaviour
 {
     [SerializeField] LogbookManager lm;
     [SerializeField] MonitorText mt;
+    MonitorUI ui;
 
     [SerializeField] private List<Character> characters = new List<Character>();
     [SerializeField] private List<Character> charactersLeft;
@@ -27,6 +28,7 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
+        ui = MonitorUI.instance;
         InitializeCharacterManager();
 
         FirstCharacter();
@@ -84,9 +86,12 @@ public class CharacterManager : MonoBehaviour
             lm.LogCharacter(currentCharacterInfo);
             currentCharacterInfo = potentialNextCharacterInfo;
             currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
-            mt.SetText(mt.BioToString(currentCharacterInfo));
+            //mt.SetText(mt.BioToString(currentCharacterInfo));
             //Reset the animator.
             buisAnimator = currentTubeObj.GetComponent<Animator>();
+
+            ui.SetPopUpPersonalInfo();
+            ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
         }
     }
 
@@ -94,7 +99,10 @@ public class CharacterManager : MonoBehaviour
     {
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
         currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
-        mt.StoreText(mt.BioToString(currentCharacterInfo));
+
+        //mt.SetText(mt.BioToString(currentCharacterInfo));
+        ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
+
         buisAnimator = currentTubeObj.GetComponent<Animator>();
     }
 
