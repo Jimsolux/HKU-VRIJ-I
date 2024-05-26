@@ -11,15 +11,15 @@ public class LogbookManager : MonoBehaviour
     private List<string[]> logs = new();
     private List<Sprite[]> images = new();
 
-    // buttons:
+    [Header("Buttons")]
     [SerializeField] private GameObject buttons;
 
-    // page objects:
+    [Header("Page objects")]
     [SerializeField] private GameObject leftSide;
     [SerializeField] private GameObject leftPage;
     [SerializeField] private GameObject rightPage;
 
-    // information fields:
+    [Header("Information fields")]
     [SerializeField] private TextMeshProUGUI caseNumber;
     [SerializeField] private TextMeshProUGUI personalInformation;
     [SerializeField] private TextMeshProUGUI subjectBiography;
@@ -29,7 +29,7 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private Image imageBefore;
     [SerializeField] private Image imageAfter;
 
-    // transformations:
+    [Header("Transformations")]
     [SerializeField] private Transform transformOpened;
     [SerializeField] private Transform transformClosed;
 

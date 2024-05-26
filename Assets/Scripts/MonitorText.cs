@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine.Jobs;
 
 public class MonitorText : MonoBehaviour
@@ -30,7 +29,7 @@ public class MonitorText : MonoBehaviour
     private bool inStart = true;
     private string storedDialogue;
 
-    [SerializeField] private TextMeshProUGUI[] textObjects = new TextMeshProUGUI[3];
+    [SerializeField] private Text[] textObjects = new Text[3];
 
     private int tab;
 
