@@ -2728,6 +2728,7 @@ MonoBehaviour:
   leftUI: {fileID: 616851171}
   rightUI: {fileID: 368186545}
   zoomInButton: {fileID: 0}
+  logbookManager: {fileID: 0}
 --- !u!114 &736181065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5513,6 +5514,7 @@ MonoBehaviour:
   leftUI: {fileID: 616851171}
   rightUI: {fileID: 368186545}
   zoomInButton: {fileID: 1329682968}
+  logbookManager: {fileID: 1523073401}
 --- !u!95 &1444839639
 Animator:
   serializedVersion: 5
@@ -9628,6 +9630,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 770462131941852423, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2186267888691696219, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
       propertyPath: m_IsActive

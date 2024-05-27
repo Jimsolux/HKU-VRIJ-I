@@ -6,7 +6,7 @@ using TMPro;
 
 public class LogbookManager : MonoBehaviour
 {
-    private bool opened = false;
+    private bool opened = false; 
     private int page = 0; // current page number
     private List<string[]> logs = new();
     private List<Sprite[]> images = new();
@@ -38,30 +38,6 @@ public class LogbookManager : MonoBehaviour
         CloseLogbook();
     }
 
-    private void Update()
-    {
-        if (!opened)
-        {
-            if (Input.GetMouseButtonDown(0))  
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.CompareTag("Logbook"))
-                    {
-                        OpenLogbook();
-                    }
-                }
-            }
-        } 
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            CloseLogbook();
-        }
-    }
-
     public void LogCharacter(Character characterInfo)
     {
         string[] currentLog = new string[5]; // 5 textboxes
@@ -88,7 +64,7 @@ public class LogbookManager : MonoBehaviour
 
     public void LastPage() { page = logs.Count - 1; UpdatePage(); }
 
-    public void UpdatePage()
+    private void UpdatePage()
     {
         caseNumber.text          = logs[page][0]; 
         personalInformation.text = logs[page][1];
@@ -120,27 +96,33 @@ public class LogbookManager : MonoBehaviour
 
     public void OpenLogbook()
     {
-        opened = true;
+        if (!opened)
+        {
+            opened = true;
 
-        leftPage.SetActive(true); 
-        rightPage.SetActive(true);
-        buttons.SetActive(true);
+            leftPage.SetActive(true); 
+            rightPage.SetActive(true);
+            buttons.SetActive(true);
 
-        SetOpenPosition();
+            SetOpenPosition();
 
-        LastPage();
+            LastPage();
 
-        DeskLamp.TurnOff(); 
+            DeskLamp.TurnOff(); 
+        }
     }
 
     public void CloseLogbook()
     {
-        opened = false;
+        if (opened)
+        {
+            opened = false;
 
-        leftPage.SetActive(false);
-        rightPage.SetActive(false);
-        buttons.SetActive(false);
+            leftPage.SetActive(false);
+            rightPage.SetActive(false);
+            buttons.SetActive(false);
 
-        SetClosedPosition();
+            SetClosedPosition();
+        }
     }
 }

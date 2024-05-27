@@ -10,9 +10,9 @@ public class CameraMovement : MonoBehaviour
     [Header("Camera")]
     [Range(0, 0.5f)][SerializeField] private float percentageCamSwap;
     [SerializeField] private float cameraSpeed = 2;
-    private int camSwapPixels;
-    private CameraDirection currentCameraDirection;
     [SerializeField] private float cooldown = 0.5f;
+    private CameraDirection currentCameraDirection;
+    private int camSwapPixels;
     private bool lockMotion; // cutscene stuff
     private bool onCooldown;
 
@@ -25,6 +25,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private GameObject leftUI, rightUI;
     private bool triggeredLeft, triggeredRight;
     [SerializeField] private GameObject zoomInButton;
+
+    [SerializeField] private LogbookManager logbookManager; 
 
     private enum CameraDirection
     {
@@ -42,6 +44,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        CameraDirection previousCameraDirection = currentCameraDirection;
         if (!lockMotion && !onCooldown)
         {
             currentCameraDirection = GetDirection();
@@ -50,7 +53,8 @@ public class CameraMovement : MonoBehaviour
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetAngle), cameraSpeed);
 
-        SetCameraFOV();
+        if (previousCameraDirection != currentCameraDirection)
+            SetCameraFOV();
     }
 
     private IEnumerator CameraMoveCooldown()
@@ -83,7 +87,6 @@ public class CameraMovement : MonoBehaviour
             cameraDirLeft = CameraDirection.Center;
         }
 
-
         if (currentCameraDirection == CameraDirection.Buttons)
         {
             if (mousePixels.y < screenResolution.y / 6)
@@ -96,7 +99,6 @@ public class CameraMovement : MonoBehaviour
         if (mousePixels.x <= camSwapPixels) return cameraDirLeft;
         else if (mousePixels.x >= screenResolution.x - camSwapPixels) return cameraDirRight;
         return currentCameraDirection;
-
     }
 
     bool restartedTyping = false;
@@ -136,12 +138,17 @@ public class CameraMovement : MonoBehaviour
     private void SetCameraFOV()
     {
         int targetFOV = 0;
+
+        if (currentCameraDirection != CameraDirection.Left) 
+            logbookManager.CloseLogbook(); 
+        else  
+            logbookManager.OpenLogbook(); 
+
         switch (currentCameraDirection)
         {
             case CameraDirection.Left:
                 targetFOV = fovLeft;
                 break;
-
             case CameraDirection.Center:
                 targetFOV = fovCenter;
                 break;
@@ -181,6 +188,7 @@ public class CameraMovement : MonoBehaviour
             zoomInButton.SetActive(false);
         }
     }
+
     public void ButtonZoomOut()
     {
         currentCameraDirection = CameraDirection.Center;
