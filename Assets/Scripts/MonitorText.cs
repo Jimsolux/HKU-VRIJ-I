@@ -30,6 +30,10 @@ public class MonitorText : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] textObjects = new TextMeshProUGUI[3];
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip ejectTyping; 
+
     private int tab;
 
     private void Start()
@@ -164,10 +168,17 @@ public class MonitorText : MonoBehaviour
         ClearText();
 
         writing = true;
-        for (int i = 0; i < characters.Length; i++)
+        for (int i = 0; i < characters.Length; i++) 
         {
             if (insideSize && characters[i].ToString() == "x") activeText += sizeBiography; // makes it easier to change the text of the biography in code
             else activeText += characters[i];
+
+            // audio
+            if (!audioSource.isPlaying)
+            {
+                audioSource.pitch = Random.Range(0.95f, 1.05f);
+                audioSource.Play();
+            }
 
             try
             {
@@ -204,7 +215,7 @@ public class MonitorText : MonoBehaviour
 
             HandleUI();
         }
-
+        //audioSource.Stop();
         writing = false;
 
         HandleUI();

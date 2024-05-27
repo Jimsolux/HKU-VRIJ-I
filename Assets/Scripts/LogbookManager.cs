@@ -14,6 +14,8 @@ public class LogbookManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject buttons;
 
+    [SerializeField] private TextMeshProUGUI pageNumber; 
+
     [Header("Page objects")]
     [SerializeField] private GameObject leftSide;
     [SerializeField] private GameObject leftPage;
@@ -74,6 +76,8 @@ public class LogbookManager : MonoBehaviour
 
         imageBefore.sprite = images[page][0];
         imageAfter.sprite  = images[page][1];
+
+        pageNumber.text = page.ToString();
     }
 
     public void SetPage(int page) { this.page = page; }

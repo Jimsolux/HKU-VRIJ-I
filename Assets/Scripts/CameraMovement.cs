@@ -53,8 +53,8 @@ public class CameraMovement : MonoBehaviour
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetAngle), cameraSpeed);
 
-        if (previousCameraDirection != currentCameraDirection)
-            SetCameraFOV();
+        //if (previousCameraDirection != currentCameraDirection)
+        SetCameraFOV();
     }
 
     private IEnumerator CameraMoveCooldown()
