@@ -291,6 +291,8 @@ MonoBehaviour:
   characterManager: {fileID: 106782399}
   choiceManager: {fileID: 106782403}
   hcTimeline: {fileID: 1486789631}
+  logbookManager: {fileID: 1523073401}
+  cameraMovement: {fileID: 1444839638}
   characterTimerLength: 30
 --- !u!114 &106782403
 MonoBehaviour:

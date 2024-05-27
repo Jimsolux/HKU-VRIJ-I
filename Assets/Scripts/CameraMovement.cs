@@ -28,7 +28,7 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private LogbookManager logbookManager; 
 
-    private enum CameraDirection
+    public enum CameraDirection
     {
         Left, Center, Right, Buttons
     }
@@ -178,6 +178,11 @@ public class CameraMovement : MonoBehaviour
     public void SetLock(bool value)
     {
         lockMotion = value;
+    }
+
+    public void SetCurrentCameraDirection(CameraDirection direction)
+    {
+        currentCameraDirection = direction;
     }
 
     public void ButtonZoomIn()

@@ -54,11 +54,6 @@ public class MonitorText : MonoBehaviour
         Debug.Log("started with; " + text);
     }
 
-    public void SetBottomText(string choice)
-    {
-        bottomTextObject.text = "Last person was tasked to:" + choice + "\n Find more in the logbook!";
-    }
-
     public string GetText() { return monitorText; }
 
     public void HandleUI()

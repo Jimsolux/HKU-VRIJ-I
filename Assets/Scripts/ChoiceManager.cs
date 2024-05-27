@@ -86,7 +86,6 @@ public class ChoiceManager : MonoBehaviour
                     StartCoroutine(ChoiceCoolDown());
                     break;
             }
-            mt.SetBottomText(Choice.ToString());
             //StartCoroutine(WaitBeforeAnimation());
             StartTubeAnimation();
             DeskLamp.TurnOn();

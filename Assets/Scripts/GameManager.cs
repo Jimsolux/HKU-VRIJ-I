@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] ChoiceManager choiceManager;
     [SerializeField] private PlayableDirector hcTimeline;
 
+    [SerializeField] private LogbookManager logbookManager;
+    [SerializeField] private CameraMovement cameraMovement;
+
     //Timer
     private float fourMinuteTimer = 240;
-    private bool mainTimerIsOff = true;
+    private bool mainTimerIsOff = false;
     private bool charTimerIsOff = true;
     //CharacterTimer
     [SerializeField] private float characterTimerLength;
@@ -39,13 +42,19 @@ public class GameManager : MonoBehaviour
     private void GameTimer()
     {
         fourMinuteTimer -= Time.deltaTime;
-        if (fourMinuteTimer <= 0) mainTimerIsOff = true;
-        ForceLogBook();
+        if (fourMinuteTimer <= 0)
+        {
+            mainTimerIsOff = true;
+            ForcelogBook();
+        }
     }
 
-    private void ForceLogBook()
+    private void ForcelogBook()
     {
+        cameraMovement.SetLock(true);
+        cameraMovement.SetCurrentCameraDirection(CameraMovement.CameraDirection.Left);
 
+        logbookManager.OpenLogbook(); // voor de zekerheid
     }
     
     private void ResetCharacterTimerLength()
