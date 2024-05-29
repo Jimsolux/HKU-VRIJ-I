@@ -86,11 +86,11 @@ public class CharacterManager : MonoBehaviour
         choiceManager.canChoose = true;
     }
 
-    public void SetCharacterChoice(ChoiceManager.ChoiceEnum choice)
+    public void SetCharacterChoice(ChoiceManager.ChoiceEnum choice, Sprite sprite)
     {
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
-        DecideAfterText(choice, currentCharacterInfo);
+        DecideAfterText(choice, currentCharacterInfo, sprite);
     }
 
     public void LogCharacter()
@@ -103,7 +103,7 @@ public class CharacterManager : MonoBehaviour
         buisAnimator.SetTrigger("BuisAchter");
     }
 
-    private void DecideAfterText(ChoiceManager.ChoiceEnum givenChoice, Character characterInfo)
+    private void DecideAfterText(ChoiceManager.ChoiceEnum givenChoice, Character characterInfo, Sprite sprite)
     {
         string randomText = "";
         switch (givenChoice)
@@ -133,6 +133,8 @@ public class CharacterManager : MonoBehaviour
                 CreateAfterText(randomText, characterInfo);
                 break;
         }
+
+        currentCharacterInfo.SetAfterSprite(sprite);
     }
 
     string GetRandomPrompt(List<string> texts)

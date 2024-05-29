@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             characterTimer -= Time.deltaTime;
             if (characterTimer <= 0)
             {
-                characterManager.SetCharacterChoice(ChoiceManager.ChoiceEnum.Skip);
+                characterManager.SetCharacterChoice(ChoiceManager.ChoiceEnum.Skip, null);
                 //characterManager.NextCharacter();
                 charTimerIsOff = true;
                 ResetCharacterTimerLength();

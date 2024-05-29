@@ -336,6 +336,12 @@ MonoBehaviour:
   characterManager: {fileID: 106782399}
   buttonPanelAudio: {fileID: 2052659787}
   mt: {fileID: 839966027}
+  breedingSprite: {fileID: 21300000, guid: 8325bcad624a1a64f869ea38c3465dd6, type: 3}
+  museumSprite: {fileID: 21300000, guid: 0ac2d235bbc8b6b4f8db4718b34ab121, type: 3}
+  experimentSprite: {fileID: 0}
+  petSprite: {fileID: 21300000, guid: edd0c60f0002a7849bb0056f2a95e968, type: 3}
+  makeFoodSprite: {fileID: 0}
+  skipSprite: {fileID: 0}
   Choice: 0
 --- !u!1 &138682808
 GameObject:

@@ -21,6 +21,14 @@ public class ChoiceManager : MonoBehaviour
         Skip
     }
 
+    [Header("After sprites")]
+    [SerializeField] private Sprite breedingSprite;   
+    [SerializeField] private Sprite museumSprite;    
+    [SerializeField] private Sprite experimentSprite;  
+    [SerializeField] private Sprite petSprite;       
+    [SerializeField] private Sprite makeFoodSprite;   
+    [SerializeField] private Sprite skipSprite;      
+
     public ChoiceEnum Choice;
 
     #region CheckIfCanChoose
@@ -51,38 +59,38 @@ public class ChoiceManager : MonoBehaviour
                 case 0:
                     Choice = ChoiceEnum.Breeding;
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.population);
-                    characterManager.SetCharacterChoice(Choice);                    
+                    characterManager.SetCharacterChoice(Choice, breedingSprite);           
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 1:
                     Choice = ChoiceEnum.Museum;
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.entertainment, FavourManager.FavourType.anthropology);
-                    characterManager.SetCharacterChoice(Choice);                    
+                    characterManager.SetCharacterChoice(Choice, museumSprite);                    
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 2:
                     Choice = ChoiceEnum.Experiments;
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.entertainment, FavourManager.FavourType.anthropology);
-                    characterManager.SetCharacterChoice(Choice);
+                    characterManager.SetCharacterChoice(Choice, experimentSprite);
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 3:
                     Choice = ChoiceEnum.Pet;
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.entertainment);
-                    characterManager.SetCharacterChoice(Choice);
+                    characterManager.SetCharacterChoice(Choice, petSprite);
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 4:
                     Choice = ChoiceEnum.MakeFood;
                     FavourManager.instance.UpdateFavour(FavourManager.FavourType.food);
-                    characterManager.SetCharacterChoice(Choice);
+                    characterManager.SetCharacterChoice(Choice, makeFoodSprite);
                     StartCoroutine(ChoiceCoolDown());
                     break;
                 case 5:
                     Choice = ChoiceEnum.Skip;
                     FavourManager.instance.DecreaseFavour();
                     FavourManager.instance.CheckFavourLevels();
-                    characterManager.SetCharacterChoice(Choice);
+                    characterManager.SetCharacterChoice(Choice, skipSprite);
                     StartCoroutine(ChoiceCoolDown());
                     break;
             }

@@ -31,4 +31,9 @@ public class Character : ScriptableObject
     {
         choice = givenChoice.ToString();
     }
+
+    public void SetAfterSprite(Sprite sprite)
+    {
+        imageAfter = sprite; 
+    }
 }
