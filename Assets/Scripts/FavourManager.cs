@@ -52,6 +52,7 @@ public class FavourManager : MonoBehaviour
         CheckFavourLevels();
     }
 
+
     public void DecreaseFavour() // Decreases all amounts by decreaseAmount
     {
         foodFavour -= decreaseAmount;
@@ -62,7 +63,7 @@ public class FavourManager : MonoBehaviour
 
     public void IncreaseFavour(FavourType type)
     {
-        switch(type)
+        switch (type)
         {
             case FavourType.food:
                 foodFavour += increaseAmount;
@@ -87,6 +88,11 @@ public class FavourManager : MonoBehaviour
         if (populationFavour < warningAmount) WarnPlayer(FavourType.population);
         if (anthropologyFavour < warningAmount) WarnPlayer(FavourType.anthropology);
         if (entertainmentFavour < warningAmount) WarnPlayer(FavourType.entertainment);
+
+        if (foodFavour < 0 || populationFavour < 0 || anthropologyFavour < 0 || entertainmentFavour < 0)
+        {
+            //END GAME
+        }
     }
 
 

@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
-  m_Name: Character 9
+  m_Name: Character 20
   m_EditorClassIdentifier: 
-  nam: Dimitri
-  age: 33
-  gender: M
-  nationality: Russia
-  description: Dmitri is a high-powered corporate lawyer in Moscow, known for his
-    ruthless tactics in the courtroom. He thrives on competition and enjoys the thrill
-    of winning cases at any cost. Outside of work, he indulges in expensive hobbies
-    like luxury car racing.
-  choice: Pet
+  nam: Amira
+  age: 40
+  gender: F
+  nationality: Egyptian
+  description: An archaeologist, Amira uncovers ancient artifacts, contributing to
+    our understanding of history. Her fascination with archaeology began when she
+    found an old amulet in her backyard as a child.
+  choice: Museum
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: eb88619fc1c28444a81363899afa8852, type: 3}
+  imageBefore: {fileID: 21300000, guid: b8fb059b62e97294584408e01f3034f0, type: 3}
   imageAfter: {fileID: 21300000, guid: 8325bcad624a1a64f869ea38c3465dd6, type: 3}
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}

@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
-  m_Name: Character 6
+  m_Name: Character 19
   m_EditorClassIdentifier: 
-  nam: Ravi
-  age: 45
-  gender: Male
-  nationality: India
-  description: Ravi, a rickshaw driver in Mumbai, navigates the bustling streets
-    with precision. Each day, he saves a portion of his earnings to support his son's
-    education. He dreams of a better life for his family, cherishing every moment
-    spent with them in their tiny apartment.
+  nam: Sophia
+  age: 26
+  gender: F
+  nationality: Spanish
+  description: ' passionate environmental activist, Sophia leads campaigns to protect
+    marine ecosystems. Inspired by her scuba-diving father, she spends her free time
+    organizing beach cleanups. '
   choice: Skip
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 28f813fb5a94abe4a9630498218d2817, type: 3}

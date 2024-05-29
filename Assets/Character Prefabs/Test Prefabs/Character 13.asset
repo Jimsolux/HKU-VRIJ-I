@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
-  m_Name: Character
+  m_Name: Character 13
   m_EditorClassIdentifier: 
-  nam: Fatima
+  nam: Lena
   age: 29
   gender: Female
-  nationality: Syria
-  description: "Fatima, a mother of three, fled her war-torn hometown with only a
-    small suitcase. She now lives in a refugee camp in Jordan, dreaming of the day
-    her children can play safely outside again. She clings to hope and her late husband\u2019s
-    photo."
+  nationality: Czech Republic
+  description: A talented pianist from Prague, Lena performs worldwide and teaches
+    music to underprivileged children. She started playing at age 4 and finds solace
+    in her piano after her father's passing.
   choice: Skip
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 0a6e7517c057c3b4da236c65f5c45018, type: 3}

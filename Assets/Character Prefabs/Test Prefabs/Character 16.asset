@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
+  m_Name: Character 16
+  m_EditorClassIdentifier: 
+  nam: Mia
+  age: 38
+  gender: Female
+  nationality: Denmark
+  description: A wildlife photographer from Stockholm, Mia captures stunning images
+    of endangered species around the globe. After surviving a serious illness, she
+    dedicated her life to conservation and photography.
+  choice: Enter Choice
+  timeElapsed: 0
+  imageBefore: {fileID: 21300000, guid: c27576572e2f1f349bd415107f9f5137, type: 3}
+  imageAfter: {fileID: 21300000, guid: 7b05ef31b48234c459431faaf9d2d962, type: 3}
+  obj: {fileID: 4748777716839083572, guid: 3d3e67677af80ce47b24049fc1886b4b, type: 3}
+  animator: {fileID: 0}
+  activeChoice: 0
