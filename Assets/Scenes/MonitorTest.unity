@@ -235,6 +235,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e784873b993e92a4b8e927fd0a29e07f, type: 2}
   - {fileID: 11400000, guid: 7cb96ced2bab2104cb209da8fa5bc003, type: 2}
   - {fileID: 11400000, guid: 56f9f1393b3dc2f4a8876040202522e5, type: 2}
+  - {fileID: 11400000, guid: 23a82420e3d4571419da28f151938fbf, type: 2}
+  - {fileID: 11400000, guid: 1bf771cf7faba6e41a8204b199bd3343, type: 2}
+  - {fileID: 11400000, guid: ce363c15ef36f574b9b9060c724765da, type: 2}
+  - {fileID: 11400000, guid: 9516dd45975d1ed458a7354bc08d14d9, type: 2}
+  - {fileID: 11400000, guid: bb3912f4dc806cb46a9ad0ff66d5e19e, type: 2}
+  - {fileID: 11400000, guid: 1d57e2bd2b7f4dd4f9bde3f0a923addd, type: 2}
+  - {fileID: 11400000, guid: ff392008784fda14284f86ad589b7461, type: 2}
+  - {fileID: 11400000, guid: 5cee2d037f1066b4b8ec75f570fb90e7, type: 2}
+  - {fileID: 11400000, guid: 6c99d45423f2873409cf74905d1e4dc0, type: 2}
+  - {fileID: 11400000, guid: f938ee5ed52cf8e49822bdcf20c097ef, type: 2}
+  - {fileID: 11400000, guid: 9568880a3a8053b40b3540ce655f7352, type: 2}
+  - {fileID: 11400000, guid: 221dee3f7333af242a4e5589f1a7f0f1, type: 2}
+  - {fileID: 11400000, guid: f71975f2b422d6d48a0ffe741e7d70a2, type: 2}
+  - {fileID: 11400000, guid: d02cdec9b199b424f95c9df0321034fd, type: 2}
+  - {fileID: 11400000, guid: 58803013dd8d451409d2d8150fe0b80a, type: 2}
+  - {fileID: 11400000, guid: 296c82cff57068b42b2f3e6789f07c8e, type: 2}
+  - {fileID: 11400000, guid: 20db9ea9c488ae24c89b30b0e53a245f, type: 2}
+  - {fileID: 11400000, guid: 5b9b277e299b3774b9d07a0fe5a45c0c, type: 2}
+  - {fileID: 11400000, guid: 6e35e95d0cfb3244eb44bee2974856a2, type: 2}
+  - {fileID: 11400000, guid: 67e4e6453d923cc41b3d98ef460f68a7, type: 2}
+  - {fileID: 11400000, guid: ad624ff18541a864f900cfe1184f672a, type: 2}
+  - {fileID: 11400000, guid: 58803013dd8d451409d2d8150fe0b80a, type: 2}
+  - {fileID: 11400000, guid: 1b796ef8aab5b0e4d90ca4bdb88b482b, type: 2}
   charactersLeft: []
   characterTransform: {fileID: 364174243}
   tubePrefab: {fileID: 938828116390341213, guid: 5aa7f7483caf2064eba72af8fb31f4c8,
@@ -243,26 +266,21 @@ MonoBehaviour:
   buisAnimator: {fileID: 1985199646}
   petText:
   - <n> was sent to become one of our pets. They have become a quite well-behaved
-    homo-sapien, after some small adjustments and sterilization. We are greatful
-    for their joyous and loyal presence.
+    homo-sapien, after some small adjustments and sterilization.
   museumText:
   - <n> stands in the museum as a wonderfully educational piece of the strange human
     body. It will be preserved to be admired at for ages to come.
   experimentText:
-  - We have had great joy in experimenting with <n>. Their body was able to keep
-    up living throughout multiple tests, teaching us so much more about the human
-    body and its' capabilities. You could say their new form is something of a work
-    of art.
+  - We have had great joy in experimenting with <n>. Their body sustained multiple
+    tests, teaching us so much more about the human body and its' capabilities.
   breedingText:
   - <n> was succesfully transformed into a breeding unit. They now serve as a host
     for many future subjects, which will be useful for the continuation of their
     species.
   makeFoodText:
-  - '<n> has become a wonderful savoury soup, made by the finest of our chefs. The
-    back of the soup can reads: Savor the rich, velvety broth <n> infused with a
-    symphony of exotic spices and Earth-grown herbs. Every spoonful unveils the tender,
-    juicy texture of expertly prepared human meat, elevated with subtle sweetness
-    and umami richness.'
+  - '<n> has become a savoury soup, held in this soup can. The back of the soup-can
+    reads: Savor the rich, velvety broth of <n>''s meat infused with a symphony of
+    exotic spices and Earth-grown herbs.'
   skipText:
   - <n> was skipped. Their bodily contents have been sent to one of our food production
     lines.

@@ -21,8 +21,9 @@ MonoBehaviour:
     in her piano after her father's passing.
   choice: Skip
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: 0a6e7517c057c3b4da236c65f5c45018, type: 3}
+  imageBefore: {fileID: 21300000, guid: 0089d861c703657479a90cfe3979011f, type: 3}
   imageAfter: {fileID: 21300000, guid: 40191099af1b76241b26269c02d067de, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: ad83a6efabe307d44b5fbd7452a03862, type: 3}
   animator: {fileID: 0}
   activeChoice: 0

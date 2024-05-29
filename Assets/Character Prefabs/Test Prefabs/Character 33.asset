@@ -22,8 +22,9 @@ MonoBehaviour:
     ecological damage. He lives a lavish lifestyle funded by his illicit activities.
   choice: Pet
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: cecde46c387856448b8de809462e8136, type: 3}
+  imageBefore: {fileID: 21300000, guid: 1972f99f88b73c544917d0e949e7c123, type: 3}
   imageAfter: {fileID: 21300000, guid: e5199c6e2118ca346aa85543a45d7d32, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0
