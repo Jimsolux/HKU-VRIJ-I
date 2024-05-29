@@ -6,6 +6,7 @@ public class CharacterManager : MonoBehaviour
 {
     [SerializeField] LogbookManager lm;
     [SerializeField] MonitorText mt;
+    [SerializeField] ChoiceManager choiceManager;
     MonitorUI ui;
 
     [SerializeField] private List<Character> characters = new List<Character>();
@@ -22,34 +23,12 @@ public class CharacterManager : MonoBehaviour
 
     public Animator buisAnimator;
 
-    //Animaties
-    // !!! choiceManager.SetCanChoose(); <-- Deze functie bepaalt of je kunt kiezen. Aanroepen vanuit ANIMATOR als een character in de buis is aangekomen, of er uit weggaat.
-
-
     private void Start()
     {
         ui = MonitorUI.instance;
-        InitializeCharacterManager();
-
-        FirstCharacter();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NextCharacter();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-            lm.PreviousPage();
-
-        if (Input.GetKeyDown(KeyCode.D))
-            lm.NextPage();
-    }
-
-    private void InitializeCharacterManager()
-    {
         charactersLeft = new List<Character>(characters);
+
+        //FirstCharacter();
     }
 
     public Character GetRandomCharacterIndex(List<Character> charactersLeft)
@@ -66,15 +45,9 @@ public class CharacterManager : MonoBehaviour
         return null;
     }
 
-    // location to instantiate, etc?
-    public GameObject InstantiateRandomCharacter(Character randomCharacterInfo)
+    public void InstantiateCharacter(Character randomCharacterInfo)
     {
-        GameObject newTube = Instantiate<GameObject>(tubePrefab, tubeTransform.position, tubeTransform.rotation);
-        GameObject randomCharacterObj = Instantiate(randomCharacterInfo.obj, characterTransform.position + new Vector3(100, 100, 100), Quaternion.identity, newTube.transform);
-        randomCharacterObj.transform.localScale = new Vector3(0.002f, 0.002f, 0.002f);
-        currentCharacterObj = randomCharacterInfo.obj;
-        currentTubeObj = newTube;
-        return randomCharacterObj;
+        currentTubeObj = Instantiate<GameObject>(tubePrefab, tubeTransform.position, tubeTransform.rotation);
     }
 
     public void NextCharacter()
@@ -85,25 +58,26 @@ public class CharacterManager : MonoBehaviour
         {
             lm.LogCharacter(currentCharacterInfo);
             currentCharacterInfo = potentialNextCharacterInfo;
-            currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
-            //mt.SetText(mt.BioToString(currentCharacterInfo));
-            //Reset the animator.
+            InstantiateCharacter(currentCharacterInfo);
             buisAnimator = currentTubeObj.GetComponent<Animator>();
 
             ui.SetPopUpPersonalInfo();
             ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
+
+            choiceManager.canChoose = true;
         }
     }
 
     public void FirstCharacter()
     {
         currentCharacterInfo = GetRandomCharacterIndex(charactersLeft);
-        currentCharacterObj = InstantiateRandomCharacter(currentCharacterInfo);
+        InstantiateCharacter(currentCharacterInfo);
 
-        //mt.SetText(mt.BioToString(currentCharacterInfo));
         ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
 
         buisAnimator = currentTubeObj.GetComponent<Animator>();
+
+        choiceManager.canChoose = true;
     }
 
     public void SetCharacterChoice(ChoiceManager.ChoiceEnum choice)

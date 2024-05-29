@@ -12,6 +12,8 @@ public class MonitorText : MonoBehaviour
         instance = this;
     }
 
+    [SerializeField] CharacterManager characterManager;
+
     [SerializeField][TextArea] private string monitorText;
     [SerializeField] private float writeSpeed = .1f;
 
@@ -120,6 +122,8 @@ public class MonitorText : MonoBehaviour
     private void EndStartDialogue()
     {
         inStart = false;
+
+        characterManager.FirstCharacter();
 
         CameraMovement camMovement = Camera.main.GetComponent<CameraMovement>();
 

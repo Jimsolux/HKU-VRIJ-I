@@ -17,9 +17,7 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pageNumber; 
 
     [Header("Page objects")]
-    [SerializeField] private GameObject leftSide;
-    [SerializeField] private GameObject leftPage;
-    [SerializeField] private GameObject rightPage;
+    [SerializeField] private GameObject leftSide, leftPage, rightPage;
 
     [Header("Information fields")]
     [SerializeField] private TextMeshProUGUI caseNumber;
@@ -28,12 +26,10 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI caseResults;
     [SerializeField] private TextMeshProUGUI documentResults;
 
-    [SerializeField] private Image imageBefore;
-    [SerializeField] private Image imageAfter;
+    [SerializeField] private Image imageBefore, imageAfter;
 
     [Header("Transformations")]
-    [SerializeField] private Transform transformOpened;
-    [SerializeField] private Transform transformClosed;
+    [SerializeField] private Transform transformOpened, transformClosed;
 
     private void Start()
     {
@@ -68,16 +64,19 @@ public class LogbookManager : MonoBehaviour
 
     private void UpdatePage()
     {
-        caseNumber.text          = logs[page][0]; 
-        personalInformation.text = logs[page][1];
-        subjectBiography.text    = logs[page][2];
-        caseResults.text         = logs[page][3];
-        documentResults.text     = logs[page][4];
+        if (logs.Count > 0)
+        {
+            caseNumber.text          = logs[page][0]; 
+            personalInformation.text = logs[page][1];
+            subjectBiography.text    = logs[page][2];
+            caseResults.text         = logs[page][3];
+            documentResults.text     = logs[page][4];
 
-        imageBefore.sprite = images[page][0];
-        imageAfter.sprite  = images[page][1];
+            imageBefore.sprite = images[page][0];
+            imageAfter.sprite  = images[page][1];
 
-        pageNumber.text = page.ToString();
+            pageNumber.text = page.ToString();
+        }
     }
 
     public void SetPage(int page) { this.page = page; }

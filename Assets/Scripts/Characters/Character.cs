@@ -6,13 +6,13 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Character")]
 public class Character : ScriptableObject
 {
-    public string nam = "Enter Name";
+    public string nam =         "Enter Name";
     public int age;
-    public string gender = "Enter Gender (either M or W)";
+    public string gender =      "Enter Gender";
     public string nationality = "Enter Nationality";
     public string description = "Enter Description";
 
-    public string choice = "Enter Choice";
+    public string choice =      "Enter Choice";
     public float timeElapsed = 0.0f;
     public Sprite imageBefore;
     public Sprite imageAfter;

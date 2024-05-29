@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lm: {fileID: 1523073401}
   mt: {fileID: 839966027}
+  choiceManager: {fileID: 106782403}
   characters:
   - {fileID: 11400000, guid: bfae6058c75e1f748bd175bb8d388905, type: 2}
   - {fileID: 11400000, guid: 0ba562b6d8e9a634d8dbf75622a8eb0a, type: 2}
@@ -9892,6 +9893,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: fc54897c17fc6d54f984560758336d49, type: 3}
     - target: {fileID: 1366333996504578755, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
+      propertyPath: continueButton
+      value: 
+      objectReference: {fileID: 106782398}
+    - target: {fileID: 1366333996504578755, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
       propertyPath: bottomTextObject
       value: 
       objectReference: {fileID: 0}
@@ -9910,6 +9916,11 @@ PrefabInstance:
       propertyPath: bottomTextObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1993537202390120984, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: characterManager
+      value: 
+      objectReference: {fileID: 106782399}
     - target: {fileID: 2186267888691696219, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
       propertyPath: m_IsActive
@@ -9930,6 +9941,11 @@ PrefabInstance:
       propertyPath: ejectTyping
       value: 
       objectReference: {fileID: 8300000, guid: fc54897c17fc6d54f984560758336d49, type: 3}
+    - target: {fileID: 4758393359158059909, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: continueButton
+      value: 
+      objectReference: {fileID: 106782398}
     - target: {fileID: 4758393359158059909, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
       propertyPath: bottomTextObject
@@ -10060,6 +10076,11 @@ PrefabInstance:
       propertyPath: bottomTextObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8700314958316863951, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: characterManager
+      value: 
+      objectReference: {fileID: 106782399}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2186267888691696219, guid: 151df4c0c5ac653479499db320783601, type: 3}
