@@ -21,8 +21,9 @@ MonoBehaviour:
     dedicated her life to conservation and photography.
   choice: Enter Choice
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: c27576572e2f1f349bd415107f9f5137, type: 3}
+  imageBefore: {fileID: 21300000, guid: 177c8d4ccec13bc419e4c9697aedbe5f, type: 3}
   imageAfter: {fileID: 21300000, guid: 7b05ef31b48234c459431faaf9d2d962, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: 3d3e67677af80ce47b24049fc1886b4b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0

@@ -16,13 +16,14 @@ MonoBehaviour:
   age: 26
   gender: F
   nationality: Spanish
-  description: ' passionate environmental activist, Sophia leads campaigns to protect
-    marine ecosystems. Inspired by her scuba-diving father, she spends her free time
-    organizing beach cleanups. '
+  description: 'She is a passionate environmental activist, Sophia leads campaigns
+    to protect marine ecosystems. Inspired by her scuba-diving father, she spends
+    her free time organizing beach cleanups. '
   choice: Skip
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: 28f813fb5a94abe4a9630498218d2817, type: 3}
+  imageBefore: {fileID: 21300000, guid: ba623b5b144ea3344b3df452d9387762, type: 3}
   imageAfter: {fileID: 21300000, guid: e5199c6e2118ca346aa85543a45d7d32, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0

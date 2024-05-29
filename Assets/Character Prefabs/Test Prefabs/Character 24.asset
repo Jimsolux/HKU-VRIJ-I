@@ -21,8 +21,9 @@ MonoBehaviour:
     his experiences to local schoolchildren.
   choice: MakeFood
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: 0cfcc6ac5c62e2847a08646a41db3922, type: 3}
+  imageBefore: {fileID: 21300000, guid: 801fe9aa2bd671248bd23133115435d9, type: 3}
   imageAfter: {fileID: 21300000, guid: 8325bcad624a1a64f869ea38c3465dd6, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0
