@@ -45,7 +45,7 @@ public class LogbookManager : MonoBehaviour
         currentLog[1] = characterInfo.nam + "\n" + characterInfo.age + "\n" + characterInfo.gender + "\n" + characterInfo.nationality;
         currentLog[2] = characterInfo.description;
         currentLog[3] = characterInfo.choice + "\n" + characterInfo.timeElapsed;
-        currentLog[4] = "Deze tekst bestaat nog niet.";
+        currentLog[4] = characterInfo.afterText;
 
         currentImages[0] = characterInfo.imageBefore;
         currentImages[1] = characterInfo.imageAfter;

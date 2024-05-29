@@ -241,6 +241,31 @@ MonoBehaviour:
     type: 3}
   tubeTransform: {fileID: 1921820797}
   buisAnimator: {fileID: 1985199646}
+  petText:
+  - <n> was sent to become one of our pets. They have become a quite well-behaved
+    homo-sapien, after some small adjustments and sterilization. We are greatful
+    for their joyous and loyal presence.
+  museumText:
+  - <n> stands in the museum as a wonderfully educational piece of the strange human
+    body. It will be preserved to be admired at for ages to come.
+  experimentText:
+  - We have had great joy in experimenting with <n>. Their body was able to keep
+    up living throughout multiple tests, teaching us so much more about the human
+    body and its' capabilities. You could say their new form is something of a work
+    of art.
+  breedingText:
+  - <n> was succesfully transformed into a breeding unit. They now serve as a host
+    for many future subjects, which will be useful for the continuation of their
+    species.
+  makeFoodText:
+  - '<n> has become a wonderful savoury soup, made by the finest of our chefs. The
+    back of the soup can reads: Savor the rich, velvety broth <n> infused with a
+    symphony of exotic spices and Earth-grown herbs. Every spoonful unveils the tender,
+    juicy texture of expertly prepared human meat, elevated with subtle sweetness
+    and umami richness.'
+  skipText:
+  - <n> was skipped. Their bodily contents have been sent to one of our food production
+    lines.
 --- !u!4 &106782400
 Transform:
   m_ObjectHideFlags: 0

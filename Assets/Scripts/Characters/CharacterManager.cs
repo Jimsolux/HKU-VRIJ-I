@@ -23,12 +23,18 @@ public class CharacterManager : MonoBehaviour
 
     public Animator buisAnimator;
 
+    [Header("After texts")]
+    [SerializeField][TextArea] private List<string> petText        = new();
+    [SerializeField][TextArea] private List<string> museumText     = new();
+    [SerializeField][TextArea] private List<string> experimentText = new();
+    [SerializeField][TextArea] private List<string> breedingText   = new();
+    [SerializeField][TextArea] private List<string> makeFoodText   = new();
+    [SerializeField][TextArea] private List<string> skipText       = new();
+
     private void Start()
     {
         ui = MonitorUI.instance;
         charactersLeft = new List<Character>(characters);
-
-        //FirstCharacter();
     }
 
     public Character GetRandomCharacterIndex(List<Character> charactersLeft)
@@ -84,6 +90,7 @@ public class CharacterManager : MonoBehaviour
     {
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
+        DecideAfterText(choice, currentCharacterInfo);
     }
 
     public void LogCharacter()
@@ -94,5 +101,70 @@ public class CharacterManager : MonoBehaviour
     public void AnimatorSendBackwards()
     {
         buisAnimator.SetTrigger("BuisAchter");
+    }
+
+    private void DecideAfterText(ChoiceManager.ChoiceEnum givenChoice, Character characterInfo)
+    {
+        string randomText = "";
+        switch (givenChoice)
+        {
+            case ChoiceManager.ChoiceEnum.Pet:
+                randomText = GetRandomPrompt(petText);
+                CreateAfterText(randomText, characterInfo);
+                break;
+            case ChoiceManager.ChoiceEnum.Museum:
+                randomText = GetRandomPrompt(museumText);
+                CreateAfterText(randomText, characterInfo);
+                break;
+            case ChoiceManager.ChoiceEnum.Experiments:
+                randomText = GetRandomPrompt(experimentText);
+                CreateAfterText(randomText, characterInfo);
+                break;
+            case ChoiceManager.ChoiceEnum.Breeding:
+                randomText = GetRandomPrompt(breedingText);
+                CreateAfterText(randomText, characterInfo);
+                break;
+            case ChoiceManager.ChoiceEnum.MakeFood:
+                randomText = GetRandomPrompt(makeFoodText);
+                CreateAfterText(randomText, characterInfo);
+                break;
+            case ChoiceManager.ChoiceEnum.Skip:
+                randomText = GetRandomPrompt(skipText);
+                CreateAfterText(randomText, characterInfo);
+                break;
+        }
+    }
+
+    string GetRandomPrompt(List<string> texts)
+    {
+        return texts[Random.Range(0, texts.Count)];
+    }
+
+    void CreateAfterText(string text, Character characterInfo)
+    {
+        characterInfo.afterText = "";
+        char[] chars = text.ToCharArray();
+
+        for (int i = 0; i < chars.Length; i++)
+        {
+            if (chars[i] == '<')
+            {
+                if (chars[i + 1] == 'n')
+                {
+                    characterInfo.afterText += characterInfo.nam;
+                }
+                else if (chars[i + 1] == 'a')
+                {
+                    characterInfo.afterText += characterInfo.age;
+                }
+
+                i += 2;
+                continue;
+            }
+            else
+            {
+                characterInfo.afterText += chars[i];
+            }
+        }
     }
 }
