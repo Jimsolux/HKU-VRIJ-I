@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7df4311c71a4b0344885450f55e242f1, type: 3}
-  m_Name: Character 6
+  m_Name: Character 31
   m_EditorClassIdentifier: 
-  nam: Ravi
+  nam: David
   age: 45
-  gender: Male
-  nationality: India
-  description: Ravi, a rickshaw driver in Mumbai, navigates the bustling streets
-    with precision. Each day, he saves a portion of his earnings to support his son's
-    education. He dreams of a better life for his family, cherishing every moment
-    spent with them in their tiny apartment.
-  choice: Skip
+  gender: M
+  nationality: Mexican
+  description: David is the charismatic mayor of a major city, dedicated to urban
+    renewal and crime reduction. He rose from a background in community organizing,
+    and his tenure has seen significant infrastructure improvements. In his free
+    time, David enjoys playing soccer with local youth teams and hosting town hall
+    meetings.
+  choice: Pet
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: 28f813fb5a94abe4a9630498218d2817, type: 3}
+  imageBefore: {fileID: 21300000, guid: cecde46c387856448b8de809462e8136, type: 3}
   imageAfter: {fileID: 21300000, guid: e5199c6e2118ca346aa85543a45d7d32, type: 3}
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}

@@ -82,6 +82,7 @@ public class ChoiceManager : MonoBehaviour
                 case 5:
                     Choice = ChoiceEnum.Skip;
                     FavourManager.instance.DecreaseFavour();
+                    FavourManager.instance.CheckFavourLevels();
                     characterManager.SetCharacterChoice(Choice);
                     StartCoroutine(ChoiceCoolDown());
                     break;
