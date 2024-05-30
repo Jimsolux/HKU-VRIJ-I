@@ -29,10 +29,13 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private Image imageBefore, imageAfter;
 
     [Header("Transformations")]
-    [SerializeField] private Transform transformOpened, transformClosed;
+    //[SerializeField] private Transform transformOpened, transformClosed;
+    private Animator animator;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+
         CloseLogbook();
     }
 
@@ -56,7 +59,7 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
-    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage(); }
+    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage();}
 
     public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
 
@@ -83,6 +86,8 @@ public class LogbookManager : MonoBehaviour
 
     public int GetPage() { return page; }
 
+    /*
+     * This code is redundant, using new system now. 
     private void SetOpenPosition()
     {
         transform.localPosition = transformOpened.localPosition;
@@ -96,7 +101,7 @@ public class LogbookManager : MonoBehaviour
         transform.localRotation = transformClosed.localRotation;
         leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
     }
-
+    */ 
     public void OpenLogbook()
     {
         if (!opened)
@@ -105,9 +110,10 @@ public class LogbookManager : MonoBehaviour
 
             leftPage.SetActive(true); 
             rightPage.SetActive(true);
-            buttons.SetActive(true);
+            //buttons.SetActive(true);
 
-            SetOpenPosition();
+            //SetOpenPosition();
+            animator.SetTrigger("Open");
 
             LastPage();
 
@@ -123,9 +129,10 @@ public class LogbookManager : MonoBehaviour
 
             leftPage.SetActive(false);
             rightPage.SetActive(false);
-            buttons.SetActive(false);
+            //buttons.SetActive(false);
 
-            SetClosedPosition();
+            //SetClosedPosition();
+            animator.SetTrigger("Close");
         }
     }
 }

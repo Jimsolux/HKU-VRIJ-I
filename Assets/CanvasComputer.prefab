@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda8a73137559754296e255aab2f5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
   monitorText: 
   writeSpeed: 0.0125
   sizePersonData: 120
@@ -103,6 +104,8 @@ MonoBehaviour:
   startText: []
   popupBox: {fileID: 3116465444231174855}
   textObjects: []
+  audioSource: {fileID: 0}
+  ejectTyping: {fileID: 0}
 --- !u!1 &338684944822804482
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda8a73137559754296e255aab2f5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
   monitorText: 
   writeSpeed: 0.0125
   sizePersonData: 120
@@ -206,6 +210,8 @@ MonoBehaviour:
   startText: []
   popupBox: {fileID: 2251761406828748651}
   textObjects: []
+  audioSource: {fileID: 0}
+  ejectTyping: {fileID: 0}
 --- !u!1 &487333944140804648
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,6 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda8a73137559754296e255aab2f5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
   monitorText: The last person was sent somewhere! find info in logbook xxx
   writeSpeed: 0.0125
   sizePersonData: 130
@@ -743,6 +750,8 @@ MonoBehaviour:
     Good luck.'
   popupBox: {fileID: 0}
   textObjects: []
+  audioSource: {fileID: 0}
+  ejectTyping: {fileID: 0}
 --- !u!1 &2246693042378239660
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,9 +983,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome to your new existance, sorting unit 69. \n\nBefore you, you see
-    a tube with a member of the Homo sapiens. It is your job to sort this specimen
-    appropriately."
+  m_Text: "Welcome to your new existence, sorting unit. \n\nBefore you, you see a
+    tube with a member of your species; the Homo sapiens. It is your job to sort
+    this specimen appropriately."
 --- !u!114 &1993537202390120984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,6 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda8a73137559754296e255aab2f5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
   monitorText: 
   writeSpeed: 0.0125
   sizePersonData: 120
@@ -997,8 +1007,9 @@ MonoBehaviour:
   continueButton: {fileID: 4257064180831813043}
   hasStart: 1
   startText:
-  - "Welcome to your new existance, sorting unit 69. \n\nBefore you, you see a tube
-    with a member of the Homo sapiens. It is your job to sort this specimen appropriately."
+  - "Welcome to your new existence, sorting unit. \n\nBefore you, you see a tube
+    with a member of your species; the Homo sapiens. It is your job to sort this
+    specimen appropriately."
   - 'Please use the button pad on your desk to decide their fate.
 
 
@@ -1009,6 +1020,8 @@ MonoBehaviour:
     Good luck.'
   popupBox: {fileID: 8982496989543300309}
   textObjects: []
+  audioSource: {fileID: 0}
+  ejectTyping: {fileID: 8300000, guid: fc54897c17fc6d54f984560758336d49, type: 3}
 --- !u!1 &2645197804695468047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1188,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &346406183430403673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,6 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda8a73137559754296e255aab2f5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
   monitorText: 
   writeSpeed: 0.0125
   sizePersonData: 90
@@ -1751,6 +1765,8 @@ MonoBehaviour:
   startText: []
   popupBox: {fileID: 8206540848306735414}
   textObjects: []
+  audioSource: {fileID: 0}
+  ejectTyping: {fileID: 0}
 --- !u!1 &5065883082920691921
 GameObject:
   m_ObjectHideFlags: 0
