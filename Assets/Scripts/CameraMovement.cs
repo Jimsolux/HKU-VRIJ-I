@@ -26,8 +26,8 @@ public class CameraMovement : MonoBehaviour
     private bool triggeredLeft, triggeredRight;
     [SerializeField] private GameObject zoomInButton;
 
-    [SerializeField] private LogbookManager logbookManager; 
-
+    [SerializeField] private LogbookManager logbookManager;
+    [SerializeField] private Animator logbookCameraAnimator;
     public enum CameraDirection
     {
         Left, Center, Right, Buttons
@@ -112,11 +112,15 @@ public class CameraMovement : MonoBehaviour
                     triggeredLeft = true;
                     HandleUI();
                 }
-                restartedTyping = false;
+                logbookCameraAnimator.SetBool("InView", true);
                 return angleLeft;
 
-            case CameraDirection.Center: restartedTyping = false; return angleCenter;
-            case CameraDirection.Buttons: restartedTyping = false; return angleButtons;
+            case CameraDirection.Center: 
+                restartedTyping = false;
+                logbookCameraAnimator.SetBool("InView", false);
+                return angleCenter;
+
+            case CameraDirection.Buttons:  return angleButtons;
 
             case CameraDirection.Right:
                 if (!triggeredRight)
