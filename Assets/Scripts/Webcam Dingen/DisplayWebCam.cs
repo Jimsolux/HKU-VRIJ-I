@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
-public class DisplayWebCam : MonoBehaviour
+public class DisplayWebCam 
 {
-
-    private void Start()
+    public DisplayWebCam(Renderer renderer, int i)
     {
-        WebCamDevice[] devices = WebCamTexture.devices;
+        WebCamTexture texture = FindWebCamTexture(i);
+        ApplyWebCamTexture(renderer, texture);
+    }
 
-        // print available webcams to the console
-        for (int i = 0; i < devices.Length; i++)
-            Debug.Log("Webcams available: " + devices[i].name);
+    public WebCamTexture FindWebCamTexture(int i)
+    {
+        // Debugging
+        foreach(WebCamDevice device in WebCamTexture.devices)
+            Debug.Log(device.name);
 
-        Renderer renderer = this.GetComponent<Renderer>();
+        return new WebCamTexture(WebCamTexture.devices[i].name);
+    }
 
-        WebCamTexture texture = new WebCamTexture(devices[0].name);
+    public void ApplyWebCamTexture(Renderer renderer, WebCamTexture texture)
+    {
         renderer.material.mainTexture = texture;
         texture.Play();
     }

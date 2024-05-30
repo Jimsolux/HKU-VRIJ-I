@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] ChoiceManager choiceManager;
     MonitorUI ui;
 
+    [SerializeField] private Character finalCharacter = new Character();
     [SerializeField] private List<Character> characters = new List<Character>();
     [SerializeField] private List<Character> charactersLeft;
 
@@ -169,4 +171,6 @@ public class CharacterManager : MonoBehaviour
             }
         }
     }
+
+    
 }
