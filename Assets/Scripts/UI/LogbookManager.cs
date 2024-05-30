@@ -59,9 +59,9 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
-    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage(); Debug.Log("hi"); }
+    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage();}
 
-    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); Debug.Log("bye"); }
+    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
 
     public void LastPage() { page = logs.Count - 1; UpdatePage(); }
 
