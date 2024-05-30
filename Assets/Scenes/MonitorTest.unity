@@ -9957,11 +9957,6 @@ PrefabInstance:
       objectReference: {fileID: 246777155}
     - target: {fileID: 1993537202390120984, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
-      propertyPath: ejectTyping
-      value: 
-      objectReference: {fileID: 8300000, guid: fc54897c17fc6d54f984560758336d49, type: 3}
-    - target: {fileID: 1993537202390120984, guid: 151df4c0c5ac653479499db320783601,
-        type: 3}
       propertyPath: bottomTextObject
       value: 
       objectReference: {fileID: 0}
