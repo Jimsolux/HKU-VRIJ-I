@@ -25,6 +25,8 @@ public class MonitorUI : MonoBehaviour
     [SerializeField] private GameObject trainingTab;
     [SerializeField] private GameObject desiresTab;
 
+    private bool updatedPerson = false;
+
     private void Awake()
     {
         instance = this; 
@@ -42,11 +44,16 @@ public class MonitorUI : MonoBehaviour
 
     public void ReturnToMonitor()
     {
-        if (personalInformationTab.activeSelf)
+        if (personalInformationTab.activeSelf && updatedPerson)
         {
             popUpPersonalInfo.SetActive(false);
             StartCoroutine(personalInfoTextHandler.WriteText(typeStringCharacter));
         }
+    }
+
+    public void UpdatePerson()
+    {
+        updatedPerson = true;
     }
 
     public void SelectTab(int tab)

@@ -97,6 +97,7 @@ public class ChoiceManager : MonoBehaviour
             //StartCoroutine(WaitBeforeAnimation());
             StartTubeAnimation();
             DeskLamp.TurnOn();
+            MonitorUI.instance.UpdatePerson();
 
             canChoose = false;
         }
