@@ -59,9 +59,9 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
-    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage(); }
+    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage(); Debug.Log("hi"); }
 
-    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
+    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); Debug.Log("bye"); }
 
     public void LastPage() { page = logs.Count - 1; UpdatePage(); }
 
@@ -110,7 +110,7 @@ public class LogbookManager : MonoBehaviour
 
             leftPage.SetActive(true); 
             rightPage.SetActive(true);
-            buttons.SetActive(true);
+            //buttons.SetActive(true);
 
             //SetOpenPosition();
             animator.SetTrigger("Open");
@@ -129,7 +129,7 @@ public class LogbookManager : MonoBehaviour
 
             leftPage.SetActive(false);
             rightPage.SetActive(false);
-            buttons.SetActive(false);
+            //buttons.SetActive(false);
 
             //SetClosedPosition();
             animator.SetTrigger("Close");
