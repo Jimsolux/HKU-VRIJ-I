@@ -46,9 +46,12 @@ public class MonitorUI : MonoBehaviour
     {
         if (personalInformationTab.activeSelf && updatedPerson)
         {
+            updatedPerson = false;
             popUpPersonalInfo.SetActive(false);
             StartCoroutine(personalInfoTextHandler.WriteText(typeStringCharacter));
         }
+
+       StartCoroutine(HallucinationEffects.instance.ClearMonitorEffect());
     }
 
     public void UpdatePerson()
