@@ -7,7 +7,7 @@ public class HallucinationEffects : MonoBehaviour
     public static HallucinationEffects instance;
     private void Awake()
     {
-        instance = this; 
+        instance = this;
     }
 
     private Hallucination hallucination;
@@ -21,7 +21,7 @@ public class HallucinationEffects : MonoBehaviour
     [SerializeField] private GameObject[] monitorChange;
     [SerializeField] private GameObject extraMug;
     [SerializeField] private GameObject personStaringDown;
-    [SerializeField] private GameObject[] crowdStaring; 
+    [SerializeField] private GameObject[] crowdStaring;
 
     private IEnumerator LoopVFX()
     {
@@ -45,12 +45,20 @@ public class HallucinationEffects : MonoBehaviour
                         HandleFloatyHumans(4, hallucinationFactor);
                         break;
                     case 1:
-                        if (!switchedMonitor)
+
+                        if (CameraMovement.instance.Direction() == CameraMovement.CameraDirection.Right)
                         {
-                            switchedMonitor = true;
-                            monitorChange[Random.Range(0, monitorChange.Length)].SetActive(true);
+                            StartCoroutine(HandleOBJ(monitorChange[Random.Range(0, monitorChange.Length)], hallucinationFactor, 3));
                         }
-                        else HandleFloatyHumans(floatyHumans.Length, hallucinationFactor);
+                        else
+                        {
+                            if (!switchedMonitor)
+                            {
+                                switchedMonitor = true;
+                                monitorChange[Random.Range(0, monitorChange.Length)].SetActive(true);
+                            }
+                            else HandleFloatyHumans(floatyHumans.Length, hallucinationFactor);
+                        }
                         break;
                     case 2:
                         StartCoroutine(HandleOBJ(extraMug, hallucinationFactor, 3));
@@ -65,7 +73,7 @@ public class HallucinationEffects : MonoBehaviour
                         {
                             int crowdSize = Random.Range(1, hallucinationFactor);
                             crowdSize = Mathf.Clamp(crowdSize, 1, crowdStaring.Length);
-                            for(int i = 0; i < crowdSize; i++)
+                            for (int i = 0; i < crowdSize; i++)
                             {
                                 GameObject person = crowdStaring[i];
 
@@ -101,12 +109,12 @@ public class HallucinationEffects : MonoBehaviour
     }
 
     private bool switchedMonitor = false;
-    public bool SwitchedMonitor() {  return switchedMonitor; }
+    public bool SwitchedMonitor() { return switchedMonitor; }
     public IEnumerator ClearMonitorEffect()
     {
         switchedMonitor = false;
-        yield return new WaitForSeconds(Random.Range(0, 1));
-        foreach(GameObject g in monitorChange)
+        yield return new WaitForSeconds(Random.Range(0, 3));
+        foreach (GameObject g in monitorChange)
         {
             g.SetActive(false);
         }

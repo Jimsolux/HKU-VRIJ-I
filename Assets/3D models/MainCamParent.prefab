@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345c5e0eda16f7a4cbf9cb80f25b6e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hallucinationFactor: 1
+  hallucinationFactor: 0
   lowInsanitySFX:
   - {fileID: 5805536667161973629}
   - {fileID: 7067043952988941254}
@@ -2001,6 +2001,7 @@ MonoBehaviour:
   percentageCamSwap: 0.25
   cameraSpeed: 2
   cooldown: 0.5
+  inCutscene: 1
   angleLeft: {x: 20, y: -50, z: 0}
   angleCenter: {x: 15, y: 0, z: 0}
   angleRight: {x: 7, y: 60, z: 0}

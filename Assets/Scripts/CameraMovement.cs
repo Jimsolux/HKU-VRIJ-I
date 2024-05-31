@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public static CameraMovement instance;
+
+    private void Awake()
+    {
+        instance = this; 
+    }
+
     private Vector2 screenResolution;
 
     private Camera cam;
@@ -34,6 +41,8 @@ public class CameraMovement : MonoBehaviour
         Left, Center, Right, Buttons
     }
 
+    public CameraDirection Direction() { return currentCameraDirection; }
+ 
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -71,6 +80,8 @@ public class CameraMovement : MonoBehaviour
 
     private CameraDirection GetDirection()
     {
+        if (inCutscene) return CameraDirection.Center;
+
         StartCoroutine(CameraMoveCooldown());
 
         Vector2 mousePixels = Input.mousePosition;
