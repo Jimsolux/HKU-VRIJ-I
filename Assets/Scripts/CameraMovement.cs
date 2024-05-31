@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour
     [Range(0, 0.5f)] [SerializeField] private float percentageCamSwap;
     [SerializeField] private float cameraSpeed = 2;
     [SerializeField] private float cooldown = 0.5f;
-    private CameraDirection currentCameraDirection;
+    private CameraDirection currentCameraDirection = CameraDirection.Center;
     private int camSwapPixels;
     private bool lockMotion; // cutscene stuff
     private bool onCooldown;
