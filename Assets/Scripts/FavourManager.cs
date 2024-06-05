@@ -96,6 +96,11 @@ public class FavourManager : MonoBehaviour
     }
 
 
+    public float GetFoodValue() { return foodFavour; }
+    public float GetPopulationValue() { return populationFavour; }
+    public float GetAnthropologyValue() { return anthropologyFavour; }
+    public float GetEntertainmentValue() { return entertainmentFavour; }
+
     public void WarnPlayer(FavourType favourType)
     {
         if (hcTimeline.state != PlayState.Playing)

@@ -142,7 +142,7 @@ public class CameraMovement : MonoBehaviour
                 if (!triggeredRight)
                 {
                     triggeredRight = true;
-                    MonitorText.instance.StartDialogue();
+                    MonitorUI.instance.StartDialogue();
                     HandleUI();
                 }
                 if (!restartedTyping)

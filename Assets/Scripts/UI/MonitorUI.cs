@@ -13,6 +13,7 @@ public class MonitorUI : MonoBehaviour
 
     [SerializeField] private Image personalInfoImage;
     [SerializeField] private MonitorText personalInfoTextHandler;
+    [SerializeField] private MonitorText startTextHandler;
     [SerializeField] private Image trainingImage;
     [SerializeField] private Image desiresImage;
 
@@ -24,6 +25,11 @@ public class MonitorUI : MonoBehaviour
     [SerializeField] private GameObject personalInformationTab;
     [SerializeField] private GameObject trainingTab;
     [SerializeField] private GameObject desiresTab;
+    [Header("Desires")]
+    [SerializeField] private Slider desiresSliderFood;
+    [SerializeField] private Slider desiresSliderPopulation;
+    [SerializeField] private Slider desiresSliderAnthropology;
+    [SerializeField] private Slider desiresSliderEntertainment;
 
     private bool updatedPerson = false;
 
@@ -42,8 +48,13 @@ public class MonitorUI : MonoBehaviour
 
     public void SetStringCharacter(string newString) { typeStringCharacter = newString; }
 
+    public void StartDialogue()
+    {
+        startTextHandler.StartDialogue();
+    }
     public void ReturnToMonitor()
     {
+        SetSliderValues();
         if (personalInformationTab.activeSelf && updatedPerson)
         {
             updatedPerson = false;
@@ -89,7 +100,16 @@ public class MonitorUI : MonoBehaviour
             case 2: desiresTab.SetActive(true);
                 desiresImage.sprite = tabSelected;
                 popUpDesires.SetActive(false);
+                SetSliderValues();
                 break;
         }
+    }
+    
+    private void SetSliderValues()
+    {
+        desiresSliderFood.value = FavourManager.instance.GetFoodValue();
+        desiresSliderPopulation.value = FavourManager.instance.GetPopulationValue();
+        desiresSliderAnthropology.value = FavourManager.instance.GetAnthropologyValue();
+        desiresSliderEntertainment.value = FavourManager.instance.GetEntertainmentValue();
     }
 }
