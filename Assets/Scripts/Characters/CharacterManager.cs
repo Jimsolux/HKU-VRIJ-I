@@ -117,9 +117,11 @@ public class CharacterManager : MonoBehaviour
         lm.LogCharacter(currentCharacterInfo); // log previous character
     }
 
-    public void AnimatorSendBackwards()
+    public void AnimatorSendBackwards(ChoiceManager.ChoiceEnum givenChoice)
     {
-        buisAnimator.SetTrigger("BuisAchter");
+        if (givenChoice == ChoiceManager.ChoiceEnum.Skip) buisAnimator.SetTrigger("BuisBlender");
+
+        else buisAnimator.SetTrigger("BuisAchter");
     }
 
     private void DecideAfterText(ChoiceManager.ChoiceEnum givenChoice, Character characterInfo, Sprite sprite)
