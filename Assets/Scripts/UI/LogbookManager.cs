@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.Mathematics;
 
 public class LogbookManager : MonoBehaviour
 {
@@ -18,11 +17,7 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pageNumber; 
 
     [Header("Page objects")]
-    [SerializeField] private GameObject leftSide, rightSide, leftPage, rightPage;
-    [SerializeField] private GameObject leftPagePrefab, rightPagePrefab;
-    [SerializeField] private GameObject pageTurnerLeft, pageTurnerRight;
-
-    private KeepPagesAttached pageTurner;
+    [SerializeField] private GameObject leftSide, leftPage, rightPage;
 
     [Header("Information fields")]
     [SerializeField] private TextMeshProUGUI caseNumber;
@@ -33,23 +28,15 @@ public class LogbookManager : MonoBehaviour
 
     [SerializeField] private Image imageBefore, imageAfter;
 
-    private Animator logbookAnimator;
+    [Header("Transformations")]
+    //[SerializeField] private Transform transformOpened, transformClosed;
+    private Animator animator;
 
     private void Start()
     {
-        logbookAnimator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         CloseLogbook();
-    }
-
-    private void Update()
-    {
-        if (pageTurner != null)
-        {
-            Debug.Log("IM ALIVE");
-            if (!pageTurner.Turn())
-                pageTurner = null;
-        }
     }
 
     public void LogCharacter(Character characterInfo)
@@ -72,35 +59,38 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
-    public void NextPage() 
-    { 
-        page = Mathf.Min(logs.Count - 1, page + 1);
+    bool lastCharSorted = false;
+    public void LogLastCharacter()
+    {
+        string[] currentLog = new string[5]; // 5 textboxes
+        Sprite[] currentImages = new Sprite[2];
 
-        GameObject newLeftPage = Instantiate(leftPagePrefab, leftSide.transform); 
-        GameObject newRightPage = Instantiate(rightPagePrefab, rightSide.transform);
-        pageTurner = new KeepPagesAttached(newLeftPage, rightPage, leftPage);
+        currentLog[0] = logs.Count.ToString();
+        currentLog[1] = "Sorting Unit" + "\n" + "Unknown" + "\n" + "Unknown" + "\n" + "Dutch"; // vervang dutch na test voor school
 
-        // set variables
-        caseNumber          = newLeftPage.transform.Find("Case Number").GetComponent<TextMeshProUGUI>();
-        personalInformation = newLeftPage.transform.Find("Personal Information").GetComponent<TextMeshProUGUI>();
-        subjectBiography    = newLeftPage.transform.Find("Subject Biography").GetComponent<TextMeshProUGUI>();
-        caseResults         = newRightPage.transform.Find("Case Results").GetComponent<TextMeshProUGUI>();
-        documentResults     = newRightPage.transform.Find("Documented Results").GetComponent<TextMeshProUGUI>();
+        currentLog[2] = "The sorting unit has aided our goal to better understand the Homo sapiens. After sorting various members of their" +
+            " own species, their worth became less than adequate.";
+        currentLog[3] = "N/A\nN/A";
+        currentLog[4] = "N/A";
 
-        imageBefore = newLeftPage.transform.Find("Picture").GetComponent<Image>();
-        imageAfter = newRightPage.transform.Find("Picture").GetComponent<Image>();
+        // hier moet webcam screenshot komen
+        currentImages[0] = null;
+        currentImages[1] = null;
 
-        UpdatePage();
+        logs.Add(currentLog);
+        images.Add(currentImages);
 
-        leftPage = newLeftPage;
-        rightPage = newRightPage;
+        lastCharSorted = true;
+        FirstPage();
     }
+
+    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage();}
 
     public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
 
-    public void LastPage() { page = logs.Count - 1; UpdatePage(); }
-
     public void FirstPage() { page = 0; UpdatePage(); }
+
+    public void LastPage() { page = logs.Count - 1; UpdatePage(); }
 
     private void UpdatePage()
     {
@@ -123,6 +113,22 @@ public class LogbookManager : MonoBehaviour
 
     public int GetPage() { return page; }
 
+    /*
+     * This code is redundant, using new system now. 
+    private void SetOpenPosition()
+    {
+        transform.localPosition = transformOpened.localPosition;
+        transform.localRotation = transformOpened.localRotation;
+        leftSide.transform.localRotation = Quaternion.Euler(0, 180, 90);
+    }
+
+    private void SetClosedPosition()
+    {
+        transform.localPosition = transformClosed.localPosition;
+        transform.localRotation = transformClosed.localRotation;
+        leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
+    }
+    */ 
     public void OpenLogbook()
     {
         if (!opened)
@@ -133,9 +139,11 @@ public class LogbookManager : MonoBehaviour
             rightPage.SetActive(true);
             //buttons.SetActive(true);
 
-            logbookAnimator.SetTrigger("Open");
+            //SetOpenPosition();
+            animator.SetTrigger("Open");
 
-            LastPage();
+            if (lastCharSorted) FirstPage();
+            else LastPage();
 
             DeskLamp.TurnOff(); 
         }
@@ -151,7 +159,8 @@ public class LogbookManager : MonoBehaviour
             rightPage.SetActive(false);
             //buttons.SetActive(false);
 
-            logbookAnimator.SetTrigger("Close");
+            //SetClosedPosition();
+            animator.SetTrigger("Close");
         }
     }
 }

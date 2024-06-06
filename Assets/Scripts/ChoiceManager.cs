@@ -48,11 +48,22 @@ public class ChoiceManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
     }
-
+    bool tubeIsEmpty = false;
+    public void LockdownChoice()
+    {
+        tubeIsEmpty = true;
+    }
     public void OnClick(int ID)
     {
-        if (notOnChoiceCooldown && canChoose)
+        if (notOnChoiceCooldown && canChoose && !tubeIsEmpty)
         {
+            GameManager.Instance.ResetCharacterTimerLength();
+
+            if (GameManager.Instance.AddInsanity())
+            {
+                Hallucination.instance.ChangeHallucinationStrength(2);
+            }
+
             PlayButtonSound();
             switch (ID)
             {

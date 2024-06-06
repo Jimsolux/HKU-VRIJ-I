@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
     //References
     public static GameManager Instance;
@@ -17,6 +14,10 @@ public class GameManager : MonoBehaviour
 
     //Timer
     private float fourMinuteTimer = 240;
+
+    private bool updateInsanity = false;
+    private float timeNextInsanityUpdate;
+
     private bool mainTimerIsOff = false;
     private bool charTimerIsOff = true;
     //CharacterTimer
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     //Animaties
     private void Awake()
     {
+        timeNextInsanityUpdate = fourMinuteTimer - 48;
         Instance = this;
         //SetCanChoice(true);
         ResetCharacterTimerLength();
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!mainTimerIsOff) GameTimer();   // Telt de gameTimer af
-        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing) CharacterChoiceTimer(); // Telt de Chartimer af
+        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing && !mainTimerIsOff) CharacterChoiceTimer(); // Telt de Chartimer af
     }
 
 
@@ -42,10 +44,17 @@ public class GameManager : MonoBehaviour
     private void GameTimer()
     {
         fourMinuteTimer -= Time.deltaTime;
+
+        if (fourMinuteTimer < timeNextInsanityUpdate)
+        {
+            updateInsanity = true;
+            timeNextInsanityUpdate = timeNextInsanityUpdate - 48;
+        }
+
         if (fourMinuteTimer <= 0)
         {
             mainTimerIsOff = true;
-            ForcelogBook();
+            //ForcelogBook();
         }
     }
 
@@ -56,8 +65,8 @@ public class GameManager : MonoBehaviour
 
         logbookManager.OpenLogbook(); // voor de zekerheid
     }
-    
-    private void ResetCharacterTimerLength()
+
+    public void ResetCharacterTimerLength()
     {
         characterTimer = characterTimerLength;
     }
@@ -69,7 +78,8 @@ public class GameManager : MonoBehaviour
             characterTimer -= Time.deltaTime;
             if (characterTimer <= 0)
             {
-                characterManager.SetCharacterChoice(ChoiceManager.ChoiceEnum.Skip, null);
+                choiceManager.OnClick(5);
+                //characterManager.SetCharacterChoice(ChoiceManager.ChoiceEnum.Skip, null);
                 //characterManager.NextCharacter();
                 charTimerIsOff = true;
                 ResetCharacterTimerLength();
@@ -78,10 +88,25 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public bool AddInsanity()
+    {
+        if (updateInsanity)
+        {
+            updateInsanity = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool OutOfTime()
+    {
+        return mainTimerIsOff;
+    }
+
     #region Call From Animator
     public void SetCanChoice(bool theBool)
     {
-        choiceManager.SetCanChoose(theBool);
+            choiceManager.SetCanChoose(theBool);
 
     }
 

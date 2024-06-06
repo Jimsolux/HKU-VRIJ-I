@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
@@ -18,20 +17,23 @@ public class CharacterManager : MonoBehaviour
     private GameObject currentTubeObj;
     private Character currentCharacterInfo;
 
+    [SerializeField] private Character emptyCharacter;
+
     [SerializeField] private Transform characterTransform;
 
     [SerializeField] private GameObject tubePrefab;
+    [SerializeField] private GameObject tubePrefabEmpty;
     [SerializeField] private Transform tubeTransform;
 
     public Animator buisAnimator;
 
     [Header("After texts")]
-    [SerializeField][TextArea] private List<string> petText        = new();
-    [SerializeField][TextArea] private List<string> museumText     = new();
+    [SerializeField][TextArea] private List<string> petText = new();
+    [SerializeField][TextArea] private List<string> museumText = new();
     [SerializeField][TextArea] private List<string> experimentText = new();
-    [SerializeField][TextArea] private List<string> breedingText   = new();
-    [SerializeField][TextArea] private List<string> makeFoodText   = new();
-    [SerializeField][TextArea] private List<string> skipText       = new();
+    [SerializeField][TextArea] private List<string> breedingText = new();
+    [SerializeField][TextArea] private List<string> makeFoodText = new();
+    [SerializeField][TextArea] private List<string> skipText = new();
 
     private void Start()
     {
@@ -55,24 +57,41 @@ public class CharacterManager : MonoBehaviour
 
     public void InstantiateCharacter(Character randomCharacterInfo)
     {
-        currentTubeObj = Instantiate<GameObject>(tubePrefab, tubeTransform.position, tubeTransform.rotation);
+        if(randomCharacterInfo == emptyCharacter)
+        {
+            currentTubeObj = Instantiate<GameObject>(tubePrefabEmpty, tubeTransform.position, tubeTransform.rotation);
+            choiceManager.LockdownChoice();
+        }
+        else currentTubeObj = Instantiate<GameObject>(tubePrefab, tubeTransform.position, tubeTransform.rotation);
     }
 
     public void NextCharacter()
     {
         Character potentialNextCharacterInfo = GetRandomCharacterIndex(charactersLeft);
 
+
         if (potentialNextCharacterInfo != null)
         {
             lm.LogCharacter(currentCharacterInfo);
-            currentCharacterInfo = potentialNextCharacterInfo;
+
+            if (GameManager.Instance.OutOfTime())
+            {
+                currentCharacterInfo = emptyCharacter;
+                choiceManager.canChoose = false;
+                lm.LogLastCharacter();
+            }
+            else
+            {
+                currentCharacterInfo = potentialNextCharacterInfo;
+                choiceManager.canChoose = true;
+            }
+
             InstantiateCharacter(currentCharacterInfo);
             buisAnimator = currentTubeObj.GetComponent<Animator>();
 
             ui.SetPopUpPersonalInfo();
             ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
 
-            choiceManager.canChoose = true;
         }
     }
 
@@ -93,6 +112,7 @@ public class CharacterManager : MonoBehaviour
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
         DecideAfterText(choice, currentCharacterInfo, sprite);
+
     }
 
     public void LogCharacter()

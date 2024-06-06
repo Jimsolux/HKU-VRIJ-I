@@ -31,7 +31,12 @@ public class HumanRandomizer : MonoBehaviour
         this.gender = gender;
     }
 
-    void Start()
+    private void Start()
+    {
+        Randomize();
+    }
+
+    public void Randomize()
     {
         // Remove once Character class is linked up to this
         #region Gender test 

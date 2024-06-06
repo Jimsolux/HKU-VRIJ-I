@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public static CameraMovement instance;
+
+    private void Awake()
+    {
+        instance = this; 
+    }
+
     private Vector2 screenResolution;
 
     private Camera cam;
 
     [Header("Camera")]
-    [Range(0, 0.5f)][SerializeField] private float percentageCamSwap;
+    [Range(0, 0.5f)] [SerializeField] private float percentageCamSwap;
     [SerializeField] private float cameraSpeed = 2;
     [SerializeField] private float cooldown = 0.5f;
-    private CameraDirection currentCameraDirection;
+    private CameraDirection currentCameraDirection = CameraDirection.Center;
     private int camSwapPixels;
     private bool lockMotion; // cutscene stuff
     private bool onCooldown;
+    public bool inCutscene = true;
 
     [Header("Angle")]
     [SerializeField] private Vector3 angleLeft, angleCenter, angleRight, angleButtons;
@@ -33,6 +41,8 @@ public class CameraMovement : MonoBehaviour
         Left, Center, Right, Buttons
     }
 
+    public CameraDirection Direction() { return currentCameraDirection; }
+ 
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -42,19 +52,23 @@ public class CameraMovement : MonoBehaviour
         camSwapPixels = Mathf.RoundToInt(screenResolution.x * percentageCamSwap);
     }
 
+    
     void Update()
     {
-        CameraDirection previousCameraDirection = currentCameraDirection;
-        if (!lockMotion && !onCooldown)
+        if (inCutscene == false)
         {
-            currentCameraDirection = GetDirection();
+            CameraDirection previousCameraDirection = currentCameraDirection;
+            if (!lockMotion && !onCooldown)
+            {
+                currentCameraDirection = GetDirection();
+            }
+            Vector3 targetAngle = GetCameraAngle();
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetAngle), cameraSpeed);
+
+            //if (previousCameraDirection != currentCameraDirection)
+            SetCameraFOV();
         }
-        Vector3 targetAngle = GetCameraAngle();
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetAngle), cameraSpeed);
-
-        //if (previousCameraDirection != currentCameraDirection)
-        SetCameraFOV();
     }
 
     private IEnumerator CameraMoveCooldown()
@@ -66,6 +80,8 @@ public class CameraMovement : MonoBehaviour
 
     private CameraDirection GetDirection()
     {
+        if (inCutscene) return CameraDirection.Center;
+
         StartCoroutine(CameraMoveCooldown());
 
         Vector2 mousePixels = Input.mousePosition;
@@ -126,7 +142,7 @@ public class CameraMovement : MonoBehaviour
                 if (!triggeredRight)
                 {
                     triggeredRight = true;
-                    MonitorText.instance.StartDialogue();
+                    MonitorUI.instance.StartDialogue();
                     HandleUI();
                 }
                 if (!restartedTyping)
