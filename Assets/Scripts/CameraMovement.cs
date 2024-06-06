@@ -52,17 +52,30 @@ public class CameraMovement : MonoBehaviour
         camSwapPixels = Mathf.RoundToInt(screenResolution.x * percentageCamSwap);
     }
 
-    
+    private bool forceCenter = false;
+    public void ForceCenter()
+    {
+        forceCenter = true;
+    }
     void Update()
     {
         if (inCutscene == false)
         {
+            Vector3 targetAngle = new();
+            if (forceCenter)
+            {
+                currentCameraDirection = CameraDirection.Center;
+                targetAngle = GetCameraAngle();
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetAngle), cameraSpeed);
+                return;
+            }
+
             CameraDirection previousCameraDirection = currentCameraDirection;
             if (!lockMotion && !onCooldown)
             {
                 currentCameraDirection = GetDirection();
             }
-            Vector3 targetAngle = GetCameraAngle();
+            targetAngle = GetCameraAngle();
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetAngle), cameraSpeed);
 

@@ -31,6 +31,11 @@ public class Hallucination : MonoBehaviour
         hallucinationFactor = Mathf.Clamp(hallucinationFactor, 0, 9); // only allow 10 for ending
     }
 
+    public void End()
+    {
+        hallucinationFactor = 10;
+        animator.SetTrigger("Outro Cam");
+    }
     public int GetHallucinationFactor() { return hallucinationFactor; }
 
     private IEnumerator HallucinationLoop()

@@ -67,7 +67,6 @@ public class CharacterManager : MonoBehaviour
     {
         Character potentialNextCharacterInfo = GetRandomCharacterIndex(charactersLeft);
 
-
         if (potentialNextCharacterInfo != null)
         {
             lm.LogCharacter(currentCharacterInfo);
