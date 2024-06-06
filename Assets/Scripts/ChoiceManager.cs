@@ -53,6 +53,13 @@ public class ChoiceManager : MonoBehaviour
     {
         if (notOnChoiceCooldown && canChoose)
         {
+            GameManager.Instance.ResetCharacterTimerLength();
+
+            if (GameManager.Instance.AddInsanity())
+            {
+                Hallucination.instance.ChangeHallucinationStrength(2);
+            }
+
             PlayButtonSound();
             switch (ID)
             {

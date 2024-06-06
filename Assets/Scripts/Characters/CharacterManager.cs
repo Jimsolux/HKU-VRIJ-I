@@ -91,6 +91,7 @@ public class CharacterManager : MonoBehaviour
         currentCharacterInfo.choice = choice.ToString();
         currentCharacterInfo.activeChoice = choice;
         DecideAfterText(choice, currentCharacterInfo, sprite);
+
     }
 
     public void LogCharacter()

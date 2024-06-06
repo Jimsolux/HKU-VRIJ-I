@@ -29,7 +29,7 @@ public class Hallucination : MonoBehaviour
     {
         hallucinationFactor += amount;
 
-        animator.speed = hallucinationFactor;
+        animator.speed = hallucinationFactor / 2;
     }
 
     public int GetHallucinationFactor() { return hallucinationFactor; }
@@ -45,7 +45,7 @@ public class Hallucination : MonoBehaviour
             }
             else
             {
-                float r = Random.Range(0, 10); // time between hallucinations
+                float r = Random.Range(5, 20); // time between hallucinations
                 r /= hallucinationFactor;
 
                 animator.SetFloat("Blend", Random.Range(0, 1f));
@@ -72,7 +72,7 @@ public class Hallucination : MonoBehaviour
             }
             else
             {
-                float r = Random.Range(0f, (20 - hallucinationFactor)); // time between sound proc
+                float r = Random.Range(4f, (20 - hallucinationFactor)); // time between sound proc
                 yield return new WaitForSeconds(r);
                 try
                 {
