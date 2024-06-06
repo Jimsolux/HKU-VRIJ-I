@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1883048851496391956}
   - component: {fileID: 3100055142984867881}
   - component: {fileID: 6412968795079639514}
-  - component: {fileID: 5601522907045890001}
+  - component: {fileID: 230631919415067996}
   m_Layer: 5
   m_Name: Logbook Page Left
   m_TagString: Untagged
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6412968795079639514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &5601522907045890001
+--- !u!95 &230631919415067996
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

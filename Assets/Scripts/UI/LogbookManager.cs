@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Mathematics;
 
 public class LogbookManager : MonoBehaviour
 {
@@ -17,7 +18,11 @@ public class LogbookManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pageNumber; 
 
     [Header("Page objects")]
-    [SerializeField] private GameObject leftSide, leftPage, rightPage;
+    [SerializeField] private GameObject leftSide, rightSide, leftPage, rightPage;
+    [SerializeField] private GameObject leftPagePrefab, rightPagePrefab;
+    [SerializeField] private GameObject pageTurnerLeft, pageTurnerRight;
+
+    private KeepPagesAttached pageTurner;
 
     [Header("Information fields")]
     [SerializeField] private TextMeshProUGUI caseNumber;
@@ -28,15 +33,23 @@ public class LogbookManager : MonoBehaviour
 
     [SerializeField] private Image imageBefore, imageAfter;
 
-    [Header("Transformations")]
-    //[SerializeField] private Transform transformOpened, transformClosed;
-    private Animator animator;
+    private Animator logbookAnimator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        logbookAnimator = GetComponent<Animator>();
 
         CloseLogbook();
+    }
+
+    private void Update()
+    {
+        if (pageTurner != null)
+        {
+            Debug.Log("IM ALIVE");
+            if (!pageTurner.Turn())
+                pageTurner = null;
+        }
     }
 
     public void LogCharacter(Character characterInfo)
@@ -59,11 +72,35 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
-    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage();}
+    public void NextPage() 
+    { 
+        page = Mathf.Min(logs.Count - 1, page + 1);
+
+        GameObject newLeftPage = Instantiate(leftPagePrefab, leftSide.transform); 
+        GameObject newRightPage = Instantiate(rightPagePrefab, rightSide.transform);
+        pageTurner = new KeepPagesAttached(newLeftPage, rightPage, leftPage);
+
+        // set variables
+        caseNumber          = newLeftPage.transform.Find("Case Number").GetComponent<TextMeshProUGUI>();
+        personalInformation = newLeftPage.transform.Find("Personal Information").GetComponent<TextMeshProUGUI>();
+        subjectBiography    = newLeftPage.transform.Find("Subject Biography").GetComponent<TextMeshProUGUI>();
+        caseResults         = newRightPage.transform.Find("Case Results").GetComponent<TextMeshProUGUI>();
+        documentResults     = newRightPage.transform.Find("Documented Results").GetComponent<TextMeshProUGUI>();
+
+        imageBefore = newLeftPage.transform.Find("Picture").GetComponent<Image>();
+        imageAfter = newRightPage.transform.Find("Picture").GetComponent<Image>();
+
+        UpdatePage();
+
+        leftPage = newLeftPage;
+        rightPage = newRightPage;
+    }
 
     public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
 
     public void LastPage() { page = logs.Count - 1; UpdatePage(); }
+
+    public void FirstPage() { page = 0; UpdatePage(); }
 
     private void UpdatePage()
     {
@@ -86,22 +123,6 @@ public class LogbookManager : MonoBehaviour
 
     public int GetPage() { return page; }
 
-    /*
-     * This code is redundant, using new system now. 
-    private void SetOpenPosition()
-    {
-        transform.localPosition = transformOpened.localPosition;
-        transform.localRotation = transformOpened.localRotation;
-        leftSide.transform.localRotation = Quaternion.Euler(0, 180, 90);
-    }
-
-    private void SetClosedPosition()
-    {
-        transform.localPosition = transformClosed.localPosition;
-        transform.localRotation = transformClosed.localRotation;
-        leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
-    }
-    */ 
     public void OpenLogbook()
     {
         if (!opened)
@@ -112,8 +133,7 @@ public class LogbookManager : MonoBehaviour
             rightPage.SetActive(true);
             //buttons.SetActive(true);
 
-            //SetOpenPosition();
-            animator.SetTrigger("Open");
+            logbookAnimator.SetTrigger("Open");
 
             LastPage();
 
@@ -131,8 +151,7 @@ public class LogbookManager : MonoBehaviour
             rightPage.SetActive(false);
             //buttons.SetActive(false);
 
-            //SetClosedPosition();
-            animator.SetTrigger("Close");
+            logbookAnimator.SetTrigger("Close");
         }
     }
 }
