@@ -39,7 +39,7 @@ public class HallucinationEffects : MonoBehaviour
             // 4 ; weak
             else if (hallucinationFactor < 6)
             {
-                float r = Random.Range(8f, (16 - hallucinationFactor));
+                float r = Random.Range(3f, (16 - hallucinationFactor));
 
                 yield return new WaitForSeconds(r);
                 r = Mathf.RoundToInt(Random.Range(0, 3)); // event type
@@ -56,7 +56,7 @@ public class HallucinationEffects : MonoBehaviour
             // 6 ; mild
             else if (hallucinationFactor < 8)
             {
-                float r = Random.Range(6f, (16 - hallucinationFactor));
+                float r = Random.Range(2f, (14 - hallucinationFactor));
 
                 yield return new WaitForSeconds(r);
                 r = Mathf.RoundToInt(Random.Range(0, 3)); // event type
@@ -88,7 +88,7 @@ public class HallucinationEffects : MonoBehaviour
             // 8 ; strong
             else if (hallucinationFactor < 10)
             {
-                float r = Random.Range(6f, (16 - hallucinationFactor));
+                float r = Random.Range(0f, (12 - hallucinationFactor));
 
                 yield return new WaitForSeconds(r);
                 r = Mathf.RoundToInt(Random.Range(0, 4)); // event type

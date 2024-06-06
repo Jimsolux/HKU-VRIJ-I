@@ -59,9 +59,36 @@ public class LogbookManager : MonoBehaviour
         LastPage();
     }
 
+    bool lastCharSorted = false;
+    public void LogLastCharacter()
+    {
+        string[] currentLog = new string[5]; // 5 textboxes
+        Sprite[] currentImages = new Sprite[2];
+
+        currentLog[0] = logs.Count.ToString();
+        currentLog[1] = "Sorting Unit" + "\n" + "Unknown" + "\n" + "Unknown" + "\n" + "Dutch"; // vervang dutch na test voor school
+
+        currentLog[2] = "The sorting unit has aided our goal to better understand the Homo sapiens. After sorting various members of their" +
+            " own species, their worth became less than adequate.";
+        currentLog[3] = "N/A\nN/A";
+        currentLog[4] = "N/A";
+
+        // hier moet webcam screenshot komen
+        currentImages[0] = null;
+        currentImages[1] = null;
+
+        logs.Add(currentLog);
+        images.Add(currentImages);
+
+        lastCharSorted = true;
+        FirstPage();
+    }
+
     public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage();}
 
     public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
+
+    public void FirstPage() { page = 0; UpdatePage(); }
 
     public void LastPage() { page = logs.Count - 1; UpdatePage(); }
 
@@ -115,7 +142,8 @@ public class LogbookManager : MonoBehaviour
             //SetOpenPosition();
             animator.SetTrigger("Open");
 
-            LastPage();
+            if (lastCharSorted) FirstPage();
+            else LastPage();
 
             DeskLamp.TurnOff(); 
         }

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!mainTimerIsOff) GameTimer();   // Telt de gameTimer af
-        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing) CharacterChoiceTimer(); // Telt de Chartimer af
+        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing && !mainTimerIsOff) CharacterChoiceTimer(); // Telt de Chartimer af
     }
 
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         if (fourMinuteTimer <= 0)
         {
             mainTimerIsOff = true;
-            ForcelogBook();
+            //ForcelogBook();
         }
     }
 
@@ -98,10 +98,15 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public bool OutOfTime()
+    {
+        return mainTimerIsOff;
+    }
+
     #region Call From Animator
     public void SetCanChoice(bool theBool)
     {
-        choiceManager.SetCanChoose(theBool);
+            choiceManager.SetCanChoose(theBool);
 
     }
 

@@ -7,7 +7,7 @@ public class Hallucination : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; 
+        instance = this;
     }
 
     [Range(0, 10)][SerializeField] private int hallucinationFactor;
@@ -29,7 +29,6 @@ public class Hallucination : MonoBehaviour
     {
         hallucinationFactor += amount;
 
-        animator.speed = hallucinationFactor / 2;
     }
 
     public int GetHallucinationFactor() { return hallucinationFactor; }
@@ -52,9 +51,9 @@ public class Hallucination : MonoBehaviour
                 yield return new WaitForSeconds(r);
 
                 animator.SetBool("Hallucinating", true);
-                r = Random.Range(0, 1); // time of hallucination limit
+                r = Random.Range(0.1f, 0.6f); // time of hallucination limit
                 r *= hallucinationFactor;
-                r = Mathf.Clamp(r, 0, 5);
+                r = Mathf.Clamp(r, 0, hallucinationFactor * 2.5f);
                 yield return new WaitForSeconds(r);
 
                 animator.SetBool("Hallucinating", false);
