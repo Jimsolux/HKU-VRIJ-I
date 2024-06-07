@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Playables;
+using Unity.VisualScripting;
 
 public class LogbookManager : MonoBehaviour
 {
@@ -18,11 +20,19 @@ public class LogbookManager : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField] PlayableDirector outroCutscene;
+    // playtest dingen 
+    [SerializeField] private GameObject imageBefore; 
+    [SerializeField] private GameObject imageAfter; 
+
     private void Start()
     {
         leftSide = this.transform.Find("Logbook Left");
         rightSide = this.transform.Find("Logbook Right");
         animator = GetComponent<Animator>();
+
+        imageBefore.SetActive(false);
+        imageAfter.SetActive(false);
 
         CloseLogbook();
     }
@@ -46,6 +56,17 @@ public class LogbookManager : MonoBehaviour
                 for (int i = 0; i < turners.Count; i++)
                     if (turners[i].Turn())
                         turners.Remove(turners[i]);*/
+
+            if (lastCharSorted && page == GetLogbookSize() - 1)
+            {
+                imageBefore.SetActive(true);
+                imageAfter.SetActive(true);
+            } 
+            else
+            {
+                imageBefore.SetActive(false);
+                imageAfter.SetActive(false);
+            }
         }
     }
 
@@ -175,6 +196,12 @@ public class LogbookManager : MonoBehaviour
             ClosePage(page);
 
             animator.SetTrigger("Close");
+
+            // outro cutscene
+            if (lastCharSorted)
+            {
+                outroCutscene.Play();
+            }
         }
     }
 }

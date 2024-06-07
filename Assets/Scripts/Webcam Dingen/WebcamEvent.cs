@@ -10,9 +10,14 @@ public class WebcamEvent : MonoBehaviour
     [SerializeField] private GameObject monitorObject;
     private LogbookManager logbookManager;
 
+    Renderer renderer1;
+    Renderer renderer2;
+
     private void Start()
     {
         logbookManager = logbookObject.GetComponent<LogbookManager>();
+        renderer1 = transform.Find("WebcamTextureBefore").GetComponent<Renderer>();
+        renderer2 = transform.Find("WebcamTextureAfter").GetComponent<Renderer>();
     }
 
     private void Update()
@@ -32,10 +37,6 @@ public class WebcamEvent : MonoBehaviour
     {
         logbookManager.LogLastCharacter();
 
-        int pages = logbookManager.GetLogbookSize();
-        Image image1 = logbookManager.leftPages[pages - 1].transform.Find("Image").GetComponent<Image>();
-        Image image2 = logbookManager.rightPages[pages - 1].transform.Find("Image").GetComponent<Image>();
-        DisplayWebCam.DisplayUI(image1);
-        DisplayWebCam.DisplayUI(image2);
+        DisplayWebCam.DisplayLogbookImages(renderer1, renderer2);
     }
 }

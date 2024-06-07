@@ -10,6 +10,13 @@ public static class DisplayWebCam
         ApplyWebCamTextureToRenderer(renderer, texture);
     }
 
+    static public void DisplayLogbookImages(Renderer renderer1, Renderer renderer2, int i = 0)
+    {
+        WebCamTexture texture = FindWebCamTexture(i);
+        ApplyWebCamTextureToRenderer(renderer1, texture);
+        ApplyWebCamTextureToRenderer(renderer2, texture);
+    }
+
     // display webcam feed
     static public void DisplayUI(Image image, int i = 0)
     {
