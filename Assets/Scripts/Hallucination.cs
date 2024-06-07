@@ -28,15 +28,21 @@ public class Hallucination : MonoBehaviour
     public void ChangeHallucinationStrength(int amount)
     {
         hallucinationFactor += amount;
-
+        hallucinationFactor = Mathf.Clamp(hallucinationFactor, 0, 9); // only allow 10 for ending
     }
 
+    public void End()
+    {
+        hallucinationFactor = 10;
+        animator.SetTrigger("Outro Cam");
+    }
     public int GetHallucinationFactor() { return hallucinationFactor; }
 
     private IEnumerator HallucinationLoop()
     {
         while (true)
         {
+            animator.SetInteger("ShakeIntensity", hallucinationFactor);
             if (hallucinationFactor == 0)
             {
                 yield return new WaitForEndOfFrame();
@@ -51,9 +57,9 @@ public class Hallucination : MonoBehaviour
                 yield return new WaitForSeconds(r);
 
                 animator.SetBool("Hallucinating", true);
-                r = Random.Range(0.1f, 0.6f); // time of hallucination limit
+                r = Random.Range(0.05f, 0.3f); // time of hallucination limit
                 r *= hallucinationFactor;
-                r = Mathf.Clamp(r, 0, hallucinationFactor * 2.5f);
+                r = Mathf.Clamp(r, 0, 0.69f);
                 yield return new WaitForSeconds(r);
 
                 animator.SetBool("Hallucinating", false);
@@ -71,7 +77,7 @@ public class Hallucination : MonoBehaviour
             }
             else
             {
-                float r = Random.Range(4f, (20 - hallucinationFactor)); // time between sound proc
+                float r = Random.Range(4.5f - (hallucinationFactor / 2), (11 - hallucinationFactor)); // time between sound proc
                 yield return new WaitForSeconds(r);
                 try
                 {

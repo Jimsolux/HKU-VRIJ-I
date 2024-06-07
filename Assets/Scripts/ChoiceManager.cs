@@ -116,7 +116,7 @@ public class ChoiceManager : MonoBehaviour
 
     private void StartTubeAnimation()
     {
-        characterManager.AnimatorSendBackwards();
+        characterManager.AnimatorSendBackwards(Choice);
     }
 
     #region audio
