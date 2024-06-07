@@ -22,6 +22,7 @@ public class HallucinationEffects : MonoBehaviour
     [SerializeField] private GameObject extraMug;
     [SerializeField] private GameObject personStaringDown;
     [SerializeField] private GameObject[] crowdStaring;
+    [SerializeField] private GameObject[] logbook; 
 
     private IEnumerator LoopVFX()
     {

@@ -1,17 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DisplayWebCam 
+public static class DisplayWebCam 
 {
-    public DisplayWebCam(Renderer renderer, int i)
+    // display webcam feed
+    static public void Display(Renderer renderer, int i = 0)
     {
         WebCamTexture texture = FindWebCamTexture(i);
-        ApplyWebCamTexture(renderer, texture);
+        ApplyWebCamTextureToRenderer(renderer, texture);
     }
 
-    public WebCamTexture FindWebCamTexture(int i)
+    // display webcam feed
+    static public void DisplayUI(Image image, int i = 0)
+    {
+        WebCamTexture texture = FindWebCamTexture(i);
+        ApplyWebCamTextureToImage(image, texture);
+    }
+
+    static private WebCamTexture FindWebCamTexture(int i)
     {
         // Debugging
         foreach(WebCamDevice device in WebCamTexture.devices)
@@ -20,9 +26,15 @@ public class DisplayWebCam
         return new WebCamTexture(WebCamTexture.devices[i].name);
     }
 
-    public void ApplyWebCamTexture(Renderer renderer, WebCamTexture texture)
+    static private void ApplyWebCamTextureToRenderer(Renderer renderer, WebCamTexture texture)
     {
         renderer.material.mainTexture = texture;
+        texture.Play();
+    }
+
+    static private void ApplyWebCamTextureToImage(Image image, WebCamTexture texture)
+    {
+        image.material.mainTexture = texture;
         texture.Play();
     }
 }

@@ -6,146 +6,163 @@ using TMPro;
 
 public class LogbookManager : MonoBehaviour
 {
-    private bool opened = false; 
+    private bool opened = false;
     private int page = 0; // current page number
-    private List<string[]> logs = new();
-    private List<Sprite[]> images = new();
-
-    [Header("Buttons")]
-    [SerializeField] private GameObject buttons;
-
-    [SerializeField] private TextMeshProUGUI pageNumber; 
+    public List<GameObject> leftPages = new List<GameObject>();
+    public List<GameObject> rightPages = new List<GameObject>();
+    public List<PageTurner> turners = new List<PageTurner>();
 
     [Header("Page objects")]
-    [SerializeField] private GameObject leftSide, leftPage, rightPage;
+    [SerializeField] private GameObject leftPagePrefab, rightPagePrefab;
+    [SerializeField] private Transform leftSide, rightSide;
 
-    [Header("Information fields")]
-    [SerializeField] private TextMeshProUGUI caseNumber;
-    [SerializeField] private TextMeshProUGUI personalInformation;
-    [SerializeField] private TextMeshProUGUI subjectBiography;
-    [SerializeField] private TextMeshProUGUI caseResults;
-    [SerializeField] private TextMeshProUGUI documentResults;
-
-    [SerializeField] private Image imageBefore, imageAfter;
-
-    [Header("Transformations")]
-    //[SerializeField] private Transform transformOpened, transformClosed;
     private Animator animator;
 
     private void Start()
     {
+        leftSide = this.transform.Find("Logbook Left");
+        rightSide = this.transform.Find("Logbook Right");
         animator = GetComponent<Animator>();
 
         CloseLogbook();
     }
 
+    private void Update()
+    {
+        if (opened)
+        {
+            // input
+            if (Input.GetKeyDown(KeyCode.A)) 
+            {
+                PreviousPage();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                NextPage();
+            }
+
+/*            // turning pages animation 
+            if (turners.Count > 0)
+                for (int i = 0; i < turners.Count; i++)
+                    if (turners[i].Turn())
+                        turners.Remove(turners[i]);*/
+        }
+    }
+
     public void LogCharacter(Character characterInfo)
     {
-        string[] currentLog = new string[5]; // 5 textboxes
-        Sprite[] currentImages = new Sprite[2];
+        GameObject newLeftPage = Instantiate(leftPagePrefab, leftSide.transform);
+        GameObject newRightPage = Instantiate(rightPagePrefab, rightSide.transform);
 
-        currentLog[0] = logs.Count.ToString();
-        currentLog[1] = characterInfo.nam + "\n" + characterInfo.age + "\n" + characterInfo.gender + "\n" + characterInfo.nationality;
-        currentLog[2] = characterInfo.description;
-        currentLog[3] = characterInfo.choice + "\n" + characterInfo.timeElapsed;
-        currentLog[4] = characterInfo.afterText;
+        newLeftPage.transform.Find("Case Number").GetComponent<TextMeshProUGUI>().text =
+            leftPages.Count.ToString();
+        newLeftPage.transform.Find("Personal Information").GetComponent<TextMeshProUGUI>().text =
+            characterInfo.nam + "\n" + characterInfo.age + "\n" + characterInfo.gender + "\n" + characterInfo.nationality;
+        newLeftPage.transform.Find("Subject Biography").GetComponent<TextMeshProUGUI>().text =
+            characterInfo.description;
+        newRightPage.transform.Find("Case Results").GetComponent<TextMeshProUGUI>().text =
+            characterInfo.choice + "\n" + characterInfo.timeElapsed;
+        newRightPage.transform.Find("Documented Results").GetComponent<TextMeshProUGUI>().text =
+            characterInfo.afterText;
 
-        currentImages[0] = characterInfo.imageBefore;
-        currentImages[1] = characterInfo.imageAfter;
+        newLeftPage.transform.Find("Picture").GetComponent<Image>().sprite =
+            characterInfo.imageBefore;
+        newRightPage.transform.Find("Picture").GetComponent<Image>().sprite =
+            characterInfo.imageAfter;
 
-        logs.Add(currentLog);
-        images.Add(currentImages);
+        AddPage(newLeftPage, newRightPage);
 
         LastPage();
+    }
+
+    private void AddPage(GameObject newLeftPage, GameObject newRightPage)
+    {
+        leftPages.Add(newLeftPage);
+        rightPages.Add(newRightPage);
     }
 
     bool lastCharSorted = false;
     public void LogLastCharacter()
     {
-        string[] currentLog = new string[5]; // 5 textboxes
-        Sprite[] currentImages = new Sprite[2];
+        GameObject newLeftPage = Instantiate(leftPagePrefab, leftSide.transform);
+        GameObject newRightPage = Instantiate(rightPagePrefab, rightSide.transform);
 
-        currentLog[0] = logs.Count.ToString();
-        currentLog[1] = "Sorting Unit" + "\n" + "Unknown" + "\n" + "Unknown" + "\n" + "Dutch"; // vervang dutch na test voor school
-
-        currentLog[2] = "The sorting unit has aided our goal to better understand the Homo sapiens. After sorting various members of their" +
+        newLeftPage.transform.Find("Case Number").GetComponent<TextMeshProUGUI>().text =
+            leftPages.Count.ToString();
+        newLeftPage.transform.Find("Personal Information").GetComponent<TextMeshProUGUI>().text =
+            "Sorting Unit" + "\n" + "Unknown" + "\n" + "Unknown" + "\n" + "Dutch";
+        newLeftPage.transform.Find("Subject Biography").GetComponent<TextMeshProUGUI>().text =
+            "The sorting unit has aided our goal to better understand the Homo sapiens. After sorting various members of their" +
             " own species, their worth became less than adequate.";
-        currentLog[3] = "N/A\nN/A";
-        currentLog[4] = "N/A";
+        newRightPage.transform.Find("Case Results").GetComponent<TextMeshProUGUI>().text =
+            "N/A\nN/A";
+        newRightPage.transform.Find("Documented Results").GetComponent<TextMeshProUGUI>().text =
+            "N/A";
 
-        // hier moet webcam screenshot komen
-        currentImages[0] = null;
-        currentImages[1] = null;
+        newLeftPage.transform.Find("Picture").GetComponent<Image>().sprite = null;
+        newRightPage.transform.Find("Picture").GetComponent<Image>().sprite = null;
 
-        logs.Add(currentLog);
-        images.Add(currentImages);
+        AddPage(newLeftPage, newRightPage);
 
         lastCharSorted = true;
         FirstPage();
     }
 
-    public void NextPage() { page = Mathf.Min(logs.Count - 1, page + 1); UpdatePage();}
 
-    public void PreviousPage() { page = Mathf.Max(page - 1, 0); UpdatePage(); }
-
-    public void FirstPage() { page = 0; UpdatePage(); }
-
-    public void LastPage() { page = logs.Count - 1; UpdatePage(); }
-
-    private void UpdatePage()
+    public void NextPage()
     {
-        if (logs.Count > 0)
+        ClosePage(page);
+        page = Mathf.Min(leftPages.Count - 1, page + 1); 
+        OpenPage(page); 
+    }
+
+    public void PreviousPage() 
+    {
+        ClosePage(page);
+        page = Mathf.Max(page - 1, 0);
+        OpenPage(page);
+    }
+
+    public void FirstPage() { ClosePage(page); page = 0; OpenPage(page); }
+
+    public void LastPage() { ClosePage(page); page = Mathf.Max(leftPages.Count - 1, 0); OpenPage(page); }
+
+    public void ClosePage(int page)
+    {
+        if (leftPages.Count > 0)
         {
-            caseNumber.text          = logs[page][0]; 
-            personalInformation.text = logs[page][1];
-            subjectBiography.text    = logs[page][2];
-            caseResults.text         = logs[page][3];
-            documentResults.text     = logs[page][4];
-
-            imageBefore.sprite = images[page][0];
-            imageAfter.sprite  = images[page][1];
-
-            pageNumber.text = page.ToString();
+            leftPages[page].SetActive(false);
+            rightPages[page].SetActive(false);
         }
     }
 
-    public void SetPage(int page) { this.page = page; }
+    private void OpenPage(int page)
+    {
+        if (leftPages.Count > 0)
+        {
+            Debug.Log(leftPages.Count);
+            Debug.Log(page);
+            leftPages[page].SetActive(true);
+            rightPages[page].SetActive(true);
+        }
+    }
 
     public int GetPage() { return page; }
 
-    /*
-     * This code is redundant, using new system now. 
-    private void SetOpenPosition()
-    {
-        transform.localPosition = transformOpened.localPosition;
-        transform.localRotation = transformOpened.localRotation;
-        leftSide.transform.localRotation = Quaternion.Euler(0, 180, 90);
-    }
+    public int GetLogbookSize() { return leftPages.Count; }
 
-    private void SetClosedPosition()
-    {
-        transform.localPosition = transformClosed.localPosition;
-        transform.localRotation = transformClosed.localRotation;
-        leftSide.transform.localRotation = Quaternion.Euler(0, 0, 90);
-    }
-    */ 
     public void OpenLogbook()
     {
         if (!opened)
         {
             opened = true;
 
-            leftPage.SetActive(true); 
-            rightPage.SetActive(true);
-            //buttons.SetActive(true);
-
-            //SetOpenPosition();
-            animator.SetTrigger("Open");
-
             if (lastCharSorted) FirstPage();
             else LastPage();
 
-            DeskLamp.TurnOff(); 
+            animator.SetTrigger("Open");
+
+            DeskLamp.TurnOff();
         }
     }
 
@@ -155,11 +172,8 @@ public class LogbookManager : MonoBehaviour
         {
             opened = false;
 
-            leftPage.SetActive(false);
-            rightPage.SetActive(false);
-            //buttons.SetActive(false);
+            ClosePage(page);
 
-            //SetClosedPosition();
             animator.SetTrigger("Close");
         }
     }

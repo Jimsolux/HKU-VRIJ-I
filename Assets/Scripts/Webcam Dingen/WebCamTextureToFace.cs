@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WebCamTextureToFace : MonoBehaviour
 {
-    private DisplayWebCam webCam;
+/*    private DisplayWebCam webCam;
 
     void Start()
     {
@@ -11,5 +11,5 @@ public class WebCamTextureToFace : MonoBehaviour
         Renderer renderer = head.GetComponent<Renderer>();
 
         webCam = new DisplayWebCam(renderer, 0);
-    }
+    }*/
 }

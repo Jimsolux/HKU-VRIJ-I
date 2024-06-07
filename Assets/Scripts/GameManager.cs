@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private float timeNextInsanityUpdate;
 
     private bool mainTimerIsOff = false;
-    private bool charTimerIsOff = true;
+    private bool charTimerIsOff = false;
     //CharacterTimer
     [SerializeField] private float characterTimerLength;
     private float characterTimer;
