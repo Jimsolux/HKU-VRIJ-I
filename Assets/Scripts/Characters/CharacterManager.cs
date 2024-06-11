@@ -24,6 +24,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private GameObject tubePrefab;
     [SerializeField] private GameObject tubePrefabEmpty;
     [SerializeField] private Transform tubeTransform;
+    private int amountSorted;
 
     public Animator buisAnimator;
 
@@ -67,6 +68,7 @@ public class CharacterManager : MonoBehaviour
 
     public void NextCharacter()
     {
+        amountSorted++;
         Character potentialNextCharacterInfo = GetRandomCharacterIndex(charactersLeft);
 
         if (potentialNextCharacterInfo != null)
@@ -93,6 +95,8 @@ public class CharacterManager : MonoBehaviour
 
         }
     }
+
+    public int GetAmountSorted() { return amountSorted; }
 
     public void FirstCharacter()
     {

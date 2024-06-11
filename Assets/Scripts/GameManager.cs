@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!mainTimerIsOff) GameTimer();   // Telt de gameTimer af
-        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing && !mainTimerIsOff) CharacterChoiceTimer(); // Telt de Chartimer af
+        if (!charTimerIsOff && hcTimeline.state != PlayState.Playing && !mainTimerIsOff && characterManager.GetAmountSorted() > 0) CharacterChoiceTimer(); // Telt de Chartimer af
     }
 
 
