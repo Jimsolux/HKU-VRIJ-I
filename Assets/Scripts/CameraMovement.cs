@@ -59,7 +59,7 @@ public class CameraMovement : MonoBehaviour
     }
     void Update()
     {
-        if (inCutscene == false)
+        if (inCutscene == false && !logbookManager.GetLock())
         {
             Vector3 targetAngle = new();
             if (forceCenter)

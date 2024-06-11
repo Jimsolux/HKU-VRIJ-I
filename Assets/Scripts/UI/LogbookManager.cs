@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.Playables;
-using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class LogbookManager : MonoBehaviour
 {
@@ -22,8 +20,8 @@ public class LogbookManager : MonoBehaviour
 
     [SerializeField] PlayableDirector outroCutscene;
     // playtest dingen 
-    [SerializeField] private GameObject imageBefore; 
-    [SerializeField] private GameObject imageAfter; 
+    [SerializeField] private GameObject imageBefore;
+    [SerializeField] private GameObject imageAfter;
 
     private void Start()
     {
@@ -37,12 +35,16 @@ public class LogbookManager : MonoBehaviour
         CloseLogbook();
     }
 
+    private bool lockLogbook;
     private void Update()
     {
         if (opened)
         {
+            if (lastCharSorted && page != leftPages.Count - 1) lockLogbook = true;
+            else lockLogbook = false;
+
             // input
-            if (Input.GetKeyDown(KeyCode.A)) 
+            if (Input.GetKeyDown(KeyCode.A))
             {
                 PreviousPage();
             }
@@ -51,17 +53,17 @@ public class LogbookManager : MonoBehaviour
                 NextPage();
             }
 
-/*            // turning pages animation 
-            if (turners.Count > 0)
-                for (int i = 0; i < turners.Count; i++)
-                    if (turners[i].Turn())
-                        turners.Remove(turners[i]);*/
+            /*            // turning pages animation 
+                        if (turners.Count > 0)
+                            for (int i = 0; i < turners.Count; i++)
+                                if (turners[i].Turn())
+                                    turners.Remove(turners[i]);*/
 
             if (lastCharSorted && page == GetLogbookSize() - 1)
             {
                 imageBefore.SetActive(true);
                 imageAfter.SetActive(true);
-            } 
+            }
             else
             {
                 imageBefore.SetActive(false);
@@ -70,6 +72,7 @@ public class LogbookManager : MonoBehaviour
         }
     }
 
+    public bool GetLock() {  return lockLogbook; }
     public void LogCharacter(Character characterInfo)
     {
         GameObject newLeftPage = Instantiate(leftPagePrefab, leftSide.transform);
@@ -133,11 +136,11 @@ public class LogbookManager : MonoBehaviour
     public void NextPage()
     {
         ClosePage(page);
-        page = Mathf.Min(leftPages.Count - 1, page + 1); 
-        OpenPage(page); 
+        page = Mathf.Min(leftPages.Count - 1, page + 1);
+        OpenPage(page);
     }
 
-    public void PreviousPage() 
+    public void PreviousPage()
     {
         ClosePage(page);
         page = Mathf.Max(page - 1, 0);
