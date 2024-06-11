@@ -61,7 +61,7 @@ public class ChoiceManager : MonoBehaviour
 
             if (GameManager.Instance.AddInsanity())
             {
-                Hallucination.instance.ChangeHallucinationStrength(2);
+                Hallucination.instance.ChangeHallucinationStrength(3);
             }
 
             PlayButtonSound();

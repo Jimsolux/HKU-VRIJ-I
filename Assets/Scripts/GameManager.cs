@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     //Animaties
     private void Awake()
     {
-        timeNextInsanityUpdate = fourMinuteTimer - 48;
+        timeNextInsanityUpdate = fourMinuteTimer - 90;
         Instance = this;
         //SetCanChoice(true);
         ResetCharacterTimerLength();
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         if (fourMinuteTimer < timeNextInsanityUpdate)
         {
             updateInsanity = true;
-            timeNextInsanityUpdate = timeNextInsanityUpdate - 48;
+            timeNextInsanityUpdate = timeNextInsanityUpdate - 50;
         }
 
         if (fourMinuteTimer <= 0)
