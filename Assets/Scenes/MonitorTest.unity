@@ -669,7 +669,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 93efa36fad007114daefc5d15c20daa5, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -10913,6 +10913,11 @@ PrefabInstance:
       propertyPath: logbookManager
       value: 
       objectReference: {fileID: 1523073401}
+    - target: {fileID: 4430996356101174265, guid: 2c72930fbd76f7f42894a2cdcb682fc5,
+        type: 3}
+      propertyPath: percentageCamSwap
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4430996356101174265, guid: 2c72930fbd76f7f42894a2cdcb682fc5,
         type: 3}
       propertyPath: logbookCameraAnimator

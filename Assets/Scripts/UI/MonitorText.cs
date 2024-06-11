@@ -29,12 +29,13 @@ public class MonitorText : MonoBehaviour
     [SerializeField][TextArea] private string[] startText;
     private bool inStart = true;
     [SerializeField] private GameObject popupBox;
-
+    [SerializeField] private GameObject skipButton;
+ 
     [SerializeField] private TextMeshProUGUI[] textObjects = new TextMeshProUGUI[3];
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip ejectTyping; 
+    [SerializeField] private AudioClip ejectTyping;
 
     private int tab;
 
@@ -149,8 +150,19 @@ public class MonitorText : MonoBehaviour
     }
 
     private bool writing = false;
+
+    public void ForceSkip()
+    {
+        forceStop = true;
+    }
+
+    private string desiredString = "";
+    private bool forceStop;
     private IEnumerator WriteText(string text, float writeSpeed)
     {
+        forceStop = false;
+        desiredString = text;
+
         textObject.fontSize = sizePersonData;
 
         if (text == null) text = string.Empty;
@@ -167,53 +179,60 @@ public class MonitorText : MonoBehaviour
         ClearText();
 
         writing = true;
-        for (int i = 0; i < characters.Length; i++) 
+        for (int i = 0; i < characters.Length; i++)
         {
-            if (insideSize && characters[i].ToString() == "x") activeText += sizeBiography; // makes it easier to change the text of the biography in code
-            else activeText += characters[i];
-
-            // audio
-            if (!audioSource.isPlaying)
+            if (!forceStop)
             {
-                audioSource.pitch = Random.Range(0.95f, 1.05f);
-                audioSource.Play();
-            }
-
-            try
-            {
-                if (characters[i].ToString() == "<")
+                skipButton.SetActive(true);
+                if (insideSize && characters[i].ToString() == "x") activeText += sizeBiography; // makes it easier to change the text of the biography in code
+                else activeText += characters[i];
+                // audio
+                if (!audioSource.isPlaying)
                 {
-                    rush = true;
-                    switch (characters[i + 1].ToString())
+                    audioSource.pitch = Random.Range(0.95f, 1.05f);
+                    audioSource.Play();
+                }
+
+                try
+                {
+                    if (characters[i].ToString() == "<")
                     {
-                        case "s": insideSize = true; break;
-                        case "b": insideBold = true; break;
-                        case "/":
-                            switch (characters[i + 2].ToString())
-                            {
-                                case "s": insideSize = false; break;
-                                case "b": insideBold = false; break;
-                            }
-                            break;
+                        rush = true;
+                        switch (characters[i + 1].ToString())
+                        {
+                            case "s": insideSize = true; break;
+                            case "b": insideBold = true; break;
+                            case "/":
+                                switch (characters[i + 2].ToString())
+                                {
+                                    case "s": insideSize = false; break;
+                                    case "b": insideBold = false; break;
+                                }
+                                break;
+                        }
                     }
-                }
-                else if (characters[i - 1].ToString() == ">")
-                {
-                    rush = false;
-                }
+                    else if (characters[i - 1].ToString() == ">")
+                    {
+                        rush = false;
+                    }
 
+                }
+                catch { } // if the index trying to be found is outside list of array
+
+                if (!rush) yield return new WaitForSeconds(writeSpeed);
             }
-            catch { } // if the index trying to be found is outside list of array
-
-            if (!rush) yield return new WaitForSeconds(writeSpeed);
-
+            else
+            {
+                skipButton.SetActive(false);
+                activeText = desiredString;
+            }
             monitorText = activeText;
 
             if (insideBold) monitorText += "</b>";
             if (insideSize) monitorText += "</size>";
-
             HandleUI();
         }
+
         //audioSource.Stop();
         writing = false;
 
