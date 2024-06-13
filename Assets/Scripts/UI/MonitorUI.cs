@@ -13,6 +13,7 @@ public class MonitorUI : MonoBehaviour
 
     [SerializeField] private Image personalInfoImage;
     [SerializeField] private MonitorText personalInfoTextHandler;
+    [SerializeField] private Image personalInfoProfilePicture; 
     [SerializeField] private MonitorText startTextHandler;
     [SerializeField] private Image trainingImage;
     [SerializeField] private Image desiresImage;
@@ -47,6 +48,8 @@ public class MonitorUI : MonoBehaviour
     private string typeStringCharacter;
 
     public void SetStringCharacter(string newString) { typeStringCharacter = newString; }
+
+    public void SetSpriteCharacter(Sprite picture) { personalInfoProfilePicture.sprite = picture; }
 
     public void StartDialogue()
     {
