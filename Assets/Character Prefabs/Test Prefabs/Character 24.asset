@@ -16,9 +16,7 @@ MonoBehaviour:
   age: 82
   gender: M
   nationality: German
-  description: Hermann, a former engineer, loves spending his time building model
-    trains and writing his memoirs. A WWII history enthusiast, he enjoys recounting
-    his experiences to local schoolchildren.
+  description: 'Former engineer. Loves model trains. WWII history enthusiast. '
   choice: MakeFood
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 801fe9aa2bd671248bd23133115435d9, type: 3}

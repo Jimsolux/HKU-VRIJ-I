@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 28
   gender: F
   nationality: South Korean
-  description: A fashion designer, Hana creates innovative, sustainable clothing
-    lines inspired by traditional culture. She grew up in a hanbok shop and aims
-    to modernize cultural attire sustainably.
+  description: 'Fasion designer. Sustainable clothing. Grew up in a hanbok shop which
+    she is modernizing. '
   choice: Breeding
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: c75adaf859a56aa41ae841fedda8fd20, type: 3}

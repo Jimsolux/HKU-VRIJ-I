@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 45
   gender: Male
   nationality: Japanese
-  description: A sushi chef in Tokyo, Jiro is renowned for his dedication to perfecting
-    traditional Japanese cuisine. He inherited the family restaurant, dreams of a
-    Michelin star, and spends weekends fishing with his son.
+  description: 'Sushi chef. Michelin star, traditional Japanese cuisine. Enjoys fishing
+    with his son. '
   choice: Museum
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 9b050b4535e116d4d88ba251d7138b56, type: 3}

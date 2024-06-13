@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 38
   gender: Female
   nationality: Denmark
-  description: A wildlife photographer from Stockholm, Mia captures stunning images
-    of endangered species around the globe. After surviving a serious illness, she
-    dedicated her life to conservation and photography.
+  description: 'Wildlife photographer. Cancer survivor. Dedicated to conservation
+    and photography. '
   choice: Enter Choice
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 177c8d4ccec13bc419e4c9697aedbe5f, type: 3}

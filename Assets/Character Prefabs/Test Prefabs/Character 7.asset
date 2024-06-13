@@ -16,14 +16,13 @@ MonoBehaviour:
   age: 31
   gender: Non-Binary
   nationality: Ukraine
-  description: Elena, a single mother and nurse, has been working around the clock
-    to care for COVID-19 patients. Her exhausted eyes still light up when she talks
-    about her five-year-old daughter, who waits for her every night, eager to show
-    her drawings of a brighter future.
+  description: 'Single mother. Nurse. Cares for COVID-19 Patients. Five year old
+    daughter. '
   choice: Museum
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: b8fb059b62e97294584408e01f3034f0, type: 3}
   imageAfter: {fileID: 21300000, guid: 8325bcad624a1a64f869ea38c3465dd6, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0

@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 39
   gender: M
   nationality: American
-  description: Ethan works as a henchman for a crime syndicate, known for his brutal
-    enforcement methods. He takes pride in his ability to instill fear and is responsible
-    for numerous violent acts.
+  description: 'Henchman for crime syndicate. Excellent killer. Great at instilling
+    fear in others. '
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 6f06083d92bc55041a211ab3341fb63f, type: 3}

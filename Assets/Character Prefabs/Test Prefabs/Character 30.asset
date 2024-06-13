@@ -16,10 +16,8 @@ MonoBehaviour:
   age: 52
   gender: F
   nationality: German
-  description: Anna is a seasoned politician serving as the Minister of Environment.
-    Known for her tenacity, she has successfully pushed through several landmark
-    environmental protection laws. A mother of two, she balances her demanding career
-    with family life, often spending weekends hiking with her children.
+  description: 'Minister of Environment. Known for pushing environmental protection
+    laws. Hiker. '
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 0e4966c0ac66f384aab0f34bc792f891, type: 3}

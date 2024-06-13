@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 50
   gender: Male
   nationality: Indian
-  description: A doctor specializing in infectious diseases, Raj works tirelessly
-    to improve public health. He lost his wife to an epidemic, which drives his relentless
-    pursuit of medical breakthroughs.
+  description: 'Doctor specialized in infectious diseases. Lost his wife. In pursuit
+    of medical breakthroughs. '
   choice: MakeFood
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 7ace17a5ff08f2c4f8fa0bdfcfe2c561, type: 3}

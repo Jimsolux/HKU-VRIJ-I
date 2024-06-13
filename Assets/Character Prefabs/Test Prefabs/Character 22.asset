@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 28
   gender: M
   nationality: Australian
-  description: A firefighter, Ethan is a local hero, known for his bravery during
-    the recent bushfires. He volunteers at a local animal rescue center, caring for
-    wildlife affected by fires.
+  description: 'Firefighter. Local hero. Brave man. Volunteers at local animal rescue
+    center. '
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 6f06083d92bc55041a211ab3341fb63f, type: 3}

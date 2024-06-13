@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 37
   gender: F
   nationality: Russian
-  description: Mila is a high-profile scam artist who swindles elderly people out
-    of their savings. With a string of aliases, she moves from city to city, leaving
-    financial ruin in her wake.
+  description: 'High-profile scam artist. Swindles elderly people. Enjoys wine and
+    men. '
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 177c8d4ccec13bc419e4c9697aedbe5f, type: 3}

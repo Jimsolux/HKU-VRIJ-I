@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 29
   gender: Female
   nationality: Czech Republic
-  description: A talented pianist from Prague, Lena performs worldwide and teaches
-    music to underprivileged children. She started playing at age 4 and finds solace
-    in her piano after her father's passing.
+  description: 'Talented pianist. Teaches music to children. Started playing piano
+    at 4 years old. '
   choice: Skip
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 0089d861c703657479a90cfe3979011f, type: 3}

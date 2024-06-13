@@ -16,9 +16,7 @@ MonoBehaviour:
   age: 24
   gender: F
   nationality: North Korean
-  description: Mi-Young is a student who excels in mathematics and hopes to become
-    a scientist. She tutors younger children and is known for her kindness and willingness
-    to help others in her community.
+  description: Excellent student. Loves mathmatics and science. Aspiring scientist.
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 18d42c0eff7a4b94b9589d710899ecf5, type: 3}

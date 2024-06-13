@@ -16,10 +16,8 @@ MonoBehaviour:
   age: 40
   gender: M
   nationality: Zimbabwean
-  description: Joseph is a notorious poacher and black market trader, specializing
-    in illegal ivory and rare animal skins. Despite his charm and eloquence, he has
-    little regard for wildlife conservation laws and is responsible for significant
-    ecological damage. He lives a lavish lifestyle funded by his illicit activities.
+  description: 'Notorious poacher. Speciallizes in ivory and rare animal skins. Lavish
+    lifestyle. '
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 1972f99f88b73c544917d0e949e7c123, type: 3}

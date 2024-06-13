@@ -16,8 +16,8 @@ MonoBehaviour:
   age: 22
   gender: M
   nationality: Rio de Janeiro
-  description: An aspiring footballer, Carlos dreams of playing in the World Cup.
-    He grew up in a favela, and football was his escape from a troubled neighborhood.
+  description: 'Aspiring footbal player. Escaped the ghetto by playing soccer really
+    well. '
   choice: Enter Choice
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: f680f5ed96712a842977af32096bb79c, type: 3}

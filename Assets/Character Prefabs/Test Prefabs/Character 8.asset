@@ -16,14 +16,13 @@ MonoBehaviour:
   age: 35
   gender: F
   nationality: Egypt
-  description: Leila, a dedicated teacher in Cairo, spends her evenings tutoring
-    underprivileged children for free. She believes education can break the cycle
-    of poverty and dreams of opening her own school one day. Her kindness and determination
-    inspire everyone around her.
+  description: 'Teacher for underprivileged children. Fighter against poverty. Inspiring
+    figure. '
   choice: Breeding
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 96f596491b63dbb4191cdd7c0c1574f1, type: 3}
   imageAfter: {fileID: 21300000, guid: e5199c6e2118ca346aa85543a45d7d32, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0

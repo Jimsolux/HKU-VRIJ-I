@@ -16,9 +16,7 @@ MonoBehaviour:
   age: 78
   gender: F
   nationality: Irish
-  description: Margaret, a retired nurse, spends her days knitting and volunteering
-    at the local hospice. Widowed ten years ago, she finds joy in gardening and sharing
-    stories with her grandchildren.
+  description: 'Retired nurse. Loves knitting. Widowed. Enjoys gardening and chatting. '
   choice: MakeFood
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 026bfc543c77dc54d834502504767772, type: 3}

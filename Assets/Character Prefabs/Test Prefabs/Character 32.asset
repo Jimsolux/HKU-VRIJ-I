@@ -16,10 +16,7 @@ MonoBehaviour:
   age: 33
   gender: F
   nationality: Nigerian
-  description: Grace is a dedicated nurse who runs a free clinic in Lagos. She tirelessly
-    advocates for better healthcare in underserved communities and organizes annual
-    health fairs to provide education and resources. Known for her compassion, she
-    often goes beyond her duties to support her patients in every possible way.
+  description: 'Nurse. Runs a free clinic in Lagos. Known for her compassion. '
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 2c60bafc2e5da8841882366b87a3b858, type: 3}

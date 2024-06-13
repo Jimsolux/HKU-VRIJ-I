@@ -16,9 +16,8 @@ MonoBehaviour:
   age: 44
   gender: M
   nationality: Colombian
-  description: A ruthless loan shark, Victor uses intimidation and violence to collect
-    debts. He enjoys the power he holds over others and has no qualms about exploiting
-    the vulnerable for profit.
+  description: Loan shark. Enjoys intimidating people. Enjoys watching fights and
+    fighting.
   choice: Pet
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: cbea29fbcc49dad419ddf3ec9e96a0be, type: 3}

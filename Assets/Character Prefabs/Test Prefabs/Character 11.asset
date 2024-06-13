@@ -16,14 +16,13 @@ MonoBehaviour:
   age: 42
   gender: Male
   nationality: United Arab Emirates
-  description: Omar is a wealthy entrepreneur in Dubai who made his fortune in the
-    tech industry. He spends his days managing his businesses and his nights at exclusive
-    clubs. Omar loves the opulence of his lifestyle, with luxury cars and yachts
-    symbolizing his success.
+  description: 'Wealthy entepreneur from Dubai. Businessman. Expensive club-life.
+    Yacht-guy. '
   choice: MakeFood
   timeElapsed: 0
   imageBefore: {fileID: 21300000, guid: 0cfcc6ac5c62e2847a08646a41db3922, type: 3}
   imageAfter: {fileID: 21300000, guid: 8325bcad624a1a64f869ea38c3465dd6, type: 3}
+  afterText: Empty result text
   obj: {fileID: 4748777716839083572, guid: bd6dee20e132dce439590d0c69be328b, type: 3}
   animator: {fileID: 0}
   activeChoice: 0
