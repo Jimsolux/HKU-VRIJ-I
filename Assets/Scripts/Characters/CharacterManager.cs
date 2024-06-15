@@ -92,7 +92,7 @@ public class CharacterManager : MonoBehaviour
 
             ui.SetPopUpPersonalInfo();
             ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
-
+            ui.SetSpriteCharacter(currentCharacterInfo.imageBefore);
         }
     }
 
@@ -104,6 +104,7 @@ public class CharacterManager : MonoBehaviour
         InstantiateCharacter(currentCharacterInfo);
 
         ui.SetStringCharacter(mt.BioToString(currentCharacterInfo));
+        ui.SetSpriteCharacter(currentCharacterInfo.imageBefore); 
 
         buisAnimator = currentTubeObj.GetComponent<Animator>();
 
