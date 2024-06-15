@@ -51,7 +51,7 @@ public class LogbookManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 NextPage();
-            }
+            }     
 
             /*            // turning pages animation 
                         if (turners.Count > 0)
@@ -132,6 +132,10 @@ public class LogbookManager : MonoBehaviour
         FirstPage();
     }
 
+    public void ActivateStamp()
+    {
+        rightPages[GetLogbookSize() - 1].transform.Find("Stamp").gameObject.SetActive(true);
+    }
 
     public void NextPage()
     {
@@ -164,8 +168,6 @@ public class LogbookManager : MonoBehaviour
     {
         if (leftPages.Count > 0)
         {
-            Debug.Log(leftPages.Count);
-            Debug.Log(page);
             leftPages[page].SetActive(true);
             rightPages[page].SetActive(true);
         }

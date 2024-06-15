@@ -851,6 +851,7 @@ MonoBehaviour:
   decreaseAmount: 0.1
   hcTimeline: {fileID: 1486789631}
   warningText: {fileID: 1724995658}
+  logbookManager: {fileID: 1523073401}
 --- !u!114 &106782402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11383,6 +11384,31 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 998754531753312505, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -790.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 998754531753312505, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -238.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 998754531753312505, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 998754531753312505, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -335.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 998754531753312505, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1366333996504578755, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
       propertyPath: skipButton
@@ -11428,6 +11454,11 @@ PrefabInstance:
       propertyPath: characterManager
       value: 
       objectReference: {fileID: 106782399}
+    - target: {fileID: 2117775586457445878, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2186267888691696219, guid: 151df4c0c5ac653479499db320783601,
         type: 3}
       propertyPath: m_IsActive
@@ -11627,6 +11658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615796292491175730, guid: 151df4c0c5ac653479499db320783601,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6817139404531954917, guid: 151df4c0c5ac653479499db320783601,
         type: 3}

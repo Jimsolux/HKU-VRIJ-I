@@ -21,6 +21,8 @@ public class FavourManager : MonoBehaviour
     [SerializeField] private PlayableDirector hcTimeline;
     [SerializeField] private TextMeshProUGUI warningText;
 
+    [SerializeField] private LogbookManager logbookManager;
+
     public enum FavourType
     {
         food,
@@ -37,6 +39,7 @@ public class FavourManager : MonoBehaviour
 
     public void UpdateFavour(FavourType type)// Called after choice loop
     {
+        HandleLogbookStamp(type); 
         DecreaseFavour();
         IncreaseFavour(type);
         Debug.Log("Increased Value of " + type);
@@ -45,13 +48,13 @@ public class FavourManager : MonoBehaviour
 
     public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop, 2 inputs
     {
+        HandleLogbookStamp(type);
         DecreaseFavour();
         IncreaseFavour(type);
         IncreaseFavour(type2);
         Debug.Log("Increased Value of " + type + " and of " + type2);
         CheckFavourLevels();
     }
-
 
     public void DecreaseFavour() // Decreases all amounts by decreaseAmount
     {
@@ -95,6 +98,26 @@ public class FavourManager : MonoBehaviour
         }
     }
 
+    private int FindHighestFavourLevel()
+    {
+        float[] favours = { foodFavour, populationFavour, anthropologyFavour, entertainmentFavour };
+        float highestValue;
+        int indexHighest = 0;
+
+        for (int i = 0; i < favours.Length - 1; i++)
+        {
+            highestValue = Mathf.Max(favours[indexHighest], favours[i + 1]);
+            if (highestValue != favours[indexHighest]) { indexHighest = i + 1; }
+        }
+
+        return indexHighest; 
+    }
+
+    private void HandleLogbookStamp(FavourType type)
+    {
+        if ((int)type != FindHighestFavourLevel())
+            logbookManager.ActivateStamp();
+    }
 
     public float GetFoodValue() { return foodFavour; }
     public float GetPopulationValue() { return populationFavour; }
