@@ -1249,7 +1249,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174729130}
   m_LocalRotation: {x: 0.39670742, y: -0.1238478, z: 0.907941, w: 0.054112922}
-  m_LocalPosition: {x: 0, y: 0, z: 27.48}
+  m_LocalPosition: {x: 0, y: 0, z: 27.97}
   m_LocalScale: {x: 0.026160793, y: 0.026160797, z: 0.026160793}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1258,7 +1258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 15.535, y: 47.204, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.460003, y: -19.86}
+  m_AnchoredPosition: {x: 21, y: -19.86}
   m_SizeDelta: {x: 265, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174729132
@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The curator
+  m_text: 'The Curator
 
 '
   m_isRightToLeft: 0
@@ -3860,7 +3860,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723376039}
   m_LocalRotation: {x: 0.1238478, y: 0.39670742, z: -0.054112922, w: 0.907941}
-  m_LocalPosition: {x: 0, y: 0, z: 26.9}
+  m_LocalPosition: {x: 0, y: 0, z: 27.65}
   m_LocalScale: {x: 0.03111047, y: 0.031110473, z: 0.03111047}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3869,7 +3869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 15.535, y: 47.204, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.54, y: -16.32}
+  m_AnchoredPosition: {x: 23.85, y: -16.32}
   m_SizeDelta: {x: 400, y: 126.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723376041
