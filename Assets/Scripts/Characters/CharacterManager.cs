@@ -75,7 +75,7 @@ public class CharacterManager : MonoBehaviour
         if (potentialNextCharacterInfo != null)
         {
             lm.LogCharacter(currentCharacterInfo);
-            favourManager.HandleLogbookStamp();
+            //favourManager.HandleLogbookStamp();
 
             if (GameManager.Instance.OutOfTime())
             {
