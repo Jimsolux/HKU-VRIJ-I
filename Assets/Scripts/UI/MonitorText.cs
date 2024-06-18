@@ -68,6 +68,7 @@ public class MonitorText : MonoBehaviour
             if (inStart && !writing)
             {
                 continueButton.SetActive(true);
+                skipButton.SetActive(false);
             }
             else
             {
