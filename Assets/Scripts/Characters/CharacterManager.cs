@@ -7,6 +7,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] LogbookManager lm;
     [SerializeField] MonitorText mt;
     [SerializeField] ChoiceManager choiceManager;
+    [SerializeField] FavourManager favourManager;
     MonitorUI ui;
 
     [SerializeField] private Character finalCharacter = new Character();
@@ -74,6 +75,7 @@ public class CharacterManager : MonoBehaviour
         if (potentialNextCharacterInfo != null)
         {
             lm.LogCharacter(currentCharacterInfo);
+            favourManager.HandleLogbookStamp();
 
             if (GameManager.Instance.OutOfTime())
             {

@@ -39,7 +39,6 @@ public class FavourManager : MonoBehaviour
 
     public void UpdateFavour(FavourType type)// Called after choice loop
     {
-        HandleLogbookStamp(type); 
         DecreaseFavour();
         IncreaseFavour(type);
         Debug.Log("Increased Value of " + type);
@@ -48,7 +47,6 @@ public class FavourManager : MonoBehaviour
 
     public void UpdateFavour(FavourType type, FavourType type2)// Called after choice loop, 2 inputs
     {
-        HandleLogbookStamp(type);
         DecreaseFavour();
         IncreaseFavour(type);
         IncreaseFavour(type2);
@@ -113,7 +111,7 @@ public class FavourManager : MonoBehaviour
         return indexHighest; 
     }
 
-    private void HandleLogbookStamp(FavourType type)
+    public void HandleLogbookStamp(FavourType type)
     {
         if ((int)type != FindHighestFavourLevel())
             logbookManager.ActivateStamp();

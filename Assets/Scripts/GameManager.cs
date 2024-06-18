@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviour
     public void SetCanChoice(bool theBool)
     {
             choiceManager.SetCanChoose(theBool);
-
     }
 
     public void PrepareNextCharacter() // Call from animator

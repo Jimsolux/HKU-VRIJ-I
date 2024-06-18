@@ -10,8 +10,6 @@ public class LogbookManager : MonoBehaviour
     private bool opened = false;
     private bool canTurn = true;
     private int page = 0; 
-    public List<GameObject> leftPages = new List<GameObject>();
-    public List<GameObject> rightPages = new List<GameObject>();
     public List<GameObject[]> pages = new List<GameObject[]>();
 
     [Header("Page objects")]
@@ -49,7 +47,7 @@ public class LogbookManager : MonoBehaviour
     {
         if (opened)
         {
-            if (lastCharSorted && page != leftPages.Count - 1) lockLogbook = true;
+            if (lastCharSorted && page != pages.Count - 1) lockLogbook = true;
             else lockLogbook = false;
 
             // input
@@ -60,7 +58,9 @@ public class LogbookManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 NextPage();
-            }     
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+                LogLastCharacter();
 
             /*            // turning pages animation 
                         if (turners.Count > 0)
@@ -72,11 +72,6 @@ public class LogbookManager : MonoBehaviour
             {
                 imageBefore.SetActive(true);
                 imageAfter.SetActive(true);
-            }
-            else
-            {
-                imageBefore.SetActive(false);
-                imageAfter.SetActive(false);
             }
         }
     }
@@ -113,8 +108,9 @@ public class LogbookManager : MonoBehaviour
     private void AddPage(GameObject newLeftPage, GameObject newRightPage)
     {
         GameObject[] pagePair = new GameObject[2];
-        pagePair[0] = newLeftPage;
-        pagePair[1] = newRightPage;
+        pagePair[(int)Page.Left] = newLeftPage;
+        pagePair[(int)Page.Right] = newRightPage; 
+        pages.Add(pagePair);
     }
 
     bool lastCharSorted = false;
@@ -124,7 +120,7 @@ public class LogbookManager : MonoBehaviour
         GameObject newRightPage = Instantiate(rightPagePrefab, rightSide.transform);
 
         newLeftPage.transform.Find("Case Number").GetComponent<TextMeshProUGUI>().text =
-            leftPages.Count.ToString();
+            pages.Count.ToString();
         newLeftPage.transform.Find("Personal Information").GetComponent<TextMeshProUGUI>().text =
             "Sorting Unit" + "\n" + "Unknown" + "\n" + "Unknown" + "\n" + "Dutch";
         newLeftPage.transform.Find("Subject Biography").GetComponent<TextMeshProUGUI>().text =
@@ -134,6 +130,8 @@ public class LogbookManager : MonoBehaviour
             "N/A\nN/A";
         newRightPage.transform.Find("Documented Results").GetComponent<TextMeshProUGUI>().text =
             "N/A";
+        newRightPage.transform.Find("Page Number").GetComponent<TextMeshProUGUI>().text =
+            pages.Count.ToString();
 
         newLeftPage.transform.Find("Picture").GetComponent<Image>().sprite = null;
         newRightPage.transform.Find("Picture").GetComponent<Image>().sprite = null;
@@ -191,7 +189,7 @@ public class LogbookManager : MonoBehaviour
 
     public int GetPage() { return page; }
 
-    public int GetLogbookSize() { return leftPages.Count; }
+    public int GetLogbookSize() { return pages.Count; }
 
     public void OpenLogbook()
     {
