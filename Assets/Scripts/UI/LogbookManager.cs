@@ -146,7 +146,11 @@ public class LogbookManager : MonoBehaviour
 
     public void ActivateStamp()
     {
-        pages[pages.Count - 1][(int)Page.Right].transform.Find("Stamp").gameObject.SetActive(true);
+        try
+        {
+            pages[pages.Count - 1][(int)Page.Right].transform.Find("Stamp").gameObject.SetActive(true);
+        }
+        catch { }
     }
 
     public void NextPage()
