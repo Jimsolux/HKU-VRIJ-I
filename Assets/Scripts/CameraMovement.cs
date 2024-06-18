@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -7,7 +8,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; 
+
+        instance = this;
+        if(SceneManager.GetActiveScene().name == "MainGame")
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private Vector2 screenResolution;
@@ -61,6 +65,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (inCutscene == false && !logbookManager.GetLock())
         {
+            Cursor.lockState = CursorLockMode.None;
             Vector3 targetAngle = new();
             if (forceCenter)
             {
@@ -211,6 +216,15 @@ public class CameraMovement : MonoBehaviour
     public void SetLock(bool value)
     {
         lockMotion = value;
+    }
+    public void SetCutscene(bool value)
+    {
+        inCutscene = value;
+        if (value == false)
+        {
+            currentCameraDirection = CameraDirection.Right;
+            logbookCameraAnimator.gameObject.SetActive(true);
+        }
     }
 
     public void SetCurrentCameraDirection(CameraDirection direction)
