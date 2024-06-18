@@ -809,9 +809,8 @@ MonoBehaviour:
     for many future subjects, which will be useful for the continuation of their
     species.
   makeFoodText:
-  - '<n> has become a savoury soup, held in this soup can. The back of the soup-can
-    reads: Savor the rich, velvety broth of <n>''s meat infused with a symphony of
-    exotic spices and Earth-grown herbs.'
+  - <n> was transformed into a fruit tree, providing us a great bounty of delicious
+    food in our future..
   skipText:
   - <n> was skipped. Their bodily contents have been sent to one of our food production
     lines.
@@ -10078,6 +10077,21 @@ PrefabInstance:
       propertyPath: turnPageAudio
       value: 
       objectReference: {fileID: 1523073408}
+    - target: {fileID: 839896730818976813, guid: 7296f47b9a6c23e45a64b660efa412d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -841
+      objectReference: {fileID: 0}
+    - target: {fileID: 839896730818976813, guid: 7296f47b9a6c23e45a64b660efa412d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 839896730818976813, guid: 7296f47b9a6c23e45a64b660efa412d9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -61
+      objectReference: {fileID: 0}
     - target: {fileID: 1190365932611279505, guid: 7296f47b9a6c23e45a64b660efa412d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
