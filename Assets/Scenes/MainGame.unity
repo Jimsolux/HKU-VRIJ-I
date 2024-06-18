@@ -889,10 +889,10 @@ MonoBehaviour:
   mt: {fileID: 839966027}
   breedingSprite: {fileID: 21300000, guid: d8e1eccb0c0d40b4bae7de373b688c12, type: 3}
   museumSprite: {fileID: 21300000, guid: 0ac2d235bbc8b6b4f8db4718b34ab121, type: 3}
-  experimentSprite: {fileID: 21300000, guid: 7c3e35724d414504ca5e5714d14ddcbd, type: 3}
+  experimentSprite: {fileID: 21300000, guid: 37a7e1d0d897528469a0d4a44eef97b9, type: 3}
   petSprite: {fileID: 21300000, guid: edd0c60f0002a7849bb0056f2a95e968, type: 3}
   makeFoodSprite: {fileID: 21300000, guid: 5d8b53c338edbf942aa96097d6020bc3, type: 3}
-  skipSprite: {fileID: 21300000, guid: 7c3e35724d414504ca5e5714d14ddcbd, type: 3}
+  skipSprite: {fileID: 21300000, guid: a961dae9bf06d024e88b5b27349c0547, type: 3}
   Choice: 0
 --- !u!1 &125804421
 GameObject:
