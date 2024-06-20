@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ChoiceManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ChoiceManager : MonoBehaviour
     [SerializeField] public CharacterManager characterManager;
     [SerializeField] AudioSource buttonPanelAudio;
 
-    [SerializeField] private MonitorText mt; 
+    [SerializeField] private MonitorText mt;
 
     public enum ChoiceEnum
     {

@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac1795328b6a6f948970d7d90f486eb9, type: 2}
-  m_sharedMaterial: {fileID: -3731404633654235110, guid: ac1795328b6a6f948970d7d90f486eb9,
+  m_fontAsset: {fileID: 11400000, guid: 6e191f4cfe948b64abd0c8455c52f6b3, type: 2}
+  m_sharedMaterial: {fileID: 567160981015783131, guid: 6e191f4cfe948b64abd0c8455c52f6b3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 2.03
+  m_lineSpacing: -2.98
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6412968795079639514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000028699636, y: 0.363}
+  m_AnchoredPosition: {x: -0, y: 0.369}
   m_SizeDelta: {x: 0.79974, y: 0.3165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4231747143348714000
@@ -539,8 +539,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 123123123123123123123123123123123123123123123123123123123123123123123123123123123123
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac1795328b6a6f948970d7d90f486eb9, type: 2}
-  m_sharedMaterial: {fileID: -3731404633654235110, guid: ac1795328b6a6f948970d7d90f486eb9,
+  m_fontAsset: {fileID: 11400000, guid: 6e191f4cfe948b64abd0c8455c52f6b3, type: 2}
+  m_sharedMaterial: {fileID: 567160981015783131, guid: 6e191f4cfe948b64abd0c8455c52f6b3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 62.55
+  m_lineSpacing: 64.6
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

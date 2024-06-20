@@ -23,6 +23,8 @@ public class FavourManager : MonoBehaviour
 
     [SerializeField] private LogbookManager logbookManager;
 
+    [SerializeField] private Button buttonZoom; 
+
     public enum FavourType
     {
         food,
@@ -131,7 +133,7 @@ public class FavourManager : MonoBehaviour
             hcTimeline.Evaluate();
         }
 
-        warningText.text = "WE NEED MORE " + favourType.ToString().ToUpper() + "";
+        warningText.text = "WE NEED MORE " + favourType.ToString().ToUpper();
         hcTimeline.Play();
     }
 }

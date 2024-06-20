@@ -15,6 +15,7 @@ public class LogbookManager : MonoBehaviour
     [Header("Page objects")]
     [SerializeField] private GameObject leftPagePrefab, rightPagePrefab;
     [SerializeField] private Transform leftSide, rightSide;
+    [SerializeField] private TextMeshProUGUI pageNumber;
 
     private Animator animator;
 
@@ -154,6 +155,8 @@ public class LogbookManager : MonoBehaviour
         ClosePage(page);
         page = Mathf.Min(pages.Count - 1, page + 1);
         OpenPage(page);
+
+        ChangePageNumber();
     }
 
     public void PreviousPage()
@@ -163,11 +166,18 @@ public class LogbookManager : MonoBehaviour
         ClosePage(page);
         page = Mathf.Max(page - 1, 0);
         OpenPage(page);
+
+        ChangePageNumber();
     }
 
-    public void FirstPage() { ClosePage(page); page = 0; OpenPage(page); }
+    public void ChangePageNumber()
+    {
+        pageNumber.text = page.ToString();
+    }
 
-    public void LastPage() { ClosePage(page); page = Mathf.Max(pages.Count - 1, 0); OpenPage(page); }
+    public void FirstPage() { ClosePage(page); page = 0; OpenPage(page); ChangePageNumber(); }
+
+    public void LastPage() { ClosePage(page); page = Mathf.Max(pages.Count - 1, 0); OpenPage(page); ChangePageNumber(); }
 
     public void ClosePage(int page)
     {

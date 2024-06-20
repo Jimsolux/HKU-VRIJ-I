@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,10 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] CharacterManager characterManager;
     [SerializeField] ChoiceManager choiceManager;
-    [SerializeField] private PlayableDirector hcTimeline;
+    [SerializeField] public PlayableDirector hcTimeline;
 
     [SerializeField] private LogbookManager logbookManager;
     [SerializeField] private CameraMovement cameraMovement;
+
+    [SerializeField] private Button buttonsZoom;
 
     //Timer
     private float fourMinuteTimer = 240;
@@ -40,8 +44,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    #region Timers
-    private void GameTimer()
+        #region Timers
+        private void GameTimer()
     {
         fourMinuteTimer -= Time.deltaTime;
 

@@ -19,7 +19,7 @@ MonoBehaviour:
   description: null
   choice: MakeFood
   timeElapsed: 0
-  imageBefore: {fileID: 21300000, guid: 7c3e35724d414504ca5e5714d14ddcbd, type: 3}
+  imageBefore: {fileID: 21300000, guid: 4e48ddd8f564a4d449c37d4333be360a, type: 3}
   imageAfter: {fileID: 0}
   afterText: 'N/A has become a savoury soup, held in this soup can. The back of the
     soup-can reads: Savor the rich, velvety broth of N/A''s meat infused with a symphony

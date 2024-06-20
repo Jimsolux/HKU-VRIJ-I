@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -7,7 +9,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; 
+
+        instance = this;
+        if (SceneManager.GetActiveScene().name == "MainGame")
+            Cursor.lockState = CursorLockMode.Locked;
     }
 
     private Vector2 screenResolution;
@@ -15,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     private Camera cam;
 
     [Header("Camera")]
-    [Range(0, 0.5f)] [SerializeField] private float percentageCamSwap;
+    [Range(0, 0.5f)][SerializeField] private float percentageCamSwap;
     [SerializeField] private float cameraSpeed = 2;
     [SerializeField] private float cooldown = 0.5f;
     private CameraDirection currentCameraDirection = CameraDirection.Center;
@@ -36,13 +41,14 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private LogbookManager logbookManager;
     [SerializeField] private Animator logbookCameraAnimator;
+    [SerializeField] private PlayableDirector hcTimeline;
     public enum CameraDirection
     {
         Left, Center, Right, Buttons
     }
 
     public CameraDirection Direction() { return currentCameraDirection; }
- 
+
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -61,6 +67,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (inCutscene == false && !logbookManager.GetLock())
         {
+            Cursor.lockState = CursorLockMode.None;
             Vector3 targetAngle = new();
             if (forceCenter)
             {
@@ -144,12 +151,12 @@ public class CameraMovement : MonoBehaviour
                 logbookCameraAnimator.SetBool("InView", true);
                 return angleLeft;
 
-            case CameraDirection.Center: 
+            case CameraDirection.Center:
                 restartedTyping = false;
                 logbookCameraAnimator.SetBool("InView", false);
                 return angleCenter;
 
-            case CameraDirection.Buttons:  return angleButtons;
+            case CameraDirection.Buttons: return angleButtons;
 
             case CameraDirection.Right:
                 if (!triggeredRight)
@@ -172,10 +179,10 @@ public class CameraMovement : MonoBehaviour
     {
         int targetFOV = 0;
 
-        if (currentCameraDirection != CameraDirection.Left) 
-            logbookManager.CloseLogbook(); 
-        else  
-            logbookManager.OpenLogbook(); 
+        if (currentCameraDirection != CameraDirection.Left)
+            logbookManager.CloseLogbook();
+        else
+            logbookManager.OpenLogbook();
 
         switch (currentCameraDirection)
         {
@@ -212,6 +219,15 @@ public class CameraMovement : MonoBehaviour
     {
         lockMotion = value;
     }
+    public void SetCutscene(bool value)
+    {
+        inCutscene = value;
+        if (value == false)
+        {
+            currentCameraDirection = CameraDirection.Right;
+            logbookCameraAnimator.gameObject.SetActive(true);
+        }
+    }
 
     public void SetCurrentCameraDirection(CameraDirection direction)
     {
@@ -220,7 +236,7 @@ public class CameraMovement : MonoBehaviour
 
     public void ButtonZoomIn()
     {
-        if (!lockMotion)
+        if (!lockMotion && hcTimeline.state != PlayState.Playing)
         {
             currentCameraDirection = CameraDirection.Buttons;
             zoomInButton.SetActive(false);
